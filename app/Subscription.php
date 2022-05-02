@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Specialty extends Model
+class Subscription extends Model
 {
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'price'];
 
     public function doctors() {
         return $this->belongsToMany(Doctor::class);

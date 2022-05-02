@@ -15,6 +15,14 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('photo')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('performance')->nullable();
+            $table->binary('cv')->nullable();
+            $table->string('medical_address')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
