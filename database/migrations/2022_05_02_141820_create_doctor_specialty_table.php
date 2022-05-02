@@ -16,10 +16,13 @@ class CreateDoctorSpecialtyTable extends Migration
         Schema::create('doctor_specialty', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+
             $table->unsignedBigInteger('specialty_id');
             $table->foreign('specialty_id')->references('id')->on('specialties')->onDelete('cascade');
+            
             $table->index(['doctor_id', 'specialty_id']);
             $table->timestamps();
         });
