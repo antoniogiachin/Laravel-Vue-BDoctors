@@ -24,7 +24,12 @@ Route::middleware('auth')
 ->prefix('admin')
 ->group(
     function(){
+        // rotta dashboard
         Route::get('/', 'HomeController@index')->name('home');
+        // rotte CRUD dottore
+        Route::resource('doctors', 'DoctorController');
+        //rotta get cv
+        Route::get('/cvDownload', 'CvController@getCv')->name('downloadCv');
     }
 );
 
