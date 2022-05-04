@@ -26,7 +26,7 @@
                     <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" class="img-fluid">
                 @endif
             </div>
-        </div>
+        </div>  
         <div class="row mt-5">
             <div class="col-6">Recensioni ricevute</div>
             <div class="col-6">Contatti ricevuti</div>
