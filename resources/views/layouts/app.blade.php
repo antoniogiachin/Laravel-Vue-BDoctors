@@ -139,5 +139,6 @@
             <div class="mt-5">@yield('content')</div>
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

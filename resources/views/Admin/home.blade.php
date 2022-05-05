@@ -40,7 +40,7 @@
                                 {{-- edit --}}
                                 <a class="btn text-dark btn-warning" href="{{ route('admin.doctors.edit', $doctor->id) }}">Modifica il tuo profilo da dottore</a>
                                 {{-- delete --}}
-                                <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+                                <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile" data-name="{{$doctor->user->surname}}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">Elimina il tuo profilo da dottore</button>
@@ -56,4 +56,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/confirm-delete.js')}}"></script>
 @endsection
