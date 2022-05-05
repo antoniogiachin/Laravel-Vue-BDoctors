@@ -11,9 +11,14 @@
                 <p>Email: {{ $doctor->user->email }}</p>
                 <p>Prestazioni eseguite: </p>
                 <p>{{ $doctor->performance }}</p>
-                <p>Scarica il tuo cv -> <a href="{{ route('admin.downloadCv') }}">Clicca qui</a> </p>
+                @if (!$doctor->cv)
+                    <p class="text-danger">Nessun cv caricato</p>
+                @else
+                    <p>Scarica il tuo cv -> <a href="{{ route('admin.downloadCv') }}">Clicca qui</a> </p>
+                @endif
+                
                 <p class="mt-3 mb-1">Specializzato in: </p>
-                <div class="d-flex gap-3">
+                <div class="d-flex gap-3 flex-wrap">
                     @foreach ($doctor->specialties as $specialty)
                         <span class="badge rounded-pill bg-info text-dark">{{ $specialty->name }}</span>
                     @endforeach
