@@ -1,0 +1,45 @@
+#user-img-big{
+    position: absolute;
+    width: fit-content;
+    right: 10px;
+    top: 620px;
+    display: none;
+}
+
+#user-img-big img {
+    height: 400px;
+}
+
+#user-img:hover #user-img-big {
+    display: block;
+}
+
+.container-img-big {
+    /* Border */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    padding: 20px;
+
+    /* Used to position the arrow */
+    position: relative;
+}
+
+.container__arrow {
+    /* Size */
+    height: 24px;
+    width: 24px;
+
+    background-color: #f8fafc;
+    position: absolute;
+}
+
+.container__arrow--lc {
+    /* Position at the left center */
+    left: 0;
+    top: 50%;
+
+    /* Border */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%) rotate(45deg);
+}

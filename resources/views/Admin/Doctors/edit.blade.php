@@ -29,14 +29,43 @@
                         <label for="performance">Prestazioni offerte</label>
                     </div>
                     {{-- cv --}}
-                    <div class="mb-3">
-                        <label for="cvBlob" class="form-label">Carica il tuo Curriculum Vitae</label>
-                        <input name="cvBlob" type="file" class="form-control" id="cvBlob">
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div>
+                            <label for="cvBlob" class="form-label">Carica il tuo Curriculum Vitae</label>
+                            <input name="cvBlob" type="file" class="form-control" id="cvBlob">
+                        </div>
+                        <div class="me-3 text-center">
+                            <p class="mb-3">Attualmente caricato</p>
+                            <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a>
+                        </div>
+                        
                     </div>
                     {{-- foto --}}
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Carica una tua immagine del profilo</label>
-                        <input name="photo" type="file" class="form-control" id="image">
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div>
+                            <label for="image" class="form-label">Carica una tua immagine del profilo</label>
+                            <input name="photo" type="file" class="form-control" id="image">
+                        </div>
+
+                        <div class="me-4 text-center" id="user-img">
+                            <p class="mb-2">Attualmente in uso</p>
+                            @if (!$doctor->photo)
+                                <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" height="50">
+                            @else
+                                <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" height="50">
+                            @endif
+
+
+                            <div id="user-img-big">
+                                <div class="container-img-big">
+                                    <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo">
+                                    <div class="container__arrow container__arrow--lc"></div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
                     </div>
 
                     {{-- specializzazione --}}
