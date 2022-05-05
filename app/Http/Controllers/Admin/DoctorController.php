@@ -125,9 +125,13 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
+        // dd($doctor->id);
         $specialties = Specialty::all();
-
-        return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
+        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
+            return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
+        } else {
+            return redirect()->route('404');
+        }
     }
 
     /**
