@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotFoundController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ Route::middleware('auth')
     }
 );
 
-Route::get("{any?}", function () {
+Route::get("/", function () {
     return view('guests.home');
-})->where('any', '.*');
+})->name('guests.home');
+
+// rotta 404
+Route::get('/notfound', [NotFoundController::class, 'index'])->name('404');
