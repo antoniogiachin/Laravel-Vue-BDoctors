@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container py-3">
-        <h1 class="text-center mb-5">Crea il tuo profilo da dottore</h1>
+        <h1 class="text-center mb-5">Modifica il tuo profilo da dottore</h1>
         <div class="row">
             <div class="col-6 mx-auto">
                 {{-- form creazione --}}
@@ -34,9 +34,15 @@
                             <label for="cvBlob" class="form-label">Carica il tuo Curriculum Vitae</label>
                             <input name="cvBlob" type="file" class="form-control" id="cvBlob">
                         </div>
-                        <div class="me-3 text-center">
+                        <div class="edit-info-preview me-3 text-center">
                             <p class="mb-3">Attualmente caricato</p>
-                            <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a>
+
+                            @if (!$doctor->cv)
+                                <p class="text-danger">Non hai caricato nessun cv</p>
+                            @else
+                                <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a>
+                            @endif
+                            
                         </div>
                         
                     </div>
@@ -47,21 +53,23 @@
                             <input name="photo" type="file" class="form-control" id="image">
                         </div>
 
-                        <div class="me-4 text-center" id="user-img">
+                        <div class="edit-info-preview me-4 text-center" id="user-img">
                             <p class="mb-2">Attualmente in uso</p>
                             @if (!$doctor->photo)
-                                <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" height="50">
+                                <p class="text-danger">Non hai inserito una foto profilo</p>
                             @else
                                 <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" height="50">
+
+                                <div id="user-img-big">
+                                    <div class="container-img-big">
+                                        <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo">
+                                        <div class="container__arrow container__arrow--lc"></div>
+                                    </div>
+                                </div>
                             @endif
 
 
-                            <div id="user-img-big">
-                                <div class="container-img-big">
-                                    <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo">
-                                    <div class="container__arrow container__arrow--lc"></div>
-                                </div>
-                            </div>
+                            
                             
 
                         </div>
