@@ -50,8 +50,8 @@
                                 <label class="form-check-label" for="specialty_{{ $specialty->id }}">
                                     {{ $specialty->name }}
                                 </label>
-                                </div>
-                        @endforeach
+                            </div>
+                            @endforeach
                     </div>
 
                     <button type="submit" class="btn btn-primary">Salva</button>
