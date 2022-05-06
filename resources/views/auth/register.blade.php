@@ -113,8 +113,11 @@
                             {{-- password --}}
                             <div class="mb-3">
                                 <div>
-                                    <label for="password-confirm" class="form-label">{{ __('Conferma Password *') }}</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+
+                                    <label for="password-confirm" class="form-label">{{ __('Conferma Password*') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" onkeyup="checkPass()">
+                                    <span id="message"></span>
+
                                 </div>
                             </div>
                         </div>
@@ -134,4 +137,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/check-password.js')}}"></script>
 @endsection
