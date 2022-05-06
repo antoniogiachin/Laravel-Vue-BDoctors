@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="row">
                         @if (!$doctor)
-                        <p>Compila subito il tuo profilo!</p>
+                        <p>Completa subito il tuo profilo!</p>
                         <div class="col-8">
                             <a href="{{ route('admin.doctors.create') }}" class="btn mt-3 text-white btn-success">Registra il tuo profilo da dottore</a>
                         </div>

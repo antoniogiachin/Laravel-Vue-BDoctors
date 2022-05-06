@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Doctor;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -54,7 +57,9 @@ class RegisterController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'specialty_id' => ['required', 'not_in:0'], //specializzazioni
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            
         ]);
     }
 
@@ -66,12 +71,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+        $slug  = Str::slug($data['name'] .'-'. $data['surname']);
+
+        // slug unico
+        $counter = 1;
+
+        while (Doctor::where('slug', $slug)->first()) {
+            // se è già presente aggiunge il counter allo slug creato
+            $slug  = Str::slug($data['name'] .'-'. $data['surname']) . '-' . $counter;
+            $counter++;
+        };
+
+        
+        $doctor = Doctor::create([
+            'user_id' => $user->id,
+            'slug' => $slug,
+        ]);
+
+        $doctor->specialties()->sync($data['specialty_id']);
+
+        return $user;
+      
     }
+
 }
