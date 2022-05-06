@@ -3292,7 +3292,7 @@ var staticRenderFns = [
               "a",
               {
                 staticClass: "btn btn-login py-2",
-                attrs: { href: "/register", type: "button" },
+                attrs: { href: "/login", type: "button" },
               },
               [_vm._v("Accedi")]
             ),
@@ -19261,7 +19261,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

@@ -3,7 +3,7 @@
   <header>
 
     <div id="header">
-      
+
       <!-- CONTAINER HEADER -->
       <div id="head-container">
 
@@ -11,8 +11,8 @@
 
           <!-- BUTTON -->
           <div class="btn-head">
-              <a href="/register" type="button" class="btn btn-reg px-4 py-2">Registrati</a>
-              <a href="/register" type="button" class="btn btn-login py-2"">Accedi</a>
+              <a href="register" type="button" class="btn btn-reg px-4 py-2">Registrati</a>
+              <a href="login" type="button" class="btn btn-login py-2">Accedi</a>
           </div>
 
       </div>
