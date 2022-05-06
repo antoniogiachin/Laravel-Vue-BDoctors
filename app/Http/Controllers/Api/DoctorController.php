@@ -11,7 +11,7 @@ class DoctorController extends Controller
     //
     public function index(){
 
-        $doctors = Doctor::with(['user', 'specialties'])->paginate(5);
+        $doctors = Doctor::with(['user', 'specialties'])->paginate(2);
 
         $doctors->each(function($doctor){
             //se ho photo
@@ -43,25 +43,35 @@ class DoctorController extends Controller
 
         $doctor = Doctor::where('slug', $slug)->with(['user', 'specialties'])->first();
 
-        //se ho photo
-        if ($doctor->photo) {
-            $doctor->photo = url('storage/' . $doctor->photo);
+        if(!$doctor){
+            return response()->json(
+                [
+                    'results' => 'Nessun dottore corrisponde alla ricerca',
+                    'success' => false,
+                ]
+            );
         } else {
-            $doctor->photo = url('img/not_found.jpg');
-        }
+            
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url('storage/' . $doctor->photo);
+            } else {
+                $doctor->photo = url('img/not_found.jpg');
+            }
 
-        if ($doctor->cv) {
-            $doctor->cv = url('storage/' . $doctor->cv);
-        } else {
-            $doctor->cv = 'Nessun Curriculum presente!';
-        }
+            if ($doctor->cv) {
+                $doctor->cv = url('storage/' . $doctor->cv);
+            } else {
+                $doctor->cv = 'Nessun Curriculum presente!';
+            }
 
-        return response()->json(
-            [
-                'results' => $doctor,
-                'success' => true,
-            ]
-        );
+            return response()->json(
+                [
+                    'results' => $doctor,
+                    'success' => true,
+                ]
+            );
+        }
 
     }
 }
