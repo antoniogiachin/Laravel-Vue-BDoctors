@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
+import Home from "./pages/Home";
 import SingleDoctor from "./pages/SingleDoctor";
 
 

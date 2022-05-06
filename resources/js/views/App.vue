@@ -1,11 +1,23 @@
 <template>
-  <h1>Funziona</h1>
+  
+  <Home></Home>
+
 </template>
 
 <script>
-export default {
 
+  import Home from '../pages/Home';
+
+  export default {
+    name: "App",
+
+    components: {
+
+      Home,
+
+    }
 }
+
 </script>
 
 <style>
