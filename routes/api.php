@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DoctorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// api doctor paginate 5
+Route::get('/doctors', [DoctorController::class, 'index']);
+//api singolo dottore per slug
+Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
