@@ -27,6 +27,8 @@ Route::middleware('auth')
     function(){
         // rotta dashboard
         Route::get('/', 'HomeController@index')->name('home');
+        //rotta destroy user dashboard
+        Route::delete('/{user}', 'HomeController@destroy')->name('home.destroy');
         // rotte CRUD dottore
         Route::resource('doctors', 'DoctorController');
         //rotta get cv

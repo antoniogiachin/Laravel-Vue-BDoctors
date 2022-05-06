@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center py-3">
         <div class="col-md-8">
+            {{-- eliminazione user --}}
+            @if (session('deletedUser'))
+                <div class="alert alert-danger">
+                    {{ session('deletedUser') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header bg-white text-center text-uppercase">{{ __('Registra il tuo profilo') }}</div>
 
@@ -78,14 +84,14 @@
                           <div class="col-6">
                                 <div class="mb-3">
                                     <div>
-                                        <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>                                        
+                                        <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
                                         <select id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required>
                                           <option value="" class="text-muted">Seleziona una specializzazione</option>
                                           @foreach ($specialties as $specialty)
                                             <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
                                           @endforeach
                                         </select>
-                                        
+
                                         @error('specialties')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -125,8 +131,8 @@
                         <p class="text-muted fs-6">* campo richiesto</p>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary text-white">
                                     {{ __('Registrati') }}
                                 </button>
                             </div>

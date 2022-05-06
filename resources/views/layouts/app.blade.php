@@ -85,7 +85,7 @@
                 @guest
                 <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class=" nav-link "  aria-current="page" href="{{ route('admin.home') }}">Home</a>
+                            <a class=" nav-link "  aria-current="page" href="{{ route('guests.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a  class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>

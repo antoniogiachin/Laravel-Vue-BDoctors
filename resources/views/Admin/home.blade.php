@@ -20,16 +20,27 @@
         <div>
             <div class="row">
                 <div class="col-12">
-                    <p class="text-center text-uppercase">Dashboard</p>
+                    <p class="text-center text-uppercase h4">Dashboard</p>
                 </div>
 
                 <div class="col-12">
                     <div class="row">
                         @if (!$doctor)
-                        <p>Completa subito il tuo profilo!</p>
-                        <div class="col-8">
-                            <a href="{{ route('admin.doctors.create') }}" class="btn mt-3 text-white btn-success">Registra il tuo profilo da dottore</a>
-                        </div>
+                            <p class="text-center mt-3">Completa subito il tuo profilo!</p>
+                            {{-- creazione profilo dottore --}}
+                            <div class="col-6 d-flex justify-content-center">
+                                <a href="{{ route('admin.doctors.create') }}" class="btn mt-3 text-white btn-success">Registra il tuo profilo da dottore</a>
+                            </div>
+                            {{-- eliminazione user --}}
+                            <div class="col-6 d-flex justify-content-center">
+                                <form action="{{ route('admin.home.destroy', $user->id) }}" id="deleteUser" method="POST">
+                                    @csrf
+
+                                    @method('DELETE')
+
+                                    <button class=" btn btn-danger text-white mt-3" type="submit">Elimina il tuo profilo</button>
+                                </form>
+                            </div>
                         @else
                             <div class="col-4 p-3">
                                 <p>Bentornato signor {{ $doctor->user->name }}  {{ $doctor->user->surname }}</p>
