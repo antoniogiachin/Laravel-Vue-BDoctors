@@ -26,4 +26,12 @@ class HomeController extends Controller
         return redirect()->route('register')->with('deletedUser', 'Utente cancellato con successo');
     }
 
+    public function show($id){
+        if(Auth::user()->id == $id){
+            return redirect()->route('admin.home');
+        } else {
+            return redirect()->route('404');
+        }
+    }
+
 }
