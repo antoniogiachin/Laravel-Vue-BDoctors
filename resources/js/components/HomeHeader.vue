@@ -1,24 +1,34 @@
 <template>
 
   <header>
-
     <div id="header">
       
-      <!-- CONTAINER HEADER -->
-      <div id="head-container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
 
-          <h1>BDoctors.it</h1>
+            <a id="nav-logo" class="navbar-brand" href="/"><h1> BDoctors.it </h1></a>
 
-          <!-- BUTTON -->
-          <div class="btn-head">
-              <a href="/register" type="button" class="btn btn-reg px-4 py-2">Registrati</a>
-              <a href="/register" type="button" class="btn btn-login py-2"">Accedi</a>
+            <button class="navbar-toggler my-btn-color" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+              <div id="head-btn" class="navbar-nav">
+                  <div class="p-1">
+                    <a class="nav-link btn btn-reg text-white px-4" href="/register">Registrati</a>
+                  </div>  
+                  <div class="p-1">
+                    <a class="nav-link btn btn-login px-3" href="/login">Accedi</a>
+                  </div>
+              </div>
+
+            </div>
+
           </div>
-
-      </div>
+      </nav>
 
     </div>
-
   </header>
 
 </template>
@@ -35,6 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  @import '../../sass/home/homeheader.scss';
+  @import '../../sass/home/header.scss';
 
 </style>

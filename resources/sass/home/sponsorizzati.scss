@@ -1,0 +1,44 @@
+/***** DOTTORI SPONSORIZZATI STYLE *****/
+@import "../_variables.scss";
+
+#sponsored-section {
+  // background-color: $main-bg;
+  background-color: #F1F5F9;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+h2 {
+  font-size: 1.6em;
+  text-align: center;
+  max-width: 180px;
+  background-color:   #2e86c1 ;
+  padding: 6px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 0;
+  color: #fff;
+  border: 1px solid #2e86c1;
+  border-bottom: none;
+  // box-shadow: 0px 1px#fff;
+  box-shadow: 0px 0px 1px#000;
+
+}
+
+#sponsor-container {
+  // background-color:  #d4e6f1;
+  background-color: #DBEDFD;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  // border: 1px solid #2e86c1;
+  box-shadow: 0px 0px 1px#000;
+
+  .m_col-card img {
+    max-height: 150px;
+  }
+
+  .spec-list {
+    list-style: none;
+    padding-left: 0;
+  }
+}

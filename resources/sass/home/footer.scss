@@ -1,0 +1,44 @@
+@import "../_variables.scss";
+
+#footer {
+  background-color: $main-bg;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  
+  .social-row {
+
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 1.5em;
+      margin-right: 15px;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    i {
+      font-size: 2em;
+      color: #fff;
+      margin-right: 10px;
+    }
+
+  }
+
+  .col h5 {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 700;
+  }
+  .col a {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 2px;
+    font-size: 0.9em;
+  }
+
+  .col a:hover {
+    text-decoration: underline;
+  }
+}

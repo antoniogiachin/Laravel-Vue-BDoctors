@@ -1,3 +1,6 @@
+//Font Awesome
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -6,3 +9,9 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\SpecialtyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//api get specialties
+Route::get('/', [SpecialtyController::class, 'getSpecialties']);
+
+//api provvisorio per ottenere i dottori nella HOME
+Route::get('/docs', [DoctorController::class, 'getAllDoctors']);
+
 
 // api doctor paginate 5
 Route::get('/doctors', [DoctorController::class, 'index']);

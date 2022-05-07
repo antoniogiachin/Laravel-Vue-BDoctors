@@ -1,12 +1,18 @@
 <template>
+  <div>
 
-  <HomeHeader></HomeHeader>
-  
+    <HomeHeader></HomeHeader>
+    <HomeMain></HomeMain>
+    <HomeFooter></HomeFooter>
+
+  </div>
 </template>
 
 <script>
 
   import HomeHeader from '../components/HomeHeader';
+  import HomeMain from '../components/HomeMain';
+  import HomeFooter from '../components/HomeFooter';
 
   export default {
 
@@ -15,6 +21,8 @@
     components: {
     
       HomeHeader,
+      HomeMain,
+      HomeFooter,
 
     }
   }
