@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 py-4">
+        <div class="col-md-5 py-4">
             <div class="card">
                 <div class="card-header text-center text-uppercase bg-white">{{ __('Login') }}</div>
 
@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="mb-3">
+                        <div class="mb-3 d-flex flex-column align-items-center">
 
                             <div class="col-md-6">
                                 <label for="email" class="form-label">{{ __('E-mail') }}</label>
@@ -25,10 +25,10 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                        <div class="mb-3 flex-column align-items-center d-flex ">
 
                             <div class="col-md-6">
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3 flex-column align-items-center d-flex ">
                             <div class="col-md-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div>
+                            <div class="d-flex  justify-content-center mt-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>

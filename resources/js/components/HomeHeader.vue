@@ -2,15 +2,19 @@
 
   <header>
     <div id="header">
+
       
       <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
 
+
             <a id="nav-logo" class="navbar-brand" href="/"><h1> BDoctors.it </h1></a>
+
 
             <button class="navbar-toggler my-btn-color" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 

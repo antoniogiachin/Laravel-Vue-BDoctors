@@ -4066,6 +4066,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+
     return _c("div", { staticClass: "container text-center text-white" }, [
       _c("h2", [_vm._v("Trova lo specialista che fa per te")]),
       _vm._v(" "),
@@ -4101,6 +4102,7 @@ var staticRenderFns = [
             },
             [_vm._v("Ricerca avanzata")]
           ),
+
         ]),
       ]),
     ])
@@ -20437,7 +20439,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
