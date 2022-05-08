@@ -104,20 +104,4 @@ class DoctorController extends Controller
             ]
         );
     }
-
-    public function check(){
-        if(Auth::check() ==true){
-            return response()->json(
-                [
-                    'success' => true
-                ]
-            );
-        } else {
-            return response()->json(
-                [
-                    'success' => false
-                ]
-            );
-        }
-    }
 }

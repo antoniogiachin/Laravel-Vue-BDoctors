@@ -12,7 +12,6 @@ if(deleteDoctorProfile){
 }
 
 const deleteUserProfile = document.getElementById('deleteUser');
-console.log(deleteUserProfile);
 if(deleteUserProfile){
     deleteUserProfile.addEventListener('click',
         (e)=>{

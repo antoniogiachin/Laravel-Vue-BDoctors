@@ -37,5 +37,4 @@ Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
 // api lead dottore
 Route::post('/leads', [LeadController::class, 'store']);
 Route::post('/review', [ReviewController::class, 'store']);
-// api check doctor
-Route::get('/check', [DoctorController::class, 'check']);
+
