@@ -51,7 +51,7 @@ class DoctorController extends Controller
                 ]
             );
         } else {
-            
+
             //se ho photo
             if ($doctor->photo) {
                 $doctor->photo = url('storage/' . $doctor->photo);
@@ -74,11 +74,27 @@ class DoctorController extends Controller
         }
 
     }
-    
+
     //funzione provvisoria per ottenere i dottori nella HOME
     public function getAllDoctors() {
 
         $doctors = Doctor::with(['user', 'specialties'])->get();
+
+        //immagini in home
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url('storage/' . $doctor->photo);
+            } else {
+                $doctor->photo = url('img/not_found.jpg');
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url('storage/' . $doctor->cv);
+            } else {
+                $doctor->cv = 'Nessun Curriculum presente!';
+            }
+        });
 
         return response()->json(
             [
