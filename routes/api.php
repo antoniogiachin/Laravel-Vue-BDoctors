@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\DoctorController;
+
 use App\Http\Controllers\Api\SpecialtyController;
+use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +34,6 @@ Route::get('/docs', [DoctorController::class, 'getAllDoctors']);
 Route::get('/doctors', [DoctorController::class, 'index']);
 //api singolo dottore per slug
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
+// api lead dottore
+Route::post('/leads', [LeadController::class, 'store']);
+Route::post('/review', [ReviewController::class, 'store']);

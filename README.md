@@ -9,4 +9,8 @@
 - Verifica per edit -> non posso modificare altro utente -> non uso ID per url?
 
 ### Se abbiamo tempo
-- Pensiamo il flusso del guest, da che pagina parte un utente -> veidiamo 
+- Pensiamo il flusso del guest, da che pagina parte un utente -> veidiamo
+
+
+# Api post
+-settare mail trap e due modifiche al DB : doctor_id in leads e revies non può essere nullable
