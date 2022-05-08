@@ -41122,6 +41122,27 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var deleteDoctorProfile = document.querySelector('.delete-profile');
+
+if (deleteDoctorProfile) {
+  deleteDoctorProfile.addEventListener('click', function (e) {
+    if (!confirm('Vuoi davvero eliminare il profilo del dottore?')) {
+      e.preventDefault();
+    }
+  });
+}
+
+var deleteUserProfile = document.getElementById('deleteUser');
+console.log(deleteUserProfile);
+
+if (deleteUserProfile) {
+  deleteUserProfile.addEventListener('click', function (e) {
+    if (!confirm('Vuoi davvero eliminare il profilo del dottore?')) {
+      e.preventDefault();
+    }
+  });
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <HomeHeader></HomeHeader>
+    <HomeHeader :userChecked="userChecked" :authUser="authUser"></HomeHeader>
     <HomeMain></HomeMain>
     <HomeFooter></HomeFooter>
 
@@ -19,12 +19,34 @@
     name: 'Home',
 
     components: {
-    
+
       HomeHeader,
       HomeMain,
       HomeFooter,
 
-    }
+    },
+
+    methods: {
+        checkAuth() {
+            if(this.authUser){
+                this.userChecked = true;
+            } else {
+                this.userChecked = false;
+            }
+
+            console.log(this.userChecked);
+        }
+    },
+
+    mounted(){
+        this.checkAuth();
+    },
+    data() {
+        return {
+            authUser: window.authUser,
+            userChecked: false,
+        }
+    },
   }
 
 </script>

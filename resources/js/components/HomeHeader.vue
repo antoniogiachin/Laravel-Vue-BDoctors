@@ -3,7 +3,7 @@
   <header>
     <div id="header">
 
-      
+
       <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
 
@@ -18,14 +18,25 @@
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-              <div id="head-btn" class="navbar-nav">
+                <div id="head-btn" class="navbar-nav" v-if="userChecked == false">
                   <div class="p-1">
                     <a class="nav-link btn btn-reg text-white px-4" href="/register">Registrati</a>
-                  </div>  
+                  </div>
                   <div class="p-1">
                     <a class="nav-link btn btn-login px-3" href="/login">Accedi</a>
                   </div>
-              </div>
+                </div>
+
+
+                <div v-if="userChecked">
+                    <span class=" text-white" >Bentornato signor {{authUser.name }} {{authUser.surname}}</span>
+                </div>
+
+                <div class="navbar-nav" id="head-btn" v-if="userChecked">
+                  <div class="p-1">
+                    <a class="nav-link btn btn-login px-3" href="/admin">Pannello admin</a>
+                  </div>
+                </div>
 
             </div>
 
@@ -42,6 +53,11 @@
 export default {
 
   name: "HomeHeader",
+
+  props:{
+      userChecked : Boolean,
+      authUser : Object,
+  }
 
 }
 

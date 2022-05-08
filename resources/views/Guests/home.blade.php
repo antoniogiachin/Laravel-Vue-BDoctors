@@ -9,7 +9,13 @@
 </head>
 <body>
 
-    <div id="root"></div>
+    <div id="root">
+        @if (Auth::check())
+            <script>window.authUser={!! json_encode(Auth::user()); !!};</script>
+        @else
+            <script>window.authUser=null;</script>
+        @endif
+    </div>
     {{-- js --}}
     <script src="{{ asset('js/front.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>

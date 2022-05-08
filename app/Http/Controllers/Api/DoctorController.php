@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -102,5 +103,21 @@ class DoctorController extends Controller
                 'success' => true,
             ]
         );
+    }
+
+    public function check(){
+        if(Auth::check() ==true){
+            return response()->json(
+                [
+                    'success' => true
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'success' => false
+                ]
+            );
+        }
     }
 }
