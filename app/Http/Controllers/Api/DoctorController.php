@@ -74,4 +74,17 @@ class DoctorController extends Controller
         }
 
     }
+    
+    //funzione provvisoria per ottenere i dottori nella HOME
+    public function getAllDoctors() {
+
+        $doctors = Doctor::with(['user', 'specialties'])->get();
+
+        return response()->json(
+            [
+                'results' => $doctors,
+                'success' => true,
+            ]
+        );
+    }
 }
