@@ -351,9 +351,10 @@
                       <td>
                         <p>Salve, Dottor {{ $doctorName }} - {{ $doctorSurname }}</p>
                         <p>Lei ha ricevuto una nuova recensione da</p>
-                        <p> <strong>{{ $lead->author }}</strong> email : <strong>{{ $lead->email }}</strong> </p>
+                        <p> <strong>{{ $review->author }}</strong> titolo : <strong>{{ $review->title }}</strong> </p>
+                        <p> <strong>Con votazione di:</strong> {{ $review->vote }} stelle su 5 </p>
                         <p>
-                            Contenuto: {{ $lead->message }}
+                            Contenuto: {{ $review->review }}
                         </p>
                       </td>
                     </tr>
