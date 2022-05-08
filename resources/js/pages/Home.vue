@@ -34,7 +34,6 @@
                 this.userChecked = false;
             }
 
-            console.log(this.userChecked);
         }
     },
 
