@@ -64,14 +64,14 @@ class DoctorController extends Controller
 
         $data = $request->all();
 
-        $slug  = Str::slug(Auth::user()->name . Auth::user()->surname );
+        $slug  = Str::slug(Auth::user()->name . "-" . Auth::user()->surname );
 
         // slug unico
         $counter = 1;
 
         while (Doctor::where('slug', $slug)->first()) {
             // se è già presente aggiunge il counter allo slug creato
-            $slug  = Str::slug(Auth::user()->name . Auth::user()->surname) . '-' . $counter;
+            $slug  = Str::slug(Auth::user()->name . "-" . Auth::user()->surname) . '-' . $counter;
             $counter++;
         };
 
@@ -157,7 +157,17 @@ class DoctorController extends Controller
 
         $data = $request->all();
 
-        $slug  = Str::slug(Auth::user()->name . Auth::user()->surname);
+        $slug  = Str::slug(Auth::user()->name . "-" . Auth::user()->surname);
+
+        if(Doctor::where('slug', $slug)->first()){
+            $counter = 1;
+            while (Doctor::where('slug', $slug)->first()) {
+                // se è già presente aggiunge il counter allo slug creato
+                $slug  = Str::slug(Auth::user()->name . "-" . Auth::user()->surname) . '-' . $counter;
+                $counter++;
+            };
+        }
+
         $data['slug'] = $slug;
 
         if (!isset($data['specialtiesId'])) {
@@ -191,6 +201,7 @@ class DoctorController extends Controller
 
         if (isset($data['specialtiesId'])) {
             $doctor->specialties()->sync($data['specialtiesId']);
+
         }
 
         return redirect()->route('admin.home')->with('status', 'Profilo aggiornato con successo!');
