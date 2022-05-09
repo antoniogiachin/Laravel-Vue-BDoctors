@@ -7,7 +7,10 @@
         <div class="row">
             <div class="col-6 mx-auto">
                 {{-- form creazione --}}
-                <form action="{{ route('admin.doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data">
+                <form
+                    action="{{ route('admin.doctors.update', $doctor->id) }}"
+                    method="POST" enctype="multipart/form-data"
+                    >
                     @csrf
 
                     {{-- metodo --}}
@@ -40,8 +43,12 @@
                             @if (!$doctor->cv)
                                 <p class="text-danger">Non hai caricato nessun cv</p>
                             @else
-                                {{-- <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a> --}}
-                                <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">-> Il mio cv <-</a>
+                                {{-- <a href="{{ route('admin.downloadCv') }}">-> Il mio cv
+                                    <-</a> --}}
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">-> Il mio Cv <-</a>
+                                    <a href="{{ route('admin.deleteCv', $doctor->slug) }}">Elimina Cv</a>
+                                </div>
                             @endif
 
                         </div>
@@ -67,11 +74,17 @@
                                         <div class="container__arrow container__arrow--lc"></div>
                                     </div>
                                 </div>
+                                {{-- eliminazione foto --}}
+                                <br> <br>
+                                {{-- <form action="{{ route('admin.deletePhoto', $doctor->id) }}" method="POST">
+                                    @csrf
+
+                                    @method('DELETE')
+
+                                    <button type="submit" id="deletePhoto" class="border-0 px-2 py-1">Elimina la foto</button>
+                                </form> --}}
+                                <a href="{{ route('admin.deletePhoto', $doctor->slug) }}">Elimina foto</a>
                             @endif
-
-
-
-
 
                         </div>
 
@@ -80,19 +93,20 @@
                     {{-- specializzazione --}}
                     <div class="form-check p-0 my-3">
                         <h5 class="my-3">Seleziona le tue specializzazioni</h5>
+                        <p class="text-danger mt-2" id="mustBeSelected"></p>
                         {{-- dinamico --}}
                         @foreach ($specialties as $specialty)
 
                             @if($errors->any())
                                 <div class="form-check">
-                                    <input {{ in_array($specialty->id, old('specialtiesId', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" name="specialtiesId[]">
+                                    <input onclick="checkIfEmpty()" {{ in_array($specialty->id, old('specialtiesId', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" name="specialtiesId[]">
                                     <label class="form-check-label" for="specialty_{{ $specialty->id }}">
                                         {{ $specialty->name }}
                                     </label>
                                 </div>
                             @else
                                 <div class="form-check">
-                                    <input type="checkbox" name="specialtiesId[]" class="form-check-input" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" {{ ($doctor->specialties->contains($specialty) ? 'checked' : '') }} >
+                                    <input onclick="checkIfEmpty()" type="checkbox" name="specialtiesId[]" class="form-check-input" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" {{ ($doctor->specialties->contains($specialty) ? 'checked' : '') }} >
                                     <label class="form-check-label" for="specialty_{{ $specialty->id }}">
                                         {{ $specialty->name }}
                                     </label>
@@ -102,7 +116,7 @@
                         @endforeach
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Salva</button>
+                    <button type="submit" class="btn btn-primary" id="editSub">Salva</button>
 
                 </form>
             </div>
@@ -111,4 +125,22 @@
 
 
 
+@endsection
+
+@section('scripts')
+    <script>
+
+        function checkIfEmpty(){
+            const checkedList = document.querySelectorAll('input[type=checkbox]:checked');
+            if(checkedList.length <= 0){
+                document.getElementById("editSub").classList.add('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
+            } else if (checkedList.length > 0){
+                document.getElementById("editSub").classList.remove('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "";
+            }
+        }
+
+        checkIfEmpty();
+    </script>
 @endsection

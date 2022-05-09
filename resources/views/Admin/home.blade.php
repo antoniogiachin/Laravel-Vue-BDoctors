@@ -43,13 +43,13 @@
                             </div>
                         @else
                             <div class="col-4 p-3">
-                                <p>Bentornato signor {{ $doctor->user->name }}  {{ $doctor->user->surname }}</p>
+                                <p>Bentornato signore/a  {{ $doctor->user->name }}  {{ $doctor->user->surname }}</p>
                             </div>
                             <div class="col-8 d-flex align-items-center justify-content-start gap-2">
                                 {{-- show --}}
-                                <a class="btn text-dark btn-primary" href="{{ route('admin.doctors.show', $doctor->id) }}">Visualizza il tuo profilo da dottore</a>
+                                <a class="btn text-dark btn-primary" href="{{ route('admin.doctors.show', $doctor->slug) }}">Visualizza il tuo profilo da dottore</a>
                                 {{-- edit --}}
-                                <a class="btn text-dark btn-warning" href="{{ route('admin.doctors.edit', $doctor->id) }}">Modifica il tuo profilo da dottore</a>
+                                <a class="btn text-dark btn-warning" href="{{ route('admin.doctors.edit', $doctor->slug) }}">Modifica il tuo profilo da dottore</a>
                                 {{-- delete --}}
                                 <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile" data-name="{{$doctor->user->surname}}">
                                     @csrf
@@ -68,5 +68,3 @@
     </div>
 </div>
 @endsection
-
-

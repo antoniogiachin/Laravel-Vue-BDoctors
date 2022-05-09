@@ -1,6 +1,10 @@
 <template>
-  
-  <Home></Home>
+    <div>
+
+      <Home></Home>
+
+    </div>
+    
 
 </template>
 
@@ -12,10 +16,9 @@
     name: "App",
 
     components: {
+    Home,
 
-      Home,
-
-    }
+}
 }
 
 </script>

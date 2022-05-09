@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 import Home from "./views/Home";
 import MainHomepage from "./pages/MainHomepage";
 import SingleDoctor from "./pages/SingleDoctor";
+import Search from "./pages/Search"
 
 
 const router = new VueRouter(
@@ -21,10 +22,21 @@ const router = new VueRouter(
                 component: MainHomepage,
             },
             {
+                path: '/',
+                name: 'home',
+                component: Home
+            },
+            {
                 path: '/doctors/:slug',
                 name: 'single-doctor',
-                component: SingleDoctor,
-            }
+                component: SingleDoctor
+            },
+            {
+                path: '/search',
+                name: 'search',
+                component: Search
+            },
+
         ]
     }
 );

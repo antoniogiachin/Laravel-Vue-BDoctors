@@ -32,8 +32,11 @@ Route::middleware('auth')
         Route::get('/{user}', 'HomeController@show')->name('home.show');
         // rotte CRUD dottore
         Route::resource('doctors', 'DoctorController');
-        //rotta get cv
+        //rotta get e delete cv
         Route::get('/cvDownload', 'CvController@getCv')->name('downloadCv');
+        Route::get('cvDelete/{doctor}', 'CvController@cvDelete')->name('deleteCv');
+        //rotta delete photo
+        Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
     }
 );
 
@@ -43,3 +46,11 @@ Route::get("/", function () {
 
 // rotta 404
 Route::get('/notfound', [NotFoundController::class, 'index'])->name('404');
+Route::get('/unauthorized', [NotFoundController::class, 'unauthorized'])->name('401');
+
+
+Route::get('{any?}', function() {
+    return view('guests.home');
+})->where('any', '.*');
+
+
