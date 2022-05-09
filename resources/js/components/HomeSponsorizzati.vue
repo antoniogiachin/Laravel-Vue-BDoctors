@@ -16,7 +16,9 @@
             <div class="col" v-for="singledoc in doctors" :key="singledoc.id">
               <div class="card h-100">
 
-                <img :src="singledoc.photo" class="card-img-top">
+                <div class="img-card-wrap">
+                  <img :src="singledoc.photo" class="card-img-top img-thumbnail">
+                </div>
 
                 <div class="card-body">
                   

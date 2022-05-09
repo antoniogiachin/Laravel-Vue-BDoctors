@@ -4,7 +4,8 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import Home from "./pages/Home";
+import Home from "./views/Home";
+import MainHomepage from "./pages/MainHomepage";
 import SingleDoctor from "./pages/SingleDoctor";
 import Search from "./pages/Search"
 
@@ -14,6 +15,12 @@ const router = new VueRouter(
         mode:'history',
 
         routes: [
+
+            {
+                path: '/',
+                name: 'home',
+                component: MainHomepage,
+            },
             {
                 path: '/',
                 name: 'home',
@@ -29,7 +36,7 @@ const router = new VueRouter(
                 name: 'search',
                 component: Search
             },
-            
+
         ]
     }
 );
