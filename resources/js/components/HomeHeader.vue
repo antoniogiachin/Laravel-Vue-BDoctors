@@ -29,7 +29,7 @@
 
 
                 <div v-if="userChecked">
-                    <span class=" text-white" >Bentornat*  {{ authUser.name }} {{authUser.surname}}</span>
+                    <span class=" text-white" >Bentornato/a  {{ authUser.name }} {{authUser.surname}}</span>
                 </div>
 
                 <div class="navbar-nav" id="head-btn" v-if="userChecked">
