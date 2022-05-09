@@ -43,7 +43,7 @@
                             </div>
                         @else
                             <div class="col-4 p-3">
-                                <p>Bentornato signor {{ $doctor->user->name }}  {{ $doctor->user->surname }}</p>
+                                <p>Bentornato signore/a  {{ $doctor->user->name }}  {{ $doctor->user->surname }}</p>
                             </div>
                             <div class="col-8 d-flex align-items-center justify-content-start gap-2">
                                 {{-- show --}}
@@ -68,5 +68,3 @@
     </div>
 </div>
 @endsection
-
-

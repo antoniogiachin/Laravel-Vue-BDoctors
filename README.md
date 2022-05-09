@@ -13,4 +13,6 @@
 
 
 # Api post
--settare mail trap e due modifiche al DB : doctor_id in leads e revies non può essere nullable
+- settare mail trap e due modifiche al DB : doctor_id in leads e revies non può essere nullable
+
+- Eliminare la foto dottore senza dover eliminare il profilo
