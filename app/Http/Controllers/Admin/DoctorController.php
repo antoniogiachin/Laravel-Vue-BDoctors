@@ -59,7 +59,8 @@ class DoctorController extends Controller
                 'phone' => 'nullable|min:2|numeric',
                 'photo' => 'nullable|mimes:png,jpg,jpeg|max:4096',
                 'cvBlob' => 'nullable|file|max:4096',
-                'specialtiesId' => 'nullable|exists:specialties,id'
+                'specialtiesId' => 'nullable|exists:specialties,id',
+                'otherSpec' => 'nullable|string|min:3|max:12',
             ]
         );
 
@@ -100,8 +101,64 @@ class DoctorController extends Controller
         $doctor->save();
 
         if (isset($data['specialtiesId'])) {
-            $doctor->specialties()->sync($data['specialtiesId']);
+            // se è incluso altro
+            if (in_array(12, $data['specialtiesId'])) {
+                // slug unico
+                $counter = 1;
+
+                if ($data['otherSpec']) {
+                    $slug = Str::slug($data['otherSpec']);
+                    if ($key = array_search('12', $data['specialtiesId']) !== false) {
+                        unset($data['specialtiesId'][$key]);
+                    }
+                } else {
+                    $slug = 'other';
+                }
+
+                // se specializzazione già esiste
+                $specCheck = Specialty::where('slug', $slug)->first();
+                if ($specCheck) {
+                    // levo altro
+                    array_push($data['specialtiesId'], strval($specCheck->id));
+                    // if ($key = array_search('12', $data['specialtiesId']) !== false) {
+                    //     unset($data['specialtiesId'][$key]);
+                    // }
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                } else {
+
+                    if ($data['otherSpec']) {
+                        $specialty = Specialty::create(
+                            [
+                                'name' => $data['otherSpec'],
+                                'slug' => $slug,
+                            ]
+                        );
+                    } else {
+
+                        $specialty = Specialty::create(
+                            [
+                                'name' => 'other',
+                                'slug' => $slug,
+                            ]
+                        );
+                    }
+
+                    $arr = $data['specialtiesId'];
+                    // inserisco la nuova specializzazione nell'array e tolgo 12 (altro)
+                    array_push($data['specialtiesId'], strval($specialty->id));
+                    // if($key = array_search('12', $data['specialtiesId']) !== false){
+                    //     unset($data['specialtiesId'][$key]);
+                    // }
+
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                }
+            } else {
+                $doctor->specialties()->sync($data['specialtiesId']);
+            }
         }
+        // if (isset($data['specialtiesId'])) {
+        //     $doctor->specialties()->sync($data['specialtiesId']);
+        // }
 
         return redirect()->route('admin.home')->with('status', 'Profilo creato con successo!');
     }
@@ -156,7 +213,8 @@ class DoctorController extends Controller
                 'phone' => 'nullable|min:2|numeric',
                 'photo' => 'nullable|mimes:png,jpg,jpeg|max:4096',
                 'cvBlob' => 'nullable|file|max:4096',
-                'specialtiesId' => 'nullable|exists:specialties,id'
+                'specialtiesId' => 'nullable|exists:specialties,id',
+                'otherSpec' => 'nullable|string|min:3|max:12',
             ]
         );
 
@@ -206,7 +264,63 @@ class DoctorController extends Controller
         $doctor->save();
 
         if (isset($data['specialtiesId'])) {
-            $doctor->specialties()->sync($data['specialtiesId']);
+            // se è incluso altro
+            if(in_array(12, $data['specialtiesId'])){
+                // slug unico
+                $counter = 1;
+
+                if($data['otherSpec']){
+                    $slug = Str::slug($data['otherSpec']);
+                    if ($key = array_search('12', $data['specialtiesId']) !== false) {
+                        unset($data['specialtiesId'][$key]);
+                    }
+                } else {
+                    $slug = 'other';
+                }
+
+                // se specializzazione già esiste
+                $specCheck = Specialty::where('slug', $slug)->first();
+                if($specCheck){
+                    // levo altro
+                    array_push($data['specialtiesId'], strval($specCheck->id));
+                    // if ($key = array_search('12', $data['specialtiesId']) !== false) {
+                    //     unset($data['specialtiesId'][$key]);
+                    // }
+                    $doctor->specialties()->sync($data['specialtiesId']);
+
+                } else {
+
+                    if($data['otherSpec']){
+                        $specialty = Specialty::create(
+                            [
+                                'name' => $data['otherSpec'],
+                                'slug' => $slug,
+                            ]
+                        );
+                    } else{
+
+                        $specialty = Specialty::create(
+                            [
+                                'name' => 'other',
+                                'slug' => $slug,
+                            ]
+                        );
+                    }
+
+                    $arr = $data['specialtiesId'];
+                    // inserisco la nuova specializzazione nell'array e tolgo 12 (altro)
+                    array_push($data['specialtiesId'], strval($specialty->id));
+                    // if($key = array_search('12', $data['specialtiesId']) !== false){
+                    //     unset($data['specialtiesId'][$key]);
+                    // }
+
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                }
+
+
+            } else {
+                $doctor->specialties()->sync($data['specialtiesId']);
+            }
 
         }
 
@@ -222,6 +336,13 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
+        $doctor->specialties->each(function($specialty){
+            // dd(count($specialty->doctors));
+            if($specialty->id > 12 && count($specialty->doctors) == 1){
+                $specialty->delete();
+            }
+        });
+
         if($doctor->photo){
             Storage::delete($doctor->photo);
         }

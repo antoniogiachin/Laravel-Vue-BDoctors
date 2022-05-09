@@ -46,12 +46,14 @@
                             {{ $specialty->name }}
                             </label> --}}
                             <div class="form-check">
-                                <input {{ in_array($specialty->id, old('specialties', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" name="specialtiesId[]">
+                                <input onclick="checkIfOther()" {{ in_array($specialty->id, old('specialties', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" value="{{ $specialty->id }}" id="specialty_{{ $specialty->id }}" name="specialtiesId[]">
                                 <label class="form-check-label" for="specialty_{{ $specialty->id }}">
                                     {{ $specialty->name }}
                                 </label>
                             </div>
-                            @endforeach
+                        @endforeach
+
+                        <input type="text" id="otherSpec" class="form-control mt-4 invisible" name="otherSpec" placeholder="Inserisci la specializzazione">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Salva</button>
@@ -63,4 +65,28 @@
 
 
 
+@endsection
+
+@section('scripts')
+    <script>
+
+        function checkIfOther(){
+            const checkedList = document.querySelectorAll('input[type=checkbox]:checked');
+            const otherSpec = document.getElementById('otherSpec');
+            let arrayValue =[];
+            checkedList.forEach(node =>{
+                arrayValue.push(node.value);
+            })
+            console.log(arrayValue);
+            if(arrayValue.includes('12')){
+                otherSpec.classList.remove('invisible');
+                otherSpec.classList.add('visible');
+            }
+            if(!arrayValue.includes('12')){
+                otherSpec.classList.add('invisible');
+                otherSpec.classList.remove('visible');
+            }
+        }
+
+    </script>
 @endsection

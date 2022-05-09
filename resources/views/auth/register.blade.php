@@ -83,14 +83,15 @@
                           {{-- specializzazione --}}
                           <div class="col-6">
                                 <div class="mb-3">
-                                    <div>
+                                    <div id="vue-root">
                                         <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
-                                        <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required>
+                                        <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
                                           <option value="" class="text-muted">Seleziona una specializzazione</option>
                                           @foreach ($specialties as $specialty)
                                             <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
                                           @endforeach
                                         </select>
+                                        <input placeholder="Inserisci una specializzazione" class="mt-3 form-control" type="text" v-if=" spec == 12 " name="otherSpec">
 
                                         @error('specialties')
                                             <span class="invalid-feedback" role="alert">
@@ -146,7 +147,9 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/register-vue.js') }}"></script>
     <script>
+
         function checkPass() {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password-confirm').value;
@@ -158,5 +161,6 @@
                 document.getElementById('message').innerHTML = 'Le password non corrispondono';
             }
         }
+
     </script>
 @endsection
