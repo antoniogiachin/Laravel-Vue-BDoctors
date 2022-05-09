@@ -1,7 +1,7 @@
 <template>
     <div>
 
-      <Home></Home>
+      <Main></Main>
 
     </div>
     
@@ -11,12 +11,16 @@
 <script>
 
   import Home from './Home';
+  import HomeHeader from '../components/HomeHeader.vue';
+  import Main from '../components/Main.vue'
 
   export default {
     name: "App",
 
     components: {
     Home,
+    HomeHeader,
+    Main,
 
 }
 }
