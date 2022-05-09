@@ -21,3 +21,16 @@ if(deleteUserProfile){
         }
     )
 }
+
+const deleteUserPhoto = document.getElementById('deletePhoto');
+if(deleteUserPhoto){
+    deleteUserPhoto.addEventListener('click',
+
+        (e)=>{
+            if(!confirm('Vuoi eliminare la foto profilo?')){
+                e.preventDefault();
+            }
+        }
+
+    )
+}
