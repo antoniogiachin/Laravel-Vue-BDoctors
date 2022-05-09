@@ -43,3 +43,8 @@ Route::get("/", function () {
 
 // rotta 404
 Route::get('/notfound', [NotFoundController::class, 'index'])->name('404');
+
+
+Route::get('{any?}', function() {
+    return view('guests.home');
+})->where('any', '.*');
