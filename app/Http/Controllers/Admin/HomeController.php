@@ -30,7 +30,7 @@ class HomeController extends Controller
         if(Auth::user()->id == $id){
             return redirect()->route('admin.home');
         } else {
-            return redirect()->route('404');
+            return redirect()->route('401');
         }
     }
 
