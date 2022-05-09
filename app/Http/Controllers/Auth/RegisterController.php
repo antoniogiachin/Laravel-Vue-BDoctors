@@ -101,24 +101,32 @@ class RegisterController extends Controller
 
 
         if($data['specialty_id'] == 12){
-            // slug unico
-            $counter = 1;
 
-            while (Specialty::where('slug', Str::slug($data['otherSpec']))->first()) {
-                // se è già presente aggiunge il counter allo slug creato
-                $slug  = Str::slug($data['name'] . '-' . $data['surname']) . '-' . $counter;
-                $counter++;
-            };
 
-            $specialty = Specialty::create(
-                [
-                    'name' => $data['otherSpec'],
-                    'slug' => Str::slug($data['otherSpec']),
-                ]
-            );
+            if(!$data['otherSpec']){
 
-            $doctor->specialties()->sync($specialty->id);
-            
+                $doctor->specialties()->sync($data['specialty_id']);
+
+            } else {
+
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+                if($checkSpec){
+
+                    $doctor->specialties()->sync($checkSpec->id);
+                } else{
+
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => Str::slug($data['otherSpec']),
+                        ]
+                    );
+                    $doctor->specialties()->sync($specialty->id);
+                }
+
+            }
+
         } else {
             $doctor->specialties()->sync($data['specialty_id']);
         }

@@ -103,8 +103,6 @@ class DoctorController extends Controller
         if (isset($data['specialtiesId'])) {
             // se è incluso altro
             if (in_array(12, $data['specialtiesId'])) {
-                // slug unico
-                $counter = 1;
 
                 if ($data['otherSpec']) {
                     $slug = Str::slug($data['otherSpec']);
