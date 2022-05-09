@@ -102,61 +102,30 @@ class DoctorController extends Controller
 
         if (isset($data['specialtiesId'])) {
             // se è incluso altro
-            if (in_array(12, $data['specialtiesId'])) {
+            if ($data['otherSpec']) {
 
-                if ($data['otherSpec']) {
-                    $slug = Str::slug($data['otherSpec']);
-                    if ($key = array_search('12', $data['specialtiesId']) !== false) {
-                        unset($data['specialtiesId'][$key]);
-                    }
-                } else {
-                    $slug = 'other';
-                }
 
-                // se specializzazione già esiste
-                $specCheck = Specialty::where('slug', $slug)->first();
-                if ($specCheck) {
-                    // levo altro
-                    array_push($data['specialtiesId'], strval($specCheck->id));
-                    // if ($key = array_search('12', $data['specialtiesId']) !== false) {
-                    //     unset($data['specialtiesId'][$key]);
-                    // }
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+
+                if ($checkSpec) {
+                    array_push($data['specialtiesId'], strval($checkSpec->id));
                     $doctor->specialties()->sync($data['specialtiesId']);
                 } else {
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => $slug,
+                        ]
+                    );
 
-                    if ($data['otherSpec']) {
-                        $specialty = Specialty::create(
-                            [
-                                'name' => $data['otherSpec'],
-                                'slug' => $slug,
-                            ]
-                        );
-                    } else {
-
-                        $specialty = Specialty::create(
-                            [
-                                'name' => 'other',
-                                'slug' => $slug,
-                            ]
-                        );
-                    }
-
-                    $arr = $data['specialtiesId'];
-                    // inserisco la nuova specializzazione nell'array e tolgo 12 (altro)
                     array_push($data['specialtiesId'], strval($specialty->id));
-                    // if($key = array_search('12', $data['specialtiesId']) !== false){
-                    //     unset($data['specialtiesId'][$key]);
-                    // }
-
                     $doctor->specialties()->sync($data['specialtiesId']);
                 }
             } else {
                 $doctor->specialties()->sync($data['specialtiesId']);
             }
         }
-        // if (isset($data['specialtiesId'])) {
-        //     $doctor->specialties()->sync($data['specialtiesId']);
-        // }
 
         return redirect()->route('admin.home')->with('status', 'Profilo creato con successo!');
     }
@@ -263,63 +232,30 @@ class DoctorController extends Controller
 
         if (isset($data['specialtiesId'])) {
             // se è incluso altro
-            if(in_array(12, $data['specialtiesId'])){
-                // slug unico
-                $counter = 1;
+            if ($data['otherSpec']) {
 
-                if($data['otherSpec']){
-                    $slug = Str::slug($data['otherSpec']);
-                    if ($key = array_search('12', $data['specialtiesId']) !== false) {
-                        unset($data['specialtiesId'][$key]);
-                    }
-                } else {
-                    $slug = 'other';
-                }
 
-                // se specializzazione già esiste
-                $specCheck = Specialty::where('slug', $slug)->first();
-                if($specCheck){
-                    // levo altro
-                    array_push($data['specialtiesId'], strval($specCheck->id));
-                    // if ($key = array_search('12', $data['specialtiesId']) !== false) {
-                    //     unset($data['specialtiesId'][$key]);
-                    // }
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+
+                if ($checkSpec) {
+                    array_push($data['specialtiesId'], strval($checkSpec->id));
                     $doctor->specialties()->sync($data['specialtiesId']);
-
                 } else {
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => $slug,
+                        ]
+                    );
 
-                    if($data['otherSpec']){
-                        $specialty = Specialty::create(
-                            [
-                                'name' => $data['otherSpec'],
-                                'slug' => $slug,
-                            ]
-                        );
-                    } else{
-
-                        $specialty = Specialty::create(
-                            [
-                                'name' => 'other',
-                                'slug' => $slug,
-                            ]
-                        );
-                    }
-
-                    $arr = $data['specialtiesId'];
-                    // inserisco la nuova specializzazione nell'array e tolgo 12 (altro)
                     array_push($data['specialtiesId'], strval($specialty->id));
-                    // if($key = array_search('12', $data['specialtiesId']) !== false){
-                    //     unset($data['specialtiesId'][$key]);
-                    // }
-
                     $doctor->specialties()->sync($data['specialtiesId']);
                 }
-
 
             } else {
                 $doctor->specialties()->sync($data['specialtiesId']);
             }
-
         }
 
         return redirect()->route('admin.home')->with('status', 'Profilo aggiornato con successo!');

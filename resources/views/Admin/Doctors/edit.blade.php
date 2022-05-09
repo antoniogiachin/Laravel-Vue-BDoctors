@@ -114,7 +114,7 @@
                             @endif
 
                         @endforeach
-                        <input type="text" id="otherSpec" class="form-control mt-4 invisible" name="otherSpec" placeholder="Inserisci la specializzazione">
+                        <input type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="editSub">Salva</button>
@@ -141,29 +141,6 @@
                 document.getElementById("mustBeSelected").innerHTML = "";
             }
 
-            const otherSpec = document.getElementById('otherSpec');
-            let arrayValue =[];
-            checkedList.forEach(node =>{
-                arrayValue.push(node.value);
-            })
-            console.log(arrayValue);
-            if(arrayValue.includes('12')){
-                otherSpec.classList.remove('invisible');
-                otherSpec.classList.add('visible');
-            }
-            if(!arrayValue.includes('12')){
-                otherSpec.classList.add('invisible');
-                otherSpec.classList.remove('visible');
-            }
-
-        }
-
-        function checkIfOther(){
-            const otherSpec = document.getElementById('otherSpec');
-            if(checkedList.includes(12)){
-                otherSpec.style.remove('invisible');
-                otherSpec.classList.add('visible');
-            }
         }
 
         checkIfEmpty();
