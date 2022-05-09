@@ -18,6 +18,7 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -112,8 +113,9 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show($slug)
     {
+        $doctor = Doctor::where('slug', $slug)->first();
         return view('Admin.Doctors.show', compact('doctor'));
     }
 
@@ -123,14 +125,17 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit($slug)
     {
         // dd($doctor->id);
         $specialties = Specialty::all();
-        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
+        $doctor = Doctor::where('slug', $slug)->first();
+        // dd($doctor);
+        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor['id']){
             return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
+            // return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
         } else {
-            return redirect()->route('404');
+            return redirect()->route('401');
         }
     }
 
@@ -172,6 +177,7 @@ class DoctorController extends Controller
 
         if (!isset($data['specialtiesId'])) {
             $data['specialtiesId'] = "Nessuna specializzazione selezionata!";
+            return redirect()->route('admin.doctors.edit', compact('doctor'));
         }
 
         if (isset($data['photo'])) {
