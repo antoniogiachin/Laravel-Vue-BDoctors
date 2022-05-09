@@ -114,7 +114,7 @@
                             @endif
 
                         @endforeach
-                        <input type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
+                        <input onkeyup="inputCheck()" type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="editSub">Salva</button>
@@ -133,6 +133,7 @@
 
         function checkIfEmpty(){
             const checkedList = document.querySelectorAll('input[type=checkbox]:checked');
+
             if(checkedList.length <= 0){
                 document.getElementById("editSub").classList.add('disabled')
                 document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
@@ -143,6 +144,18 @@
 
         }
 
-        checkIfEmpty();
+        function inputCheck(){
+            const otherSpec = document.getElementById('otherSpec').value;
+            console.log(otherSpec.length);
+            if (otherSpec.length > 0){
+                document.getElementById("editSub").classList.remove('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "";
+            } else {
+                document.getElementById("editSub").classList.add('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
+            }
+            console.log('ok')
+        }
+
     </script>
 @endsection
