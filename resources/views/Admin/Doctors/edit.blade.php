@@ -114,6 +114,7 @@
                             @endif
 
                         @endforeach
+                        <input type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="editSub">Salva</button>
@@ -139,6 +140,7 @@
                 document.getElementById("editSub").classList.remove('disabled')
                 document.getElementById("mustBeSelected").innerHTML = "";
             }
+
         }
 
         checkIfEmpty();

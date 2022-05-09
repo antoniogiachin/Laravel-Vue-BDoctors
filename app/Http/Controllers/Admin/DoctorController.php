@@ -59,7 +59,8 @@ class DoctorController extends Controller
                 'phone' => 'nullable|min:2|numeric',
                 'photo' => 'nullable|mimes:png,jpg,jpeg|max:4096',
                 'cvBlob' => 'nullable|file|max:4096',
-                'specialtiesId' => 'nullable|exists:specialties,id'
+                'specialtiesId' => 'nullable|exists:specialties,id',
+                'otherSpec' => 'nullable|string|min:3|max:12',
             ]
         );
 
@@ -100,7 +101,30 @@ class DoctorController extends Controller
         $doctor->save();
 
         if (isset($data['specialtiesId'])) {
-            $doctor->specialties()->sync($data['specialtiesId']);
+            // se è incluso altro
+            if ($data['otherSpec']) {
+
+
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+
+                if ($checkSpec) {
+                    array_push($data['specialtiesId'], strval($checkSpec->id));
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                } else {
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => $slug,
+                        ]
+                    );
+
+                    array_push($data['specialtiesId'], strval($specialty->id));
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                }
+            } else {
+                $doctor->specialties()->sync($data['specialtiesId']);
+            }
         }
 
         return redirect()->route('admin.home')->with('status', 'Profilo creato con successo!');
@@ -156,7 +180,8 @@ class DoctorController extends Controller
                 'phone' => 'nullable|min:2|numeric',
                 'photo' => 'nullable|mimes:png,jpg,jpeg|max:4096',
                 'cvBlob' => 'nullable|file|max:4096',
-                'specialtiesId' => 'nullable|exists:specialties,id'
+                'specialtiesId' => 'nullable|exists:specialties,id',
+                'otherSpec' => 'nullable|string|min:3|max:12',
             ]
         );
 
@@ -206,8 +231,31 @@ class DoctorController extends Controller
         $doctor->save();
 
         if (isset($data['specialtiesId'])) {
-            $doctor->specialties()->sync($data['specialtiesId']);
+            // se è incluso altro
+            if ($data['otherSpec']) {
 
+
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+
+                if ($checkSpec) {
+                    array_push($data['specialtiesId'], strval($checkSpec->id));
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                } else {
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => $slug,
+                        ]
+                    );
+
+                    array_push($data['specialtiesId'], strval($specialty->id));
+                    $doctor->specialties()->sync($data['specialtiesId']);
+                }
+
+            } else {
+                $doctor->specialties()->sync($data['specialtiesId']);
+            }
         }
 
         return redirect()->route('admin.home')->with('status', 'Profilo aggiornato con successo!');
@@ -222,6 +270,13 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
+        $doctor->specialties->each(function($specialty){
+            // dd(count($specialty->doctors));
+            if($specialty->id > 12 && count($specialty->doctors) == 1){
+                $specialty->delete();
+            }
+        });
+
         if($doctor->photo){
             Storage::delete($doctor->photo);
         }
