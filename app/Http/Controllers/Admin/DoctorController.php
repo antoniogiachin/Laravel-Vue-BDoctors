@@ -130,7 +130,8 @@ class DoctorController extends Controller
         // dd($doctor->id);
         $specialties = Specialty::all();
         $doctor = Doctor::where('slug', $slug)->first();
-        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
+        // dd($doctor);
+        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor['id']){
             return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
             // return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
         } else {

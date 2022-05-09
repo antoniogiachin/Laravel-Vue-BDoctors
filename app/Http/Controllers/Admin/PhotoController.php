@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Storage;
 class PhotoController extends Controller
 {
     //
-    public function photoDelete(Doctor $doctor){
+    public function photoDelete($slug){
 
+        $doctor = Doctor::where('slug', $slug)->first();
 
         Storage::delete( $doctor->photo);
 
@@ -21,7 +22,7 @@ class PhotoController extends Controller
 
         $doctor->save();
 
-        return redirect()->route('admin.doctors.edit', compact('doctor'));
+        return redirect()->route('admin.doctors.edit', $doctor->slug);
 
     }
 }

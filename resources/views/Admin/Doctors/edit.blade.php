@@ -47,7 +47,7 @@
                                     <-</a> --}}
                                 <div class="d-flex flex-column gap-2">
                                     <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">-> Il mio Cv <-</a>
-                                    <a href="{{ route('admin.deleteCv', $doctor->id) }}">Elimina Cv</a>
+                                    <a href="{{ route('admin.deleteCv', $doctor->slug) }}">Elimina Cv</a>
                                 </div>
                             @endif
 
@@ -83,7 +83,7 @@
 
                                     <button type="submit" id="deletePhoto" class="border-0 px-2 py-1">Elimina la foto</button>
                                 </form> --}}
-                                <a href="{{ route('admin.deletePhoto', $doctor->id) }}">Elimina foto</a>
+                                <a href="{{ route('admin.deletePhoto', $doctor->slug) }}">Elimina foto</a>
                             @endif
 
                         </div>

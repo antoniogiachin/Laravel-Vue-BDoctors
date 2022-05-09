@@ -17,16 +17,17 @@ class CvController extends Controller
         return Storage::download($cvRef, Auth::user()->name . Auth::user()->surname . 'CV' . '.pdf');
     }
 
-    public function cvDelete(Doctor $doctor)
+    public function cvDelete($slug)
     {
 
+        $doctor = Doctor::where('slug', $slug)->first();
 
         Storage::delete($doctor->cv);
 
         $doctor->cv =  null;
 
         $doctor->save();
-
-        return redirect()->route('admin.doctors.edit', compact('doctor'));
+        // dd($doctor);
+        return redirect()->route('admin.doctors.edit', $doctor->slug);
     }
 }
