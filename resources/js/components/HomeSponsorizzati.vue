@@ -1,0 +1,69 @@
+<template>
+
+  <div id="sponsored-section">
+
+    <div class="container">
+      <div class="row p-2">
+
+        <h2>In evidenza</h2>
+        
+        <!-- CARD DOTTORI SPONSORIZZATI -->
+        <div id="sponsor-container" class="col-12 p-4 p-lg-4">
+
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
+
+            <!-- CARD 1 -->
+            <div class="col" v-for="singledoc in doctors" :key="singledoc.id">
+              <div class="card h-100">
+
+                <img :src="singledoc.photo" class="card-img-top">
+
+                <div class="card-body">
+                  
+                  <!-- NOME E COGNOME -->
+                  <h5 class="card-title">
+                    {{singledoc.user.name}} {{singledoc.user.surname}}
+                  </h5>
+                  <ul class="spec-list">
+                      <!-- SPECIALTIES -->
+                      <li v-for="(specName, index) in singledoc.specialties" :key="index">
+                        {{specName.name}}
+                      </li>
+                  </ul>
+                  <!-- INDIRIZZO -->
+                  <p class="card-text">{{singledoc.medical_address}}</p>
+
+                  <!-- LINK PROFILO DOTTORE -->
+                  <a href="#" class="btn btn-primary text-white">Vai al profilo</a>
+
+                </div>
+              </div>
+            </div>
+            <!-- FINE CARD 1 -->
+
+          </div>
+          
+        <!-- LAST -->
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</template>
+
+<script>
+
+
+  export default {
+    name: 'HomeSponsorizzati',
+    props: ['doctors'],
+  }
+</script>
+
+<style lang="scss" scoped>
+
+  @import '../../sass/home/sponsorizzati.scss';
+
+</style>

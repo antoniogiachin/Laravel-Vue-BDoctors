@@ -40,11 +40,12 @@
                             @if (!$doctor->cv)
                                 <p class="text-danger">Non hai caricato nessun cv</p>
                             @else
-                                <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a>
+                                {{-- <a href="{{ route('admin.downloadCv') }}">-> Il mio cv <-</a> --}}
+                                <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">-> Il mio cv <-</a>
                             @endif
-                            
+
                         </div>
-                        
+
                     </div>
                     {{-- foto --}}
                     <div class="mb-3 d-flex justify-content-between">
@@ -69,8 +70,8 @@
                             @endif
 
 
-                            
-                            
+
+
 
                         </div>
 

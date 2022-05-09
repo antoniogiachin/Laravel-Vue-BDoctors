@@ -108,7 +108,7 @@
                             <div class="mb-3">
                                 <div>
                                     <label for="password" class="form-label">{{ __('Password *') }}</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" >
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -146,5 +146,17 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/check-password.js')}}"></script>
+    <script>
+        function checkPass() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password-confirm').value;
+            if (password == confirmPassword) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Le password corrispondono';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Le password non corrispondono';
+            }
+        }
+    </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -51,7 +52,7 @@ class DoctorController extends Controller
                 ]
             );
         } else {
-            
+
             //se ho photo
             if ($doctor->photo) {
                 $doctor->photo = url('storage/' . $doctor->photo);
@@ -73,5 +74,34 @@ class DoctorController extends Controller
             );
         }
 
+    }
+
+    //funzione provvisoria per ottenere i dottori nella HOME
+    public function getAllDoctors() {
+
+        $doctors = Doctor::with(['user', 'specialties'])->get();
+
+        //immagini in home
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url('storage/' . $doctor->photo);
+            } else {
+                $doctor->photo = url('img/not_found.jpg');
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url('storage/' . $doctor->cv);
+            } else {
+                $doctor->cv = 'Nessun Curriculum presente!';
+            }
+        });
+
+        return response()->json(
+            [
+                'results' => $doctors,
+                'success' => true,
+            ]
+        );
     }
 }

@@ -29,7 +29,8 @@
                 @if (!$doctor->cv)
                     <p class="text-danger">Nessun cv caricato</p>
                 @else
-                    <p><strong>Scarica il tuo cv -> </strong> <a href="{{ route('admin.downloadCv') }}">Clicca qui</a> </p>
+                    {{-- <p><strong>Scarica il tuo cv -> </strong> <a href="{{ route('admin.downloadCv') }}">Clicca qui</a> </p> --}}
+                    <p><strong>Scarica il tuo cv -> </strong> <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">Clicca qui</a> </p>
                 @endif
             </div>
             <div class="col-md-4 border border-2 rounded border-success">
