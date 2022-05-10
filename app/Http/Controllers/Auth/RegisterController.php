@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'specialty_id' => ['required', 'not_in:0'], //specializzazioni
+            'specialty_id' => ['required', 'min:0'], //specializzazioni
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'otherSpec' => ['nullable', 'string', 'min:3'],
 
@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-
+        // dd($data['specialty_id']);
         $slug  = Str::slug($data['name'] .'-'. $data['surname']);
 
         // slug unico
@@ -100,12 +100,12 @@ class RegisterController extends Controller
         ]);
 
 
-        if($data['specialty_id'] == 12){
+        if($data['specialty_id'] == 'select'){
 
 
             if(!$data['otherSpec']){
 
-                $doctor->specialties()->sync($data['specialty_id']);
+                return redirect()->route('register');
 
             } else {
 
@@ -124,8 +124,8 @@ class RegisterController extends Controller
                     );
                     $doctor->specialties()->sync($specialty->id);
                 }
-
             }
+
 
         } else {
             $doctor->specialties()->sync($data['specialty_id']);

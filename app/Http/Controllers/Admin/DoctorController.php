@@ -100,17 +100,22 @@ class DoctorController extends Controller
         $doctor->fill($data);
         $doctor->save();
 
-        if (isset($data['specialtiesId'])) {
+        if (isset($data['specialtiesId']) || isset($data['otherSpec'])) {
             // se è incluso altro
             if ($data['otherSpec']) {
 
-
+                // dd($data['otherSpec']);
                 $slug = Str::slug($data['otherSpec']);
                 $checkSpec = Specialty::where('slug', $slug)->first();
 
                 if ($checkSpec) {
-                    array_push($data['specialtiesId'], strval($checkSpec->id));
-                    $doctor->specialties()->sync($data['specialtiesId']);
+
+                    if (isset($data['specialtiesId']) && is_numeric($data['specialtiesId']) ) {
+                        array_push($data['specialtiesId'], strval($checkSpec->id));
+                        $doctor->specialties()->sync($data['specialtiesId']);
+                    } else {
+                        $doctor->specialties()->sync($checkSpec->id);
+                    }
                 } else {
                     $specialty = Specialty::create(
                         [
@@ -119,8 +124,12 @@ class DoctorController extends Controller
                         ]
                     );
 
-                    array_push($data['specialtiesId'], strval($specialty->id));
-                    $doctor->specialties()->sync($data['specialtiesId']);
+                    if (isset($data['specialtiesId']) && is_numeric($data['specialtiesId'])) {
+                        array_push($data['specialtiesId'], strval($specialty->id));
+                        $doctor->specialties()->sync($data['specialtiesId']);
+                    } else {
+                        $doctor->specialties()->sync($specialty->id);
+                    }
                 }
             } else {
                 $doctor->specialties()->sync($data['specialtiesId']);
@@ -151,11 +160,14 @@ class DoctorController extends Controller
      */
     public function edit($slug)
     {
+        if(is_numeric($slug)){
+            return redirect()->route('404');
+        }
         // dd($doctor->id);
         $specialties = Specialty::all();
         $doctor = Doctor::where('slug', $slug)->first();
         // dd($doctor);
-        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor['id']){
+        if(Auth::user()->doctor && Auth::user()->doctor->id == $doctor->id){
             return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
             // return view('Admin.Doctors.edit', compact('doctor', 'specialties'));
         } else {
@@ -200,7 +212,7 @@ class DoctorController extends Controller
 
         $data['slug'] = $slug;
 
-        if (!isset($data['specialtiesId'])) {
+        if (!isset($data['specialtiesId']) && !isset($data['otherSpec'])) {
             $data['specialtiesId'] = "Nessuna specializzazione selezionata!";
             return redirect()->route('admin.doctors.edit', compact('doctor'));
         }
@@ -230,17 +242,23 @@ class DoctorController extends Controller
         $doctor->update($data);
         $doctor->save();
 
-        if (isset($data['specialtiesId'])) {
+        if (isset($data['specialtiesId']) || isset($data['otherSpec'])) {
             // se è incluso altro
             if ($data['otherSpec']) {
 
-
+                // dd($data['otherSpec']);
                 $slug = Str::slug($data['otherSpec']);
                 $checkSpec = Specialty::where('slug', $slug)->first();
 
                 if ($checkSpec) {
-                    array_push($data['specialtiesId'], strval($checkSpec->id));
-                    $doctor->specialties()->sync($data['specialtiesId']);
+
+                    if (isset($data['specialtiesId'])) {
+                        array_push($data['specialtiesId'], strval($checkSpec->id));
+                        $doctor->specialties()->sync($data['specialtiesId']);
+                    } else {
+                        $doctor->specialties()->sync($checkSpec->id);
+                    }
+
                 } else {
                     $specialty = Specialty::create(
                         [
@@ -249,8 +267,12 @@ class DoctorController extends Controller
                         ]
                     );
 
-                    array_push($data['specialtiesId'], strval($specialty->id));
-                    $doctor->specialties()->sync($data['specialtiesId']);
+                    if(isset($data['specialtiesId'])){
+                        array_push($data['specialtiesId'], strval($specialty->id));
+                        $doctor->specialties()->sync($data['specialtiesId']);
+                    } else {
+                        $doctor->specialties()->sync($specialty->id);
+                    }
                 }
 
             } else {

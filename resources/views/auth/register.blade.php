@@ -86,12 +86,12 @@
                                     <div id="vue-root">
                                         <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
                                         <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
-                                          <option value="" class="text-muted">Seleziona una specializzazione</option>
+                                          <option value="select" class="text-muted">Seleziona una specializzazione</option>
                                           @foreach ($specialties as $specialty)
                                             <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
                                           @endforeach
                                         </select>
-                                        <input placeholder="Inserisci una specializzazione" class="mt-3 form-control" type="text" v-if=" spec == 12 " name="otherSpec">
+                                        <input  onclick="checkInput()" onkeyup="checkInput()" placeholder="Inserisci una specializzazione" id="otherSpec" class="mt-3 form-control disabled" type="text" v-if=" spec == 12 " name="otherSpec">
 
                                         @error('specialties')
                                             <span class="invalid-feedback" role="alert">
@@ -147,7 +147,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/register-vue.js') }}"></script>
+    {{-- <script src="{{ asset('js/register-vue.js') }}"></script> --}}
     <script>
 
         function checkPass() {
@@ -159,6 +159,20 @@
             } else {
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Le password non corrispondono';
+            }
+        }
+
+        function checkInput(){
+            const otherSpec = document.getElementById('otherSpec');
+            const selectSpec = document.getElementById('specialty');
+            if(otherSpec.value.length > 0){
+                otherSpec.classList.remove('disabled');
+                otherSpec.required = true;
+                selectSpec.required = false ;
+            } else {
+                otherSpec.classList.add('disabled');
+                selectSpec.required = true ;
+                otherSpec.required = false;
             }
         }
 
