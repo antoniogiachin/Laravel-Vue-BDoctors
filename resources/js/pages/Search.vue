@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <HomeHeader :userChecked="userChecked" :authUser="authUser"></HomeHeader>
+        <HomeHeader id="header" :userChecked="userChecked" :authUser="authUser"></HomeHeader>
         <SearchMain></SearchMain>
         <HomeFooter></HomeFooter>
 
@@ -49,5 +49,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+#header {
+
+    z-index: 3;
+}
 
 </style>
