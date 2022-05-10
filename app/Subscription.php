@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Subscription extends Model
 {
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ["name", "price"];
 
-    public function doctors() {
+    public function doctors()
+    {
         return $this->belongsToMany(Doctor::class);
     }
 }

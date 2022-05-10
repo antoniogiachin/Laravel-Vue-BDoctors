@@ -13,4 +13,6 @@ yarn-error.log
 /public/js/*
 /public/css/*
 /public/webfonts
-.idea
+/resources/js/front.js
+
+
