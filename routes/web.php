@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\NotFoundController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,8 @@ Route::middleware('auth')
         Route::get('cvDelete/{doctor}', 'CvController@cvDelete')->name('deleteCv');
         //rotta delete photo
         Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
+        //rotta view messaggi dottore
+        // Route::get('/leads', 'LeadController@index')->name('leads');
     }
 );
 
