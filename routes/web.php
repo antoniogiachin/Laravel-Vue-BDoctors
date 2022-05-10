@@ -15,42 +15,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Auth::routes();
 
-Route::middleware('auth')
-->namespace('Admin')
-->name('admin.')
-->prefix('admin')
-->group(
-    function(){
+Route::middleware("auth")
+    ->namespace("Admin")
+    ->name("admin.")
+    ->prefix("admin")
+    ->group(function () {
         // rotta dashboard
-        Route::get('/', 'HomeController@index')->name('home');
+        Route::get("/", "HomeController@index")->name("home");
         //rotta destroy user dashboard
-        Route::delete('/{user}', 'HomeController@destroy')->name('home.destroy');
-        Route::get('/{user}', 'HomeController@show')->name('home.show');
+        Route::delete("/{user}", "HomeController@destroy")->name(
+            "home.destroy"
+        );
+        Route::get("/{user}", "HomeController@show")->name("home.show");
         // rotte CRUD dottore
-        Route::resource('doctors', 'DoctorController');
+        Route::resource("doctors", "DoctorController");
         //rotta get e delete cv
-        Route::get('/cvDownload', 'CvController@getCv')->name('downloadCv');
-        Route::get('cvDelete/{doctor}', 'CvController@cvDelete')->name('deleteCv');
+        Route::get("/cvDownload", "CvController@getCv")->name("downloadCv");
+        Route::get("cvDelete/{doctor}", "CvController@cvDelete")->name(
+            "deleteCv"
+        );
         //rotta delete photo
-        Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
-    }
-);
+        Route::get(
+            "/photoDelete/{doctor}",
+            "PhotoController@photoDelete"
+        )->name("deletePhoto");
+    });
 
 Route::get("/", function () {
-    return view('guests.home');
-})->name('guests.home');
+    return view("guests.home");
+})->name("guests.home");
 
-// rotta 404
-Route::get('/notfound', [NotFoundController::class, 'index'])->name('404');
-Route::get('/unauthorized', [NotFoundController::class, 'unauthorized'])->name('401');
+// rotta 404 e 401
+Route::get("/notfound", [NotFoundController::class, "index"])->name("404");
+Route::get("/unauthorized", [NotFoundController::class, "unauthorized"])->name(
+    "401"
+);
 
-
-Route::get('{any?}', function() {
-    return view('guests.home');
-})->where('any', '.*');
-
-
+Route::get("{any?}", function () {
+    return view("guests.home");
+})->where("any", ".*");
