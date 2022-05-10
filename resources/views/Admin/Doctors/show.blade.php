@@ -16,17 +16,6 @@
             </div>
             <div class="col-md-4 border border-2 rounded border border-success">
                 <h4 class="mt-3">Recensioni ricevute</h4>
-                {{--  
-                    @if($reviews > 0)
-                        @foreach ($reviews as $review)
-                            <div>{{$review->author}}</div>
-                            <div>{{$review->vote}}</div>
-                            <div>{{$review->review}}</div>
-                        @endforeach 
-                    @else
-                        <p>Nessuna recensione ricevuta</p>
-                    @endif
-                --}}
             </div>
         </div>
 
@@ -54,17 +43,6 @@
             </div>
             <div class="col-md-4 border border-2 rounded border border-success">
                 <h4 class="mt-3">Contatti ricevuti</h4>
-                {{--  
-                    @if($leads > 0)
-                        @foreach ($leads as $lead)
-                            <div>{{$lead->author}}</div>
-                            <div>{{$lead->email}}</div>
-                            <div>{{$lead->message}}</div>
-                        @endforeach 
-                    @else
-                        <p>Nessun contatto ricevuto</p>
-                    @endif
-                --}}
             </div>
         </div>
 
