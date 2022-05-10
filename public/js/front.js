@@ -2378,6 +2378,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchMain',
   data: function data() {
@@ -2761,7 +2786,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 50px 0;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 50px 0;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}\n.filter-item[data-v-0ba9cfac] {\n  width: 50%;\n}\n.filter-item p[data-v-0ba9cfac] {\n  display: inline-block;\n}\n.show[data-v-0ba9cfac] {\n  display: flex;\n  align-items: center;\n}\n.collapse-horizontal[data-v-0ba9cfac] {\n  max-height: 52px;\n}\n.row-no-gutter[data-v-0ba9cfac] {\n  --bs-gutter-x: 0;\n}\n.my-offcanvas[data-v-0ba9cfac] {\n  z-index: 0;\n  position: relative;\n}", ""]);
 
 // exports
 
@@ -4613,121 +4638,132 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", { attrs: { id: "jumbotron" } }, [
-      _c("form", [
-        _c("div", { staticClass: "row justify-content-center px-2" }, [
+    _c("div", [
+      _c("div", { attrs: { id: "jumbotron" } }, [
+        _c("form", [
           _c(
             "div",
-            {
-              staticClass: "col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4",
-              attrs: { id: "spec-wrap" },
-            },
+            { staticClass: "row row-no-gutter justify-content-center px-2" },
             [
-              _c("div", { staticClass: "row justify-content-center" }, [
-                _c("div", { staticClass: "col-12 col-lg-9 mb-2 mb-lg-0" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.ricerca,
-                        expression: "ricerca",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Cerca il tuo medico" },
-                    domProps: { value: _vm.ricerca },
-                    on: {
-                      input: [
-                        function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.ricerca = $event.target.value
+              _c(
+                "div",
+                {
+                  staticClass: "col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4",
+                  attrs: { id: "spec-wrap" },
+                },
+                [
+                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _c("div", { staticClass: "col-12 col-lg-9 mb-2 mb-lg-0" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ricerca,
+                            expression: "ricerca",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Cerca il tuo medico",
                         },
-                        _vm.docFilter,
-                      ],
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _vm._m(0),
-              ]),
+                        domProps: { value: _vm.ricerca },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.ricerca = $event.target.value
+                            },
+                            _vm.docFilter,
+                          ],
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(1),
             ]
           ),
         ]),
       ]),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-12 p-4 p-lg-4", attrs: { id: "container" } },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card",
-          },
-          _vm._l(_vm.filteredDoctors, function (doctor) {
-            return _c("div", { key: doctor.id, staticClass: "col" }, [
-              _c("div", { staticClass: "card h-100" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: doctor.photo },
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "card-body" },
-                  [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(
-                        "\n                      " +
-                          _vm._s(doctor.user.name) +
-                          " " +
-                          _vm._s(doctor.user.surname) +
-                          "\n                  "
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-12 p-4 p-lg-4", attrs: { id: "container" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card",
+            },
+            _vm._l(_vm.filteredDoctors, function (doctor) {
+              return _c("div", { key: doctor.id, staticClass: "col" }, [
+                _c("div", { staticClass: "card h-100" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: doctor.photo },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "card-body" },
+                    [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v(
+                          "\n                              " +
+                            _vm._s(doctor.user.name) +
+                            " " +
+                            _vm._s(doctor.user.surname) +
+                            "\n                          "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        { staticClass: "spec-list" },
+                        _vm._l(doctor.specialties, function (specName, index) {
+                          return _c("li", { key: index }, [
+                            _vm._v(
+                              "\n                                  " +
+                                _vm._s(specName.name) +
+                                "\n                              "
+                            ),
+                          ])
+                        }),
+                        0
                       ),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "spec-list" },
-                      _vm._l(doctor.specialties, function (specName, index) {
-                        return _c("li", { key: index }, [
-                          _vm._v(
-                            "\n                          " +
-                              _vm._s(specName.name) +
-                              "\n                      "
-                          ),
-                        ])
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(_vm._s(doctor.medical_address)),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-primary text-white",
-                        attrs: { to: "/doctors/" + doctor.slug },
-                      },
-                      [_vm._v("Vai al profilo")]
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-            ])
-          }),
-          0
-        ),
-      ]
-    ),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(doctor.medical_address)),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-primary text-white",
+                          attrs: { to: "/doctors/" + doctor.slug },
+                        },
+                        [_vm._v("Vai al profilo")]
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+              ])
+            }),
+            0
+          ),
+        ]
+      ),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -4738,8 +4774,102 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-12 col-lg-3" }, [
       _c(
         "button",
-        { staticClass: "btn-specialty btn p-2", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-specialty",
+          attrs: {
+            type: "button",
+            "data-bs-toggle": "offcanvas",
+            "data-bs-target": "#offcanvasScrolling",
+            "aria-controls": "offcanvasScrolling",
+          },
+        },
         [_vm._v("Filtri")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticClass: "my-offcanvas offcanvas offcanvas-end",
+          attrs: {
+            "data-bs-scroll": "true",
+            "data-bs-backdrop": "false",
+            tabindex: "-1",
+            id: "offcanvasScrolling",
+            "aria-labelledby": "offcanvasScrollingLabel",
+          },
+        },
+        [
+          _c("div", { staticClass: "offcanvas-header" }, [
+            _c(
+              "h5",
+              {
+                staticClass: "offcanvas-title",
+                attrs: { id: "offcanvasScrollingLabel" },
+              },
+              [_vm._v("Colored with scrolling")]
+            ),
+            _vm._v(" "),
+            _c("button", {
+              staticClass: "btn-close text-reset",
+              attrs: {
+                type: "button",
+                "data-bs-dismiss": "offcanvas",
+                "aria-label": "Close",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "offcanvas-body" }, [
+            _c("p", [
+              _vm._v(
+                "Try scrolling the rest of the page to see this option in action."
+              ),
+            ]),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "offcanvas offcanvas-start",
+          attrs: {
+            tabindex: "-1",
+            id: "offcanvasWithBackdrop",
+            "aria-labelledby": "offcanvasWithBackdropLabel",
+          },
+        },
+        [
+          _c("div", { staticClass: "offcanvas-header" }, [
+            _c(
+              "h5",
+              {
+                staticClass: "offcanvas-title",
+                attrs: { id: "offcanvasWithBackdropLabel" },
+              },
+              [_vm._v("Offcanvas with backdrop")]
+            ),
+            _vm._v(" "),
+            _c("button", {
+              staticClass: "btn-close text-reset",
+              attrs: {
+                type: "button",
+                "data-bs-dismiss": "offcanvas",
+                "aria-label": "Close",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "offcanvas-body" }, [
+            _c("p", [_vm._v(".....")]),
+          ]),
+        ]
       ),
     ])
   },
