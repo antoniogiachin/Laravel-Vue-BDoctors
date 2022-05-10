@@ -11,12 +11,12 @@
                 <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4">
 
                     <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 mb-2 mb-lg-0">
+                        <div class="col-12 col-lg-9 mb-2 mb-lg-0">
                             <input type="text" class="form-control" placeholder="Cerca il tuo medico" v-model="ricerca" @input="docFilter">
                         </div>
 
-                        <div class="col-12 col-lg-4">
-                        <button type="submit" class="btn-specialty btn p-2">Cerca</button>
+                        <div class="col-12 col-lg-3">
+                        <button type="submit" class="btn-specialty btn p-2">Filtri</button>
                         </div>
 
                     </div>

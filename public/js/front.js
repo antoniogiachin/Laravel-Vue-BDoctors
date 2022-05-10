@@ -4624,7 +4624,7 @@ var render = function () {
             },
             [
               _c("div", { staticClass: "row justify-content-center" }, [
-                _c("div", { staticClass: "col-12 col-lg-8 mb-2 mb-lg-0" }, [
+                _c("div", { staticClass: "col-12 col-lg-9 mb-2 mb-lg-0" }, [
                   _c("input", {
                     directives: [
                       {
@@ -4735,11 +4735,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4" }, [
+    return _c("div", { staticClass: "col-12 col-lg-3" }, [
       _c(
         "button",
         { staticClass: "btn-specialty btn p-2", attrs: { type: "submit" } },
-        [_vm._v("Cerca")]
+        [_vm._v("Filtri")]
       ),
     ])
   },
