@@ -14,4 +14,3 @@ yarn-error.log
 /public/css/*
 /public/webfonts
 /resources/js/front.js
-.gitignore
