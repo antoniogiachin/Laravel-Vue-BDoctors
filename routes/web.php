@@ -38,19 +38,11 @@ Route::middleware("auth")
             "deleteCv"
         );
         //rotta delete photo
-<<<<<<< HEAD
-        Route::get(
-            "/photoDelete/{doctor}",
-            "PhotoController@photoDelete"
-        )->name("deletePhoto");
-    });
-=======
         Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
         //rotta view messaggi dottore
         // Route::get('/leads', 'LeadController@index')->name('leads');
     }
 );
->>>>>>> origin/master
 
 Route::get("/", function () {
     return view("guests.home");
