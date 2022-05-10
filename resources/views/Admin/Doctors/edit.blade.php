@@ -114,7 +114,7 @@
                             @endif
 
                         @endforeach
-                        <input onkeyup="inputCheck()" type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
+                        <input onclick="inputCheck()" onkeyup="inputCheck()" type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="editSub">Salva</button>

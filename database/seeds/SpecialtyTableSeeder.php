@@ -13,7 +13,7 @@ class SpecialtyTableSeeder extends Seeder
      */
     public function run()
     {
-        $specialties = ['Cardiologia', 'Chirurgia', 'Pediatria', 'Allergologia', 'Reumatologia', 'Psichiatria', 'Medicina del lavoro', 'Gastroenterologia', 'Medicina Subacquea', 'Radiologia', 'Urologia', 'Altro'];
+        $specialties = ['Cardiologia', 'Chirurgia', 'Pediatria', 'Allergologia', 'Reumatologia', 'Psichiatria', 'Medicina del lavoro', 'Gastroenterologia', 'Medicina Subacquea', 'Radiologia', 'Urologia'];
 
         foreach ($specialties as $specialty) {
             $newSpecialty = new Specialty();
