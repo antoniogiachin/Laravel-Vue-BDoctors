@@ -36,7 +36,7 @@
                   <p class="card-text">{{singledoc.medical_address}}</p>
 
                   <!-- LINK PROFILO DOTTORE -->
-                  <a href="#" class="btn btn-primary text-white">Vai al profilo</a>
+                  <router-link class="btn btn-primary text-white" :to="'/doctors/' + singledoc.slug">Vai al profilo</router-link>
 
                 </div>
               </div>
