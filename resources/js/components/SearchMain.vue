@@ -58,7 +58,7 @@
                     <p class="card-text">{{doctor.medical_address}}</p>
 
                     <!-- LINK PROFILO DOTTORE -->
-                    <a href="#" class="btn btn-primary text-white">Vai al profilo</a>
+                    <router-link class="btn btn-primary text-white" :to="'/doctors/' + doctor.slug">Vai al profilo</router-link>
 
                     </div>
                 </div>
@@ -111,8 +111,8 @@ export default {
             this.filteredDoctors = []
 
             for (let i = 0; i < this.doctors.length; i++) {
-                this.doc = this.doctors[i].slug;
-                this.filter = this.ricerca.toLowerCase().replace(' ', '-');
+                this.doc = this.doctors[i].slug.replace('-', '');
+                this.filter = this.ricerca.toLowerCase().replace(' ', '');
                 
                 
                 if (this.filter != '' && this.doc.includes(this.filter)) {

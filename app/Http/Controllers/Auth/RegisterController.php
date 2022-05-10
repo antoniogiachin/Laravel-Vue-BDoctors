@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Doctor;
+use App\Specialty;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -57,9 +58,10 @@ class RegisterController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'specialty_id' => ['required', 'not_in:0'], //specializzazioni
+            'specialty_id' => ['required', 'min:0'], //specializzazioni
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+            'otherSpec' => ['nullable', 'string', 'min:3'],
+
         ]);
     }
 
@@ -79,7 +81,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-
+        // dd($data['specialty_id']);
         $slug  = Str::slug($data['name'] .'-'. $data['surname']);
 
         // slug unico
@@ -91,16 +93,47 @@ class RegisterController extends Controller
             $counter++;
         };
 
-        
+
         $doctor = Doctor::create([
             'user_id' => $user->id,
             'slug' => $slug,
         ]);
 
-        $doctor->specialties()->sync($data['specialty_id']);
+
+        if($data['specialty_id'] == 'select'){
+
+
+            if(!$data['otherSpec']){
+
+                return redirect()->route('register');
+
+            } else {
+
+                $slug = Str::slug($data['otherSpec']);
+                $checkSpec = Specialty::where('slug', $slug)->first();
+                if($checkSpec){
+
+                    $doctor->specialties()->sync($checkSpec->id);
+                } else{
+
+                    $specialty = Specialty::create(
+                        [
+                            'name' => ucfirst($data['otherSpec']),
+                            'slug' => Str::slug($data['otherSpec']),
+                        ]
+                    );
+                    $doctor->specialties()->sync($specialty->id);
+                }
+            }
+
+
+        } else {
+            $doctor->specialties()->sync($data['specialty_id']);
+        }
+
 
         return $user;
-      
+
     }
 
 }
