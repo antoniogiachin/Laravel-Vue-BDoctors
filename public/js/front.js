@@ -2409,8 +2409,8 @@ __webpack_require__.r(__webpack_exports__);
       this.filteredDoctors = [];
 
       for (var i = 0; i < this.doctors.length; i++) {
-        this.doc = this.doctors[i].slug;
-        this.filter = this.ricerca.toLowerCase().replace(' ', '-');
+        this.doc = this.doctors[i].slug.replace('-', '');
+        this.filter = this.ricerca.toLowerCase().replace(' ', '');
 
         if (this.filter != '' && this.doc.includes(this.filter)) {
           this.filteredDoctors.push(this.doctors[i]);
@@ -4406,7 +4406,25 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row justify-content-center mt-5" }, [
+              _c(
+                "div",
+                { staticClass: "col-10 col-lg-6 text-center" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-success p-2",
+                      attrs: { id: "advanced-search", to: { name: "search" } },
+                    },
+                    [_vm._v("Ricerca avanzata")]
+                  ),
+                ],
+                1
+              ),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("HomeSponsorizzati", { attrs: { doctors: _vm.docsList } }),
@@ -4438,25 +4456,6 @@ var staticRenderFns = [
         { staticClass: "btn-specialty btn p-2", attrs: { type: "submit" } },
         [_vm._v("Cerca")]
       ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center mt-5" }, [
-        _c("div", { staticClass: "col-10 col-lg-6 text-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-success p-2",
-              attrs: { id: "advanced-search", href: "#" },
-            },
-            [_vm._v("Ricerca avanzata")]
-          ),
-        ]),
-      ]),
     ])
   },
 ]
@@ -4509,48 +4508,53 @@ var render = function () {
                       }),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-title" }, [
-                        _vm._v(
-                          "\n                  " +
-                            _vm._s(singledoc.user.name) +
-                            " " +
-                            _vm._s(singledoc.user.surname) +
-                            "\n                "
+                    _c(
+                      "div",
+                      { staticClass: "card-body" },
+                      [
+                        _c("h5", { staticClass: "card-title" }, [
+                          _vm._v(
+                            "\n                  " +
+                              _vm._s(singledoc.user.name) +
+                              " " +
+                              _vm._s(singledoc.user.surname) +
+                              "\n                "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "ul",
+                          { staticClass: "spec-list" },
+                          _vm._l(
+                            singledoc.specialties,
+                            function (specName, index) {
+                              return _c("li", { key: index }, [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(specName.name) +
+                                    "\n                    "
+                                ),
+                              ])
+                            }
+                          ),
+                          0
                         ),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        { staticClass: "spec-list" },
-                        _vm._l(
-                          singledoc.specialties,
-                          function (specName, index) {
-                            return _c("li", { key: index }, [
-                              _vm._v(
-                                "\n                      " +
-                                  _vm._s(specName.name) +
-                                  "\n                    "
-                              ),
-                            ])
-                          }
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-text" }, [
+                          _vm._v(_vm._s(singledoc.medical_address)),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary text-white",
+                            attrs: { to: "/doctors/" + singledoc.slug },
+                          },
+                          [_vm._v("Vai al profilo")]
                         ),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(singledoc.medical_address)),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-primary text-white",
-                          attrs: { href: "#" },
-                        },
-                        [_vm._v("Vai al profilo")]
-                      ),
-                    ]),
+                      ],
+                      1
+                    ),
                   ]),
                 ])
               }),
@@ -4673,45 +4677,50 @@ var render = function () {
                   attrs: { src: doctor.photo },
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(
-                      "\n                      " +
-                        _vm._s(doctor.user.name) +
-                        " " +
-                        _vm._s(doctor.user.surname) +
-                        "\n                  "
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(
+                        "\n                      " +
+                          _vm._s(doctor.user.name) +
+                          " " +
+                          _vm._s(doctor.user.surname) +
+                          "\n                  "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "spec-list" },
+                      _vm._l(doctor.specialties, function (specName, index) {
+                        return _c("li", { key: index }, [
+                          _vm._v(
+                            "\n                          " +
+                              _vm._s(specName.name) +
+                              "\n                      "
+                          ),
+                        ])
+                      }),
+                      0
                     ),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "spec-list" },
-                    _vm._l(doctor.specialties, function (specName, index) {
-                      return _c("li", { key: index }, [
-                        _vm._v(
-                          "\n                          " +
-                            _vm._s(specName.name) +
-                            "\n                      "
-                        ),
-                      ])
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(doctor.medical_address)),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-primary text-white",
-                      attrs: { href: "#" },
-                    },
-                    [_vm._v("Vai al profilo")]
-                  ),
-                ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(_vm._s(doctor.medical_address)),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-primary text-white",
+                        attrs: { to: "/doctors/" + doctor.slug },
+                      },
+                      [_vm._v("Vai al profilo")]
+                    ),
+                  ],
+                  1
+                ),
               ]),
             ])
           }),
@@ -21238,7 +21247,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\flek8\OneDrive\Desktop\Personal Works\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
