@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+
 const deleteDoctorProfile = document.querySelector('.delete-profile');
 if(deleteDoctorProfile){
     deleteDoctorProfile.addEventListener('click',

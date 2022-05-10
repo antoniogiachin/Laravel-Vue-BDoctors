@@ -50,7 +50,7 @@
         <div class="container">
           <div class="row justify-content-center mt-5">
               <div class="col-10 col-lg-6 text-center">
-                  <a id="advanced-search" class="btn btn-success p-2" href="#">Ricerca avanzata</a>
+                  <router-link id="advanced-search" class="btn btn-success p-2" :to="{name: 'search'}">Ricerca avanzata</router-link>
               </div>
           </div>
         </div>

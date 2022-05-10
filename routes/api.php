@@ -19,22 +19,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware("auth:api")->get("/user", function (Request $request) {
     return $request->user();
 });
 
 //api get specialties
-Route::get('/', [SpecialtyController::class, 'getSpecialties']);
+Route::get("/", [SpecialtyController::class, "getSpecialties"]);
 
 //api provvisorio per ottenere i dottori nella HOME
-Route::get('/docs', [DoctorController::class, 'getAllDoctors']);
-
+Route::get("/docs", [DoctorController::class, "getAllDoctors"]);
 
 // api doctor paginate 5
-Route::get('/doctors', [DoctorController::class, 'index']);
+Route::get("/doctors", [DoctorController::class, "index"]);
 //api singolo dottore per slug
-Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
+Route::get("/doctors/{slug}", [DoctorController::class, "show"]);
 // api lead dottore
-Route::post('/leads', [LeadController::class, 'store']);
-Route::post('/review', [ReviewController::class, 'store']);
+Route::post("/leads", [LeadController::class, "store"]);
+Route::post("/review", [ReviewController::class, "store"]);
 
+//api per fascia voto
+Route::get("/doctors/filter/{average}", [
+    DoctorController::class,
+    "doctorByVote",
+]);
+// api per numero di recensioni

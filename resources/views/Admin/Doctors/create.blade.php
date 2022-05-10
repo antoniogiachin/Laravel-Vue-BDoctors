@@ -51,7 +51,9 @@
                                     {{ $specialty->name }}
                                 </label>
                             </div>
-                            @endforeach
+                        @endforeach
+
+                        <input type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Salva</button>
@@ -64,3 +66,5 @@
 
 
 @endsection
+
+
