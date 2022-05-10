@@ -8,7 +8,7 @@
                     <div class="row row-no-gutter justify-content-center px-2">
 
                         
-                        <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4">
+                        <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline">
 
                             <div class="row justify-content-center">
                                 <div class="col-12 col-lg-9 mb-2 mb-lg-0">
@@ -21,7 +21,7 @@
                                 </div>
                             </div> 
                         </div>    
-                        <div>
+                        <div class="d-inline">
                             <div class="my-offcanvas offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                                 <div class="offcanvas-header">
                                     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>

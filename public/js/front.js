@@ -4648,7 +4648,8 @@ var render = function () {
               _c(
                 "div",
                 {
-                  staticClass: "col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4",
+                  staticClass:
+                    "col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline",
                   attrs: { id: "spec-wrap" },
                 },
                 [
@@ -4791,7 +4792,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "d-inline" }, [
       _c(
         "div",
         {
