@@ -2,7 +2,7 @@
     <main>
 
         <div>
-            <div id="jumbotron">
+            <div id="jumbotron" class="position-relative">
                 <form>
 
                     <div class="row row-no-gutter justify-content-center px-2">
@@ -17,29 +17,91 @@
 
                                 <div class="col-12 col-lg-3">
 
-                                    <button class="btn btn-specialty" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Filtri</button>
-                                </div>
+                                    <button class="btn btn-specialty" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                        Filtri
+                                    </button>
+
+                            </div>
                             </div> 
                         </div>    
-                        <div class="d-inline">
-                            <div class="my-offcanvas offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
-                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <p>Try scrolling the rest of the page to see this option in action.</p>
+                        <div class="d-inline collapse-container">
+
+                            
+                            <div class="collapse collapse-horizontal my-collapse" id="collapseWidthExample">
+                                <div class="card card-body">
+                                    Media voto:
+                                    <ul class="d-flex flex-wrap filters-list">
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">5 <i class="fa-solid fa-star"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">4+ <i class="fa-solid fa-star"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">3+ <i class="fa-solid fa-star"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">2+ <i class="fa-solid fa-star"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">1+ <i class="fa-solid fa-star"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    Numero di recensioni:
+                                    <ul class="d-flex flex-wrap filters-list">
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">> 10</span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">5 - 10</span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="ms-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <span class="rating-stars">&lt; 5</span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
-                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <p>.....</p>
-                                </div>
-                            </div>
+                            
                         </div>  
                                      
                               
@@ -192,9 +254,26 @@ export default {
     --bs-gutter-x: 0;
 }
 
-.my-offcanvas {
-    z-index: 0;
-    position: relative;
-    
+.collapse-container {
+
+    width: fit-content;
+    height: fit-content;
+    z-index: 2;
+    height: 101%;
+    margin-top: 17px;
+
+    .my-collapse {
+
+        width: 250px;
+    }
 }
+
+.filters-list {
+    list-style-type: none;
+    font-size: 12px;
+}
+.rating-stars i {
+    color: gold;
+}
+
 </style>
