@@ -24,9 +24,9 @@
             @endif
         </div>
     </div>
-    <div class="container mt-4 bg-light d-flex justify-content-around border">
+    <div class="container mt-4 bg-light d-flex justify-content-around border rounded-3 p-0">
         {{-- sidebar info dottore --}}
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-info border-end me-3" style="width: 280px;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-info border-end me-3 rounded-start" style="width: 280px;">
             @if (!$doctor->photo)
                 <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" class="img-fluid py-2">
             @else
@@ -38,7 +38,7 @@
                     <span class="badge bg-light text-dark m-1">{{ $specialty->name }}</span>
                 @endforeach
             </div>
-           
+
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
