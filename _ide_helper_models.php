@@ -14,6 +14,7 @@ namespace App{
 /**
  * App\Doctor
  *
+ * @mixin IdeHelperDoctor
  * @property int $id
  * @property int $user_id
  * @property string|null $photo
@@ -46,7 +47,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Doctor whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Doctor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Doctor whereUserId($value)
- * @mixin \Eloquent
  */
 	class IdeHelperDoctor extends \Eloquent {}
 }
@@ -55,6 +55,7 @@ namespace App{
 /**
  * App\Lead
  *
+ * @mixin IdeHelperLead
  * @property int $id
  * @property int $doctor_id
  * @property string $author
@@ -73,7 +74,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereMessage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lead whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperLead extends \Eloquent {}
 }
@@ -82,6 +82,7 @@ namespace App{
 /**
  * App\Review
  *
+ * @mixin IdeHelperReview
  * @property int $id
  * @property int $doctor_id
  * @property string $title
@@ -102,7 +103,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Review whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Review whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Review whereVote($value)
- * @mixin \Eloquent
  */
 	class IdeHelperReview extends \Eloquent {}
 }
@@ -111,6 +111,7 @@ namespace App{
 /**
  * App\Specialty
  *
+ * @mixin IdeHelperSpecialty
  * @property int $id
  * @property string $name
  * @property string $slug
@@ -126,7 +127,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Specialty whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Specialty whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Specialty whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperSpecialty extends \Eloquent {}
 }
@@ -135,6 +135,7 @@ namespace App{
 /**
  * App\Subscription
  *
+ * @mixin IdeHelperSubscription
  * @property int $id
  * @property string $name
  * @property string $price
@@ -150,7 +151,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperSubscription extends \Eloquent {}
 }
@@ -159,6 +159,7 @@ namespace App{
 /**
  * App\User
  *
+ * @mixin IdeHelperUser
  * @property int $id
  * @property string $name
  * @property string $surname
@@ -185,7 +186,6 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSurname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperUser extends \Eloquent {}
 }
