@@ -53,14 +53,28 @@
                 </div>
 
                 <!-- COMPONENT RECENSIONE -->
-                <SingleDoctorReview></SingleDoctorReview>
+                <SingleDoctorReview :currentDoctor="singledoc"></SingleDoctorReview>
 
                 <!-- LISTA RECENSIONI -->
-                <div class="performance ms_row-info">
-                  <h3>Recensioni</h3>
-                  <p>Recensione 1</p>
-                  <p>Recensione 2</p>
-                  <p>ecc...</p>
+                <div class="reviews ms_row-info">
+                  <h3>{{singledoc.reviews.length}} Recensioni</h3>
+
+                  <ul class="prova">
+                    <li v-for="(review, index) in singledoc.reviews" :key="index">
+
+                      <h4>{{review.author}}</h4>
+
+                      <span class="rev-vote">
+                        <i v-for="i in 5" :key="i" class="star-color fa-star" :class="(i <= review.vote) ? 'fa-solid' : 'fa-regular' "></i>
+                      </span>
+                      
+                      
+                      <span class="rev-title">{{review.title}}</span>
+                      <p class="rev-text">{{review.review}}</p>
+
+                    </li>
+                  </ul>
+
                 </div>
 
               </div>
@@ -79,8 +93,7 @@
                     <h3>Scrivi un messaggio</h3>
 
                     <!-- FORM INVIO MESSAGGIO -->
-                    <SingleDoctorForm></SingleDoctorForm>
-
+                    <SingleDoctorForm :currentDoctor="singledoc"></SingleDoctorForm>
 
                 </div>
               </div>
@@ -103,7 +116,7 @@
   export default {
 
     name: 'SingleDoctorMain',
-    props: ['singledoc'],
+    props: ['singledoc', 'reviews'],
 
     components: {
 

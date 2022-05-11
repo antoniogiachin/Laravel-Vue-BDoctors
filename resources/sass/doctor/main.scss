@@ -28,7 +28,6 @@
 }
 
 #info-container {
-  padding-bottom: 20px;
   background-color: #fff;
   
   #col-doctor {
@@ -83,6 +82,45 @@
     }
   }
 
+  .reviews {
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        padding: 20px 10px 30px 10px;
+        border-bottom: 1px solid #eaecee;
+      }
+
+      h4 {
+        font-size: 1.2em;
+      }
+
+      .rev-vote {
+        i {
+          // color: #ED9F51;
+          color: #00C3A5;
+        }
+      }
+
+      .rev-title {
+        font-weight: 700;
+        margin-left: 4px;
+      }
+
+      .rev-text {
+        margin-top: 15px;
+      }
+
+    }
+
+    li:last-child {
+        border-bottom: none;
+    }
+
+  }
+
 
   /**** STILE RECENSIONE ****/
   #click-collapse {
@@ -110,10 +148,14 @@
   label {
     cursor: pointer;
     font-size: 2.5em;
+  }
 
-    i.fa-solid:hover {
+  label:hover {
       color: gold;
-    }
+  }
+
+  .checked {
+    color: gold;
   }
 }
   /**** FINE STILE RECENSIONE ****/
@@ -121,12 +163,14 @@
 #col-booking {
   margin-top: 20px;
   margin-right: 15px;
-  height: 700px;
+  max-height: 750px;
   padding: 0;
   border: 1px solid #c3c3c3;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-radius: 20px;
+
+  box-shadow: 0px 1px 5px #c3c3c3;
 
   .booking-title {
     background-color: $main-bg;
