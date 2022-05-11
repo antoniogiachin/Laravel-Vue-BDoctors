@@ -12,7 +12,7 @@ class DoctorController extends Controller
     //
     public function index()
     {
-        $doctors = Doctor::with(["user", "specialties"])->paginate(2);
+        $doctors = Doctor::with(["user", "specialties"])->paginate(10);
 
         $doctors->each(function ($doctor) {
             //se ho photo
@@ -97,15 +97,19 @@ class DoctorController extends Controller
 
     public function doctorByVote($average)
     {
-        $doctors = Doctor::with(["reviews", "user", "specialties"])->get();
+        $doctors = Doctor::with(["reviews", "user", "specialties", "leads"])->get();
         $filterByVote = $doctors->filter(function ($doctor) use ($average) {
-            $averageVote = 0;
+            $averageVote = null;
             $sum = 0;
             foreach ($doctor->reviews as $review) {
                 $sum += $review->vote;
             }
-            $averageVote = $sum / count($doctor->reviews);
-            //            dd($averageVote, intval($average));
+            if(count($doctor->reviews) == 0){
+                $averageVote = 0;
+            }else{
+                $averageVote = $sum / count($doctor->reviews);
+            }
+//            dd($averageVote, intval($average));
             if (
                 $averageVote >= intval($average) &&
                 $averageVote < intval($average) + 1
