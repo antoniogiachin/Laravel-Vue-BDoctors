@@ -118,13 +118,13 @@ class DoctorController extends Controller
             } else {
                 return false;
             }
-        });
+        })->values()->all();
 
         if (count($filterByVote) > 0) {
             return response()->json([
                 "success" => true,
                 "average" => 'Media voto: ' . $average,
-                "results" => $filterByVote,
+                "results" =>$filterByVote,
             ]);
         } else {
             return response()->json([
@@ -154,7 +154,7 @@ class DoctorController extends Controller
                     return false;
                 }
             }
-        });
+        })->values()->all();
 
         if(count($filterByReviews) > 0){
             return response()->json(
