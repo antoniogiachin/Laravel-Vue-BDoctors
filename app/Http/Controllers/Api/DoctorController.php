@@ -105,7 +105,7 @@ class DoctorController extends Controller
                 $sum += $review->vote;
             }
             if(count($doctor->reviews) == 0){
-                $averageVote = 0;
+                $averageVote = $sum;
             }else{
                 $averageVote = $sum / count($doctor->reviews);
             }
