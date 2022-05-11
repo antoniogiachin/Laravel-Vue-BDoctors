@@ -3,6 +3,5 @@
     "/css/app.css": "/css/app.css",
     "/css/user.css": "/css/user.css",
     "/js/check-password.js": "/js/check-password.js",
-    "/js/front.js": "/js/front.js",
-    "/js/register-vue.js": "/js/register-vue.js"
+    "/js/front.js": "/js/front.js"
 }
