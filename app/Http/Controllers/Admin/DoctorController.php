@@ -294,7 +294,7 @@ class DoctorController extends Controller
         //
         $doctor->specialties->each(function($specialty){
             // dd(count($specialty->doctors));
-            if($specialty->id > 12 && count($specialty->doctors) == 1){
+            if($specialty->id > 11 && count($specialty->doctors) == 1){
                 $specialty->delete();
             }
         });
