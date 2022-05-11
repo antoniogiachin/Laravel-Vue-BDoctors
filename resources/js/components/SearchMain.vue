@@ -7,7 +7,7 @@
 
                     <div class="row row-no-gutter justify-content-center px-2">
 
-                        
+
                         <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline">
 
                             <div class="row justify-content-center">
@@ -22,11 +22,11 @@
                                     </button>
 
                             </div>
-                            </div> 
-                        </div>    
+                            </div>
+                        </div>
                         <div class="d-inline collapse-container">
 
-                            
+
                             <div class="collapse collapse-horizontal my-collapse" id="collapseWidthExample">
                                 <div class="card card-body">
                                     Media voto:
@@ -101,22 +101,22 @@
                                     </ul>
                                 </div>
                             </div>
-                            
-                        </div>  
-                                     
-                              
-                           
+
+                        </div>
+
+
+
 
                     </div>
 
                 </form>
             </div>
-            
-        
 
 
 
-            <div id="container" class="col-12 p-4 p-lg-4">
+
+
+            <div id="container" class="col-12 p-4 p-lg-4 container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
 
@@ -127,7 +127,7 @@
                             <img :src="doctor.photo" class="card-img-top">
 
                             <div class="card-body">
-                            
+
                             <!-- NOME E COGNOME -->
                             <h5 class="card-title">
                                 {{doctor.user.name}} {{doctor.user.surname}}
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        
+
 
   </main>
 </template>
@@ -173,7 +173,7 @@ export default {
     methods: {
 
         getDoctors() {
-    
+
             axios.get('/api/docs')
             .then((response) => {
               console.log(response)
@@ -190,37 +190,37 @@ export default {
             .then(function () {
               // always executed
             });
-    
+
         },
 
         docFilter() {  //utilizzando il contenuto della barra di ricerca filtra i dottori
-                
+
             this.filteredDoctors = []
 
             for (let i = 0; i < this.doctors.length; i++) {
                 this.doc = this.doctors[i].slug.replace('-', '');
                 this.filter = this.ricerca.toLowerCase().replace(' ', '');
-                
-                
+
+
                 if (this.filter != '' && this.doc.includes(this.filter)) {
-                    
+
                     this.filteredDoctors.push(this.doctors[i])
 
                 } else if (!this.filter) {
-                    
+
                     for (let i = 0; i < this.doctors.length; i++) {
 
                         if (this.filteredDoctors.length < this.doctors.length) {
 
                             this.filteredDoctors.push(this.doctors[i])
                         }
-                     
+
                     }
                 }
             }
         }
 
-        
+
     },
 
     mounted() {
@@ -237,7 +237,7 @@ export default {
 
     p {
         display: inline-block;
-        
+
     }
 }
 .show {

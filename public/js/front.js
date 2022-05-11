@@ -5183,7 +5183,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-12 p-4 p-lg-4", attrs: { id: "container" } },
+        {
+          staticClass: "col-12 p-4 p-lg-4 container",
+          attrs: { id: "container" },
+        },
         [
           _c(
             "div",
@@ -22668,7 +22671,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
+=======
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
+>>>>>>> ee3008a315feeeb55d129923c31ef1e0aa371c9b
 
 
 /***/ })
