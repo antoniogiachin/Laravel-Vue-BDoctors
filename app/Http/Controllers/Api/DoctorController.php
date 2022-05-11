@@ -39,7 +39,7 @@ class DoctorController extends Controller
     public function show($slug)
     {
         $doctor = Doctor::where("slug", $slug)
-            ->with(["user", "specialties"])
+            ->with(["user", "specialties", "reviews"])
             ->first();
 
         if (!$doctor) {
