@@ -73,9 +73,10 @@
             </div>
         </nav> --}}
         {{-- navbar --}}
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md bg-info">
             <div class="container-fluid px-2">
-                <a class="navbar-brand" href="{{ url('/') }}">Booldoc Pannello Admin</a> |
+                <img src="{{asset('img/logo_bdoctors.png')}}" alt="Logo Bdoctors" style="width: 70px; height:70px">
+                <a class="navbar-brand text-white ms-3 fs-4" href="{{ url('/') }}">BDoctors Pannello Admin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -83,39 +84,39 @@
 
                 {{-- link autenticazione  --}}
                 @guest
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class=" nav-link "  aria-current="page" href="{{ route('guests.home') }}">Home</a>
+                            <a class="nav-link text-white fs-5"  aria-current="page" href="{{ route('guests.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a  class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
+                            <a  class="nav-link text-white fs-5 mx-3" aria-current="page" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link text-white fs-5" href="{{ route('register') }}">Register</a>
                         </li>
                 </ul>
                 @else
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
                     </li>
                 </ul>
-                <div class="dropdown">
-                    <a class="dropdown-toggle bg-transparent border-0 text-dark nav-link" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown ms-auto me-5">
+                    <a class="dropdown-toggle bg-transparent border-0 text-white nav-link fs-5" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
 
@@ -137,7 +138,7 @@
             </div>
         </nav>
         <main class="pb-4">
-            <div class="mt-5">@yield('content')</div>
+            <div>@yield('content')</div>
         </main>
     </div>
     @yield('scripts')
