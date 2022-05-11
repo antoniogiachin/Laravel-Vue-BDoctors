@@ -97,7 +97,7 @@ class DoctorController extends Controller
 
     public function doctorByVote($average)
     {
-        $doctors = Doctor::with(["reviews", "user"])->get();
+        $doctors = Doctor::with(["reviews", "user", "specialties"])->get();
         $filterByVote = $doctors->filter(function ($doctor) use ($average) {
             $averageVote = 0;
             $sum = 0;
@@ -126,6 +126,45 @@ class DoctorController extends Controller
                 "success" => false,
                 "results" => "Nessun Medico con questa media voti!",
             ]);
+        }
+    }
+
+    public function doctorByReviews($rangeMin, $rangeMax){
+        $doctors = Doctor::with(["reviews", "user", "specialties"])->get();
+        $filterByReviews = $doctors->filter(function($doctor) use ($rangeMin, $rangeMax){
+            $reviewCounter = 0;
+            foreach ($doctor->reviews as $review){
+                $reviewCounter++;
+            }
+            if($rangeMax == 10){
+                if($reviewCounter >= $rangeMin ){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if($reviewCounter >= $rangeMin && $reviewCounter < $rangeMax ){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        });
+
+        if(count($filterByReviews) > 0){
+            return response()->json(
+                [
+                    'success' => true,
+                    'results' => $filterByReviews,
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'success' => false,
+                    'results' => 'Nessun medico con questo numero di recensioni!',
+                ]
+            );
         }
     }
 }
