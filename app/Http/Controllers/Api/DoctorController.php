@@ -123,6 +123,7 @@ class DoctorController extends Controller
         if (count($filterByVote) > 0) {
             return response()->json([
                 "success" => true,
+                "average" => 'Media voto: ' . $average,
                 "results" => $filterByVote,
             ]);
         } else {
@@ -159,6 +160,7 @@ class DoctorController extends Controller
             return response()->json(
                 [
                     'success' => true,
+                    'range' => 'Numero recensioni compreso tra ' . $rangeMin . ' e ' . $rangeMax,
                     'results' => $filterByReviews,
                 ]
             );
