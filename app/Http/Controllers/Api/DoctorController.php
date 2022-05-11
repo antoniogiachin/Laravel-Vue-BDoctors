@@ -12,7 +12,7 @@ class DoctorController extends Controller
     //
     public function index()
     {
-        $doctors = Doctor::with(["user", "specialties"])->paginate(2);
+        $doctors = Doctor::with(["user", "specialties"])->paginate(10);
 
         $doctors->each(function ($doctor) {
             //se ho photo
@@ -97,15 +97,19 @@ class DoctorController extends Controller
 
     public function doctorByVote($average)
     {
-        $doctors = Doctor::with(["reviews", "user", "specialties"])->get();
+        $doctors = Doctor::with(["reviews", "user", "specialties", "leads"])->get();
         $filterByVote = $doctors->filter(function ($doctor) use ($average) {
-            $averageVote = 0;
+            $averageVote = null;
             $sum = 0;
             foreach ($doctor->reviews as $review) {
                 $sum += $review->vote;
             }
-            $averageVote = $sum / count($doctor->reviews);
-            //            dd($averageVote, intval($average));
+            if(count($doctor->reviews) == 0){
+                $averageVote = $sum;
+            }else{
+                $averageVote = $sum / count($doctor->reviews);
+            }
+//            dd($averageVote, intval($average));
             if (
                 $averageVote >= intval($average) &&
                 $averageVote < intval($average) + 1
@@ -114,12 +118,13 @@ class DoctorController extends Controller
             } else {
                 return false;
             }
-        });
+        })->values()->all();
 
         if (count($filterByVote) > 0) {
             return response()->json([
                 "success" => true,
-                "results" => $filterByVote,
+                "average" => 'Media voto: ' . $average,
+                "results" =>$filterByVote,
             ]);
         } else {
             return response()->json([
@@ -149,12 +154,13 @@ class DoctorController extends Controller
                     return false;
                 }
             }
-        });
+        })->values()->all();
 
         if(count($filterByReviews) > 0){
             return response()->json(
                 [
                     'success' => true,
+                    'range' => 'Numero recensioni compreso tra ' . $rangeMin . ' e ' . $rangeMax,
                     'results' => $filterByReviews,
                 ]
             );
