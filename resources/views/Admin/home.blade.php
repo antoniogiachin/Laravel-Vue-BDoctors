@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+{{--  --}}
 @php
   $user = Auth::user();
   $name = $user->name;
@@ -24,7 +26,37 @@
             @endif
         </div>
     </div>
-    <div class="container mt-4 bg-light d-flex justify-content-around border rounded-3 p-0">
+   
+    {{-- Se un utente non ha registrato un profilo da dottore --}}
+    @if (!$doctor)
+    <div class="text-center pt-3">
+        <h2>La piattaforma per i medici professionisti.</h2>
+        <p class="fw-bold">Completa subito il tuo profilo!</p>
+    </div>
+    {{-- Hero section --}}
+    <div class="container hero-register">
+        <div class="text-right d-flex flex-column align-items-end">
+            {{-- creazione profilo dottore --}}
+            <div class="col-6 d-flex justify-content-center">
+                <a href="{{ route('admin.doctors.create') }}" class="btn mt-3 text-white btn-success">Registra il tuo profilo da dottore</a>
+            </div>
+            {{-- eliminazione user --}}
+            <div class="col-6 d-flex justify-content-center">
+                <form action="{{ route('admin.home.destroy', $user->id) }}" id="deleteUser" method="POST">
+                    @csrf
+    
+                    @method('DELETE')
+    
+                    <button class=" btn btn-danger text-white mt-3" type="submit">Elimina il tuo profilo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+        {{-- Se utente ha registrsto un profilo --}}
+    @else
+    <div class="container position-relative mt-4 bg-light d-flex justify-content-around border rounded-3 p-0">
+
         {{-- sidebar info dottore --}}
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-info border-end me-3 rounded-start" style="width: 280px;">
             @if (!$doctor->photo)
@@ -94,6 +126,16 @@
                <h4><i class="fa-solid fa-stamp"></i><a class="nav-link text-dark d-inline" href="#">Nessuno sponsor attivo</a></h4>
             </div>
         </div>
+        <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile position-absolute top-0 end-0" data-name="{{$doctor->user->surname}}">
+            @csrf
+            @method('DELETE')
 
+            <button class="btn btn-danger text-white">Elimina profilo</button>
+        </form>
+        @endif
     </div>
+
+
+    {{-- OLD --}}
+
 @endsection
