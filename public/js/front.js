@@ -22671,7 +22671,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\morga\onedrive\desktop\Progetto finale Boolean\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
