@@ -18,7 +18,7 @@ Route::get("/", [SpecialtyController::class, "getSpecialties"]);
 //api provvisorio per ottenere i dottori nella HOME
 Route::get("/docs", [DoctorController::class, "getAllDoctors"]);
 
-// api doctor paginate 5
+// api doctor paginate 10
 Route::get("/doctors", [DoctorController::class, "index"]);
 //api singolo dottore per slug
 Route::get("/doctors/{slug}", [DoctorController::class, "show"]);
