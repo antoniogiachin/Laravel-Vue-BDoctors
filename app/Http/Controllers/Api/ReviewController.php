@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
-{
+{   
     //
     public function store(Request $request)
     {
@@ -51,4 +51,5 @@ class ReviewController extends Controller
             ]);
         }
     }
+
 }

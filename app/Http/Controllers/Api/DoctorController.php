@@ -39,7 +39,7 @@ class DoctorController extends Controller
     public function show($slug)
     {
         $doctor = Doctor::where("slug", $slug)
-            ->with(["user", "specialties"])
+            ->with(["user", "specialties", "reviews"])
             ->first();
 
         if (!$doctor) {
@@ -69,9 +69,9 @@ class DoctorController extends Controller
     }
 
     //funzione provvisoria per ottenere i dottori nella HOME
-    public function getAllDoctors()
+    public function getAllDoctors($specialtySlug)
     {
-        $doctors = Doctor::with(["user", "specialties"])->get();
+        $doctors = Doctor::with(["user", "specialties", "leads", "reviews"])->get();
 
         //immagini in home
         $doctors->each(function ($doctor) {
@@ -89,8 +89,16 @@ class DoctorController extends Controller
             }
         });
 
+        $doctorsBySpecialty = $doctors->filter(function($doctor) use($specialtySlug){
+            if($doctor->specialties->contains('slug', $specialtySlug)){
+                return true;
+            } else {
+                return false;
+            }
+        });
+
         return response()->json([
-            "results" => $doctors,
+            "results" => $doctorsBySpecialty,
             "success" => true,
         ]);
     }
