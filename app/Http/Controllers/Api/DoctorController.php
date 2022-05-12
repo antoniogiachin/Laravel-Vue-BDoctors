@@ -141,18 +141,10 @@ class DoctorController extends Controller
             foreach ($doctor->reviews as $review){
                 $reviewCounter++;
             }
-            if($rangeMax == 10){
-                if($reviewCounter >= $rangeMin ){
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                if($reviewCounter >= $rangeMin && $reviewCounter < $rangeMax ){
-                    return true;
-                } else{
-                    return false;
-                }
+            if($reviewCounter >= $rangeMin && $reviewCounter < $rangeMax ){
+                return true;
+            } else{
+                return false;
             }
         })->values()->all();
 
