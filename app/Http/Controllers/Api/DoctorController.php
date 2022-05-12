@@ -69,7 +69,7 @@ class DoctorController extends Controller
     }
 
     //funzione provvisoria per ottenere i dottori nella HOME
-    public function getAllDoctors($specialtySlug)
+    public function getAllDoctors($specialtySlug = null)
     {
         $doctors = Doctor::with(["user", "specialties", "leads", "reviews"])->get();
 
@@ -88,19 +88,26 @@ class DoctorController extends Controller
                 $doctor->cv = "Nessun Curriculum presente!";
             }
         });
+//        dd($specialtySlug);
+        if(!isset($specialtySlug)){
+            return response()->json([
+                "results" => $doctors,
+                "success" => true,
+            ]);
+        } else {
+            $doctorsBySpecialty = $doctors->filter(function($doctor) use($specialtySlug){
+                if($doctor->specialties->contains('slug', $specialtySlug)){
+                    return true;
+                } else {
+                    return false;
+                }
+            })->values()->all();
 
-        $doctorsBySpecialty = $doctors->filter(function($doctor) use($specialtySlug){
-            if($doctor->specialties->contains('slug', $specialtySlug)){
-                return true;
-            } else {
-                return false;
-            }
-        });
-
-        return response()->json([
-            "results" => $doctorsBySpecialty,
-            "success" => true,
-        ]);
+            return response()->json([
+                "results" => $doctorsBySpecialty,
+                "success" => true,
+            ]);
+        }
     }
 
     public function doctorByVote($average)

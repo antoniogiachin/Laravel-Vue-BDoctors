@@ -16,7 +16,7 @@ Route::middleware("auth:api")->get("/user", function (Request $request) {
 Route::get("/", [SpecialtyController::class, "getSpecialties"]);
 
 //api provvisorio per ottenere i dottori nella HOME
-Route::get("/docs/{specialtySlug}", [DoctorController::class, "getAllDoctors"]);
+Route::get("/docs/{specialtySlug?}", [DoctorController::class, "getAllDoctors"]);
 
 // api doctor paginate 10
 Route::get("/doctors", [DoctorController::class, "index"]);

@@ -12,7 +12,7 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-12 col-lg-9 mb-2 mb-lg-0">
-                                    <input type="text" class="form-control" placeholder="Cerca il tuo medico" v-model="ricerca" @input="docFilter">
+                                    <input type="text" class="form-control" placeholder="Cerca il tuo medico" v-model="ricerca" >
                                 </div>
 
                                 <div class="col-12 col-lg-3">
@@ -161,12 +161,8 @@ export default {
 
     data() {
         return {
-
             doctors: [],
-            filteredDoctors: [],
             ricerca: '',
-            doc: '',
-            filter: '',
         }
     },
 
@@ -174,14 +170,11 @@ export default {
 
         getDoctors() {
 
-            axios.get('/api/docs')
+            axios.get('/api/docs/' + this.$route.params.slug)
             .then((response) => {
               console.log(response)
               this.doctors = response.data.results;
-              this.filteredDoctors = response.data.results;
-
               console.log(this.doctors);
-
             })
             .catch(function (error) {
               // handle error
@@ -193,38 +186,18 @@ export default {
 
         },
 
-        docFilter() {  //utilizzando il contenuto della barra di ricerca filtra i dottori
-
-            this.filteredDoctors = []
-
-            for (let i = 0; i < this.doctors.length; i++) {
-                this.doc = this.doctors[i].slug.replace('-', '');
-                this.filter = this.ricerca.toLowerCase().replace(' ', '');
-
-
-                if (this.filter != '' && this.doc.includes(this.filter)) {
-
-                    this.filteredDoctors.push(this.doctors[i])
-
-                } else if (!this.filter) {
-
-                    for (let i = 0; i < this.doctors.length; i++) {
-
-                        if (this.filteredDoctors.length < this.doctors.length) {
-
-                            this.filteredDoctors.push(this.doctors[i])
-                        }
-
-                    }
-                }
-            }
-        }
-
-
     },
 
     mounted() {
         this.getDoctors();
+    },
+    computed:{
+        filteredDoctors: function(){
+            return this.doctors.filter(doc =>{
+                let query = this.ricerca.toLowerCase().replaceAll(' ', "");
+                return doc.slug.replaceAll("-", '').includes(query);
+            })
+        }
     }
 }
 </script>
