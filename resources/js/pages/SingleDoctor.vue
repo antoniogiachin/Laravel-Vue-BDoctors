@@ -62,6 +62,7 @@ export default {
                 
             }
         })
+
       },
 
     },
@@ -70,6 +71,7 @@ export default {
         this.checkAuth();
 
         this.getDoctors();
+
     }
 }
 </script>
