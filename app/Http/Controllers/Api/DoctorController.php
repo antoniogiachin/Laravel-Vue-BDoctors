@@ -113,6 +113,21 @@ class DoctorController extends Controller
     public function doctorByVote($average)
     {
         $doctors = Doctor::with(["reviews", "user", "specialties", "leads"])->get();
+        //immagini in home
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filterByVote = $doctors->filter(function ($doctor) use ($average) {
             $averageVote = null;
             $sum = 0;

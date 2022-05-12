@@ -4,7 +4,6 @@
         <div>
             <div id="jumbotron" class="position-relative">
                 <form>
-
                     <div class="row row-no-gutter justify-content-center px-2">
 
 
@@ -12,7 +11,7 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-12 col-lg-9 mb-2 mb-lg-0">
-                                    <input type="text" class="form-control" placeholder="Cerca il tuo medico" v-model="ricerca" >
+                                    <input type="text" class="form-control" placeholder="Digita il nome del medico" v-model="ricerca" >
                                 </div>
 
                                 <div class="col-12 col-lg-3">
@@ -33,7 +32,7 @@
                                     <ul class="d-flex flex-wrap filters-list">
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault" >
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">5 <i class="fa-solid fa-star"></i></span>
                                                 </label>
@@ -41,7 +40,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault" >
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">4+ <i class="fa-solid fa-star"></i></span>
                                                 </label>
@@ -49,7 +48,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault" >
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">3+ <i class="fa-solid fa-star"></i></span>
                                                 </label>
@@ -57,7 +56,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" >
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">2+ <i class="fa-solid fa-star"></i></span>
                                                 </label>
@@ -65,7 +64,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" >
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">1+ <i class="fa-solid fa-star"></i></span>
                                                 </label>
@@ -108,7 +107,10 @@
 
 
                     </div>
+                    <div class="row row-no-gutter justify-content-center px-2">
 
+                        <SelectSpecialty :specialtiesList="specialtiesList" class="mt-4"/>
+                    </div>
                 </form>
             </div>
 
@@ -118,6 +120,12 @@
 
             <div id="container" class="col-12 p-4 p-lg-4 container">
 
+                <div class="row">
+                    <div class="col my-3">
+                        <h2>Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug
+                            }}</span></h2>
+                    </div>
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
 
                     <!-- CARD 1 -->
@@ -156,13 +164,16 @@
 </template>
 
 <script>
+import SelectSpecialty from '../components/SelectSpecialty';
 export default {
     name: 'SearchMain',
-
+    components: { SelectSpecialty },
     data() {
         return {
             doctors: [],
             ricerca: '',
+            specialtiesList: [],
+            checkedReview : [],
         }
     },
 
@@ -170,33 +181,80 @@ export default {
 
         getDoctors() {
 
-            axios.get('/api/docs/' + this.$route.params.slug)
-            .then((response) => {
-              console.log(response)
-              this.doctors = response.data.results;
-              console.log(this.doctors);
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });
+            axios.get("/api/docs/" + this.$route.params.slug)
+                .then((response) => {
+                    console.log(response);
+                    this.doctors = response.data.results;
+                    console.log(this.doctors);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function() {
+                    // always executed
+                });
 
         },
 
+        //ottengo tutte le specializzazioni
+        getSpecialties() {
+
+            axios.get("/api")
+                .then((response) => {
+
+                    this.specialtiesList = response.data.results;
+
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function() {
+                    // always executed
+                });
+
+        },
+        // dottori per media voti
+        doctorsByVote(){
+            this.doctors = [];
+            if(this.checkedReview.length > 0){
+                this.checkedReview.forEach(check =>{
+                    axios.get("/api/doctors/filter/" + check)
+                        .then(res => {
+                            console.log(this.doctors);
+                            res.data.results.forEach(doctor=>{
+                                this.doctors.push(doctor);
+                            });
+                            console.log(res.data);
+                        });
+                })
+            } else {
+                this.getDoctors();
+            }
+        }
     },
 
     mounted() {
-        this.getDoctors();
+        // this.getDoctors();
+        this.getSpecialties();
     },
     computed:{
         filteredDoctors: function(){
             return this.doctors.filter(doc =>{
                 let query = this.ricerca.toLowerCase().replaceAll(' ', "");
-                return doc.slug.replaceAll("-", '').includes(query);
+                if(this.$route.params.slug != ''){
+                    return !!doc.specialties.some(specialty => specialty.slug === this.$route.params.slug && doc.slug.replaceAll("-", '').includes(query));
+                } else{
+                    return doc.slug.replaceAll("-", '').includes(query);
+                }
             })
+        }
+    },
+    watch:{
+        checkedReview: {
+            immediate: true,
+            handler: 'doctorsByVote',
         }
     }
 }
