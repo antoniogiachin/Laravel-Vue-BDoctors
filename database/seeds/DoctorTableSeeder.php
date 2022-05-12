@@ -37,7 +37,7 @@ class DoctorTableSeeder extends Seeder
           $newDoctor->phone = $faker->phoneNumber;
           $newDoctor->medical_address = $faker->address;
           $newDoctor->cv = 'doc_cv/' . $faker->image('public/storage/doc_cv',400,600, null, false);
-          $newDoctor->photo = 'doc_img/' . $faker->image('public/storage/doc_img',400,300, null, true) ;
+          $newDoctor->photo = 'doc_img/' . $faker->image('public/storage/doc_img',400,300, null, false) ;
           $newDoctor->performance = $faker->paragraph;
           $newDoctor->slug = $faker->unique()->lexify('slug-????');
           $newDoctor->user_id = $newUser->id;
