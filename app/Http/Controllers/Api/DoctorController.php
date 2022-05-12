@@ -69,9 +69,9 @@ class DoctorController extends Controller
     }
 
     //funzione provvisoria per ottenere i dottori nella HOME
-    public function getAllDoctors()
+    public function getAllDoctors($specialtySlug = null)
     {
-        $doctors = Doctor::with(["user", "specialties"])->get();
+        $doctors = Doctor::with(["user", "specialties", "leads", "reviews"])->get();
 
         //immagini in home
         $doctors->each(function ($doctor) {
@@ -88,11 +88,26 @@ class DoctorController extends Controller
                 $doctor->cv = "Nessun Curriculum presente!";
             }
         });
+//        dd($specialtySlug);
+        if(!isset($specialtySlug)){
+            return response()->json([
+                "results" => $doctors,
+                "success" => true,
+            ]);
+        } else {
+            $doctorsBySpecialty = $doctors->filter(function($doctor) use($specialtySlug){
+                if($doctor->specialties->contains('slug', $specialtySlug)){
+                    return true;
+                } else {
+                    return false;
+                }
+            })->values()->all();
 
-        return response()->json([
-            "results" => $doctors,
-            "success" => true,
-        ]);
+            return response()->json([
+                "results" => $doctorsBySpecialty,
+                "success" => true,
+            ]);
+        }
     }
 
     public function doctorByVote($average)
@@ -141,7 +156,8 @@ class DoctorController extends Controller
             foreach ($doctor->reviews as $review){
                 $reviewCounter++;
             }
-            if($rangeMax == 10){
+
+            if($rangeMin == 10){
                 if($reviewCounter >= $rangeMin ){
                     return true;
                 } else {
@@ -153,6 +169,7 @@ class DoctorController extends Controller
                 } else{
                     return false;
                 }
+
             }
         })->values()->all();
 

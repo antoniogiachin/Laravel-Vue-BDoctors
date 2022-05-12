@@ -2,8 +2,8 @@
   <main>
 
     <div id="main">
-      
-      <div id="jumbotron">  
+
+      <div id="jumbotron">
         <!-- TESTO JUMBOTRON -->
         <div class="container text-center text-white">
           <h2>Trova lo specialista che fa per te</h2>
@@ -26,15 +26,15 @@
                 <div class="row justify-content-center">
                   <!-- SELECT SPECIALIZZAZIONI -->
                   <div class="col-12 col-lg-8 mb-2 mb-lg-0">
-                    <select class="form-select p-2">
-                      <option selected>Scegli una specializzazione</option>
-                      <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.id"> {{specialty.name}} </option>
+                    <select class="form-select p-2" v-model="selectedSpecialty" >
+                      <option selected disabled value="">Scegli una specializzazione</option>
+                      <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.slug" > {{specialty.name}} </option>
                     </select>
                   </div>
 
                   <!-- BUTTON CERCA -->
                   <div class="col-12 col-lg-4">
-                    <button type="submit" class="btn-specialty btn p-2">Cerca</button>
+                      <router-link id="advanced-search" class="btn btn-specialty p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Cerca</router-link>
                   </div>
 
                 </div>
@@ -47,13 +47,13 @@
         </div>
 
         <!-- RICERCA AVANZATA -->
-        <div class="container">
+<!--        <div class="container">
           <div class="row justify-content-center mt-5">
               <div class="col-10 col-lg-6 text-center">
-                  <router-link id="advanced-search" class="btn btn-success p-2" :to="{name: 'search'}">Ricerca avanzata</router-link>
+                  <router-link id="advanced-search" class="btn btn-success p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Ricerca avanzata</router-link>
               </div>
           </div>
-        </div>
+        </div>-->
 
       </div>
 
@@ -82,24 +82,25 @@
     },
 
     data() {
-    
+
       return{
-      
+
         specialtiesList: [],
         docsList: [],
+        selectedSpecialty: '',
 
       };
-    
+
     },
-    
+
     methods: {
 
         //ottengo tutte le specializzazioni
         getSpecialties() {
-        
+
             axios.get('/api')
             .then((response) => {
-              
+
               this.specialtiesList = response.data.results;
 
             })
@@ -110,15 +111,15 @@
             .then(function () {
               // always executed
             });
-        
+
         },
 
         //ottengo tutti i dottori (PROVVISORIO)
         getDoctors() {
-    
+
             axios.get('/api/docs')
             .then((response) => {
-              
+
               this.docsList = response.data.results;
               console.log(this.docsList);
 
@@ -130,10 +131,10 @@
             .then(function () {
               // always executed
             });
-    
+
         },
 
-    }, 
+    },
 
     mounted() {
         this.getSpecialties();
