@@ -22938,8 +22938,6 @@ __webpack_require__.r(__webpack_exports__);
 module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
-
-
 /***/ })
 
 /******/ });
