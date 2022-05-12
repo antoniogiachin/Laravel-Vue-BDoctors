@@ -156,6 +156,7 @@ class DoctorController extends Controller
             foreach ($doctor->reviews as $review){
                 $reviewCounter++;
             }
+
             if($rangeMin == 10){
                 if($reviewCounter >= $rangeMin ){
                     return true;
@@ -168,6 +169,7 @@ class DoctorController extends Controller
                 } else{
                     return false;
                 }
+
             }
         })->values()->all();
 
