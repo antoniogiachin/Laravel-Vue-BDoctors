@@ -2167,7 +2167,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specialtiesList: [],
-      docsList: []
+      docsList: [],
+      selectedSpecialty: ''
     };
   },
   methods: {
@@ -2470,49 +2471,37 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       doctors: [],
-      filteredDoctors: [],
-      ricerca: '',
-      doc: '',
-      filter: ''
+      ricerca: ''
     };
   },
   methods: {
     getDoctors: function getDoctors() {
       var _this = this;
 
-      axios.get('/api/docs').then(function (response) {
+      axios.get('/api/docs/' + this.$route.params.slug).then(function (response) {
         console.log(response);
         _this.doctors = response.data.results;
-        _this.filteredDoctors = response.data.results;
         console.log(_this.doctors);
       })["catch"](function (error) {
         // handle error
         console.log(error);
       }).then(function () {// always executed
       });
-    },
-    docFilter: function docFilter() {
-      //utilizzando il contenuto della barra di ricerca filtra i dottori
-      this.filteredDoctors = [];
-
-      for (var i = 0; i < this.doctors.length; i++) {
-        this.doc = this.doctors[i].slug.replace('-', '');
-        this.filter = this.ricerca.toLowerCase().replace(' ', '');
-
-        if (this.filter != '' && this.doc.includes(this.filter)) {
-          this.filteredDoctors.push(this.doctors[i]);
-        } else if (!this.filter) {
-          for (var _i = 0; _i < this.doctors.length; _i++) {
-            if (this.filteredDoctors.length < this.doctors.length) {
-              this.filteredDoctors.push(this.doctors[_i]);
-            }
-          }
-        }
-      }
     }
   },
   mounted: function mounted() {
     this.getDoctors();
+  },
+  computed: {
+    filteredDoctors: function filteredDoctors() {
+      var _this2 = this;
+
+      return this.doctors.filter(function (doc) {
+        var query = _this2.ricerca.toLowerCase().replaceAll(' ', "");
+
+        return doc.slug.replaceAll("-", '').includes(query);
+      });
+    }
   }
 });
 
@@ -4992,18 +4981,52 @@ var render = function () {
                         [
                           _c(
                             "select",
-                            { staticClass: "form-select p-2" },
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selectedSpecialty,
+                                  expression: "selectedSpecialty",
+                                },
+                              ],
+                              staticClass: "form-select p-2",
+                              on: {
+                                change: function ($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function (o) {
+                                      return o.selected
+                                    })
+                                    .map(function (o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.selectedSpecialty = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                              },
+                            },
                             [
-                              _c("option", { attrs: { selected: "" } }, [
-                                _vm._v("Scegli una specializzazione"),
-                              ]),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    selected: "",
+                                    disabled: "",
+                                    value: "",
+                                  },
+                                },
+                                [_vm._v("Scegli una specializzazione")]
+                              ),
                               _vm._v(" "),
                               _vm._l(_vm.specialtiesList, function (specialty) {
                                 return _c(
                                   "option",
                                   {
                                     key: specialty.id,
-                                    domProps: { value: specialty.id },
+                                    domProps: { value: specialty.slug },
                                   },
                                   [_vm._v(" " + _vm._s(specialty.name) + " ")]
                                 )
@@ -5014,31 +5037,31 @@ var render = function () {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(1),
+                      _c(
+                        "div",
+                        { staticClass: "col-12 col-lg-4" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-specialty p-2",
+                              attrs: {
+                                id: "advanced-search",
+                                to: {
+                                  name: "search",
+                                  params: { slug: _vm.selectedSpecialty },
+                                },
+                              },
+                            },
+                            [_vm._v("Cerca")]
+                          ),
+                        ],
+                        1
+                      ),
                     ]),
                   ]
                 ),
               ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row justify-content-center mt-5" }, [
-              _c(
-                "div",
-                { staticClass: "col-10 col-lg-6 text-center" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-success p-2",
-                      attrs: { id: "advanced-search", to: { name: "search" } },
-                    },
-                    [_vm._v("Ricerca avanzata")]
-                  ),
-                ],
-                1
-              ),
             ]),
           ]),
         ]),
@@ -5060,18 +5083,6 @@ var staticRenderFns = [
       _c("p", [_vm._v("Prenota la tua visita")]),
       _vm._v(" "),
       _c("p", [_vm._v("Cerca uno specialista adesso")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4" }, [
-      _c(
-        "button",
-        { staticClass: "btn-specialty btn p-2", attrs: { type: "submit" } },
-        [_vm._v("Cerca")]
-      ),
     ])
   },
 ]
@@ -5268,15 +5279,12 @@ var render = function () {
                             },
                             domProps: { value: _vm.ricerca },
                             on: {
-                              input: [
-                                function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.ricerca = $event.target.value
-                                },
-                                _vm.docFilter,
-                              ],
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.ricerca = $event.target.value
+                              },
                             },
                           }),
                         ]
@@ -22755,7 +22763,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'single-doctor',
     component: _pages_SingleDoctor__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/search',
+    path: '/search/:slug',
     name: 'search',
     component: _pages_Search__WEBPACK_IMPORTED_MODULE_4__["default"]
   }]
@@ -22927,9 +22935,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-module.exports = __webpack_require__(/*! C:\Users\morga\onedrive\desktop\Progetto finale Boolean\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
-
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

@@ -25,7 +25,7 @@ const router = new VueRouter(
                 component: SingleDoctor
             },
             {
-                path: '/search',
+                path: '/search/:slug',
                 name: 'search',
                 component: Search
             },
