@@ -2843,6 +2843,7 @@ __webpack_require__.r(__webpack_exports__);
       name: '',
       reviewText: '',
       goldStarValue: '',
+      goldStarArray: [],
       success: false
     };
   },
@@ -2851,7 +2852,20 @@ __webpack_require__.r(__webpack_exports__);
       this.arrow = !this.arrow;
     },
     goldStar: function goldStar(index) {
-      this.goldStarValue = index + 1;
+      this.goldStarValue = index + 1; //se goldStarArray non include il valore di goldStarValue
+
+      if (!this.goldStarArray.includes(this.goldStarValue)) {
+        // ciclo for di i uguale o minore al value di goldStarValue
+        for (var i = 1; i <= this.goldStarValue; i++) {
+          //se goldStarArray non include già il valore di i
+          if (!this.goldStarArray.includes(i)) {
+            //lo pusho nell'array
+            this.goldStarArray.push(i);
+          }
+        }
+      } else {
+        this.goldStarArray.splice(this.goldStarValue);
+      }
     },
     sendReview: function sendReview() {
       var _this = this;
@@ -5819,7 +5833,7 @@ var render = function () {
               { staticClass: "alert alert-success mt-4 p-2 text-center" },
               [
                 _c("i", { staticClass: "fa-solid fa-circle-check" }),
-                _vm._v(" Email inviata con successo!      \n      "),
+                _vm._v(" Messaggio inviato con successo!      \n      "),
               ]
             )
           : _vm._e(),
@@ -6137,10 +6151,9 @@ var render = function () {
                     [
                       _c("i", {
                         staticClass: "fa-star",
-                        class:
-                          i === _vm.goldStarValue
-                            ? "fa-solid checked"
-                            : "fa-regular",
+                        class: _vm.goldStarArray.includes(i)
+                          ? "fa-solid checked"
+                          : "fa-regular",
                       }),
                     ]
                   )
@@ -22927,9 +22940,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-module.exports = __webpack_require__(/*! C:\Users\morga\onedrive\desktop\Progetto finale Boolean\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
-
+module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

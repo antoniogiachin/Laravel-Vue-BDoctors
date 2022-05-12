@@ -39,7 +39,7 @@
         <button type="submit" class="px-4 mt-3 text-white btn btn-success">{{sendingInProgress? 'Invio in corso...':'Invia'}}</button>
 
         <div v-if="success" class="alert alert-success mt-4 p-2 text-center">
-          <i class="fa-solid fa-circle-check"></i> Email inviata con successo!      
+          <i class="fa-solid fa-circle-check"></i> Messaggio inviato con successo!      
         </div>
 
     </form>

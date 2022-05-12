@@ -18,7 +18,7 @@
 
                 <input @click="goldStar(index)" v-for="(i, index) in 5" :key="i" type="radio" :id="'star' + i" name="vote" :value="i" v-model="voteValue">
                 <label v-for="i in 5" :key="'a' + i" :for="'star' + i">
-                  <i class="fa-star" :class="(i === goldStarValue)? 'fa-solid checked' : 'fa-regular' "></i>
+                  <i class="fa-star" :class="(goldStarArray.includes(i))? 'fa-solid checked' : 'fa-regular' "></i>
                 </label>
 
               </div>
@@ -74,6 +74,7 @@
           name: '',
           reviewText: '',
           goldStarValue: '',
+          goldStarArray: [],
           success: false,
 
       }
@@ -85,9 +86,30 @@
         this.arrow = !this.arrow;
       },
 
+      
       goldStar(index) {
+        
         this.goldStarValue = index + 1;
+
+        //se goldStarArray non include il valore di goldStarValue
+        if(!this.goldStarArray.includes(this.goldStarValue)) {
+            
+            // ciclo for di i uguale o minore al value di goldStarValue
+            for (let i = 1; i <= this.goldStarValue; i++) {
+
+                //se goldStarArray non include già il valore di i
+                if(!this.goldStarArray.includes(i)){
+
+                  //lo pusho nell'array
+                  this.goldStarArray.push(i);
+                }
+            }
+        } else {
+
+            this.goldStarArray.splice(this.goldStarValue);
+        }
       },
+      
 
       sendReview() {
       
