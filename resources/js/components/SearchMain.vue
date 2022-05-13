@@ -75,7 +75,7 @@
                                     <ul class="d-flex flex-wrap filters-list">
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="10" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">> 10</span>
                                                 </label>
@@ -83,7 +83,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">5 - 10</span>
                                                 </label>
@@ -91,7 +91,7 @@
                                         </li>
                                         <li class="ms-2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="0" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     <span class="rating-stars">&lt; 5</span>
                                                 </label>
@@ -124,6 +124,7 @@
                     <div class="col my-3">
                         <h2>Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug
                             }}</span></h2>
+                        <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
@@ -164,7 +165,8 @@
 </template>
 
 <script>
-import SelectSpecialty from '../components/SelectSpecialty';
+import SelectSpecialty from "../components/SelectSpecialty";
+
 export default {
     name: 'SearchMain',
     components: { SelectSpecialty },
@@ -174,6 +176,9 @@ export default {
             ricerca: '',
             specialtiesList: [],
             checkedReview : [],
+            checkedNumberReview:[],
+            // rangeMax: null,
+            notFound: false,
         }
     },
 
@@ -183,13 +188,10 @@ export default {
 
             axios.get("/api/docs/" + this.$route.params.slug)
                 .then((response) => {
-                    console.log(response);
                     this.doctors = response.data.results;
-                    console.log(this.doctors);
                 })
                 .catch(function(error) {
                     // handle error
-                    console.log(error);
                 })
                 .then(function() {
                     // always executed
@@ -208,35 +210,142 @@ export default {
                 })
                 .catch(function(error) {
                     // handle error
-                    console.log(error);
                 })
                 .then(function() {
                     // always executed
                 });
 
         },
-        // dottori per media voti
-        doctorsByVote(){
+        // filtro dottori
+        doctorsFilter(){
+           this.doctors = [];
+           this.checkedReview.forEach( check =>{
+               const params = {
+                   average : check,
+                   rangeMin : this.rangeMin,
+               }
+               axios.get('/api/filter', {params}).then( res => {
+                   /*this.doctors = res.data.results;
+                   console.log(this.doctors);*/
+                   res.data.results.forEach( doctor => {
+                       if(!this.doctors.some( doc => doc.id === doctor.id)){
+                           this.doctors.push(doctor);
+                       }
+                   })
+               })
+           })
+        },
+        doctorsNumberFilter(){
             this.doctors = [];
-            if(this.checkedReview.length > 0){
-                this.checkedReview.forEach(check =>{
-                    axios.get("/api/doctors/filter/" + check)
-                        .then(res => {
-                            console.log(this.doctors);
-                            res.data.results.forEach(doctor=>{
+            this.notFound = false;
+            this.checkedNumberReview.forEach( numb => {
+                const params = {
+                    average : this.average,
+                    rangeMin: parseInt(numb),
+                }
+                axios.get('/api/filter', {params}).then( res => {
+                    if(res.data.success == false){
+                        this.notFound = true;
+                    } else {
+                        console.log(res.data.results);
+                        res.data.results.forEach( doctor => {
+                            if(!this.doctors.some( doc => doc.id == doctor.id)){
                                 this.doctors.push(doctor);
-                            });
-                            console.log(res.data);
-                        });
+                            }
+                        })
+                    }
                 })
+            })
+
+        },
+        filterDoctors() {
+            this.doctors = [];
+            // selezionati entrambi
+            if(this.checkedReview.length > 0 && this.checkedNumberReview.length > 0 ){
+                const paramsArrObj = [];
+                if(this.checkedReview.length > this.checkedNumberReview.length){
+                    this.checkedReview.forEach( (check, index) => {
+                        let averageSet = check;
+                        let rangeMinSet = this.checkedNumberReview[index];
+                        if( rangeMinSet == undefined){
+                            rangeMinSet = this.checkedNumberReview[index - index];
+                        }
+                        let paramsObj = {
+                            average : averageSet,
+                            rangeMin : rangeMinSet,
+                        }
+                        paramsArrObj.push(paramsObj);
+                        console.log(paramsArrObj);
+                        paramsArrObj.forEach( objParams => {
+                            const params = {
+                                average : objParams.average,
+                                rangeMin : objParams.rangeMin,
+                            }
+                            axios.get('/api/filter', {params}).then( res =>{
+                                if(res.data.success == true){
+                                    // console.log(res.data.results);
+                                    res.data.results.forEach( doctor =>{
+                                        if(!this.doctors.some( doc => doc.id == doctor.id)){
+                                            this.doctors.push(doctor);
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                    });
+                } else {
+                    this.checkedNumberReview.forEach( (check, index) => {
+                        let rangeMinSet = check;
+                        let averageSet = this.checkedReview[index];
+                        if( averageSet == undefined){
+                            averageSet = this.checkedReview[index - index];
+                        }
+                        let paramsObj = {
+                            average : averageSet,
+                            rangeMin : rangeMinSet,
+                        }
+                        paramsArrObj.push(paramsObj);
+                        console.log(paramsArrObj);
+                        paramsArrObj.forEach( objParams => {
+                            const params = {
+                                average : objParams.average,
+                                rangeMin : objParams.rangeMin,
+                            }
+                            axios.get('/api/filter', {params}).then( res =>{
+                                if(res.data.success == true){
+                                    res.data.results.forEach( doctor =>{
+                                        // console.log(res.data.results);
+                                        if(!this.doctors.some( doc => doc.id == doctor.id)){
+                                            this.doctors.push(doctor);
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                    });
+                }
+            } else if (this.checkedReview.length > 0 && this.checkedNumberReview.length == 0){
+                // selezionato solo media voto
+                this.doctors = [];
+                //funcione per solo media
+                this.doctorsFilter();
+            } else if (this.checkedReview.length == 0 && this.checkedNumberReview.length > 0){
+                //selezionato solo numero recensioni
+                this.doctors = [];
+                // funzione per solo numer rec
+                this.doctorsNumberFilter();
             } else {
+                this.doctor =[];
                 this.getDoctors();
             }
+
         }
+
+
     },
 
     mounted() {
-        // this.getDoctors();
+        this.getDoctors();
         this.getSpecialties();
     },
     computed:{
@@ -244,18 +353,22 @@ export default {
             return this.doctors.filter(doc =>{
                 let query = this.ricerca.toLowerCase().replaceAll(' ', "");
                 if(this.$route.params.slug != ''){
-                    return !!doc.specialties.some(specialty => specialty.slug === this.$route.params.slug && doc.slug.replaceAll("-", '').includes(query));
+                    return !!doc.specialties.some(specialty => specialty.slug == this.$route.params.slug && doc.slug.replaceAll("-", '').includes(query));
                 } else{
                     return doc.slug.replaceAll("-", '').includes(query);
                 }
             })
-        }
+        },
     },
     watch:{
         checkedReview: {
             immediate: true,
-            handler: 'doctorsByVote',
-        }
+            handler: 'filterDoctors',
+        },
+        checkedNumberReview: {
+            immediate: true,
+            handler: 'filterDoctors',
+        },
     }
 }
 </script>

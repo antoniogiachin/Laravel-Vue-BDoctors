@@ -2479,6 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchMain',
@@ -2490,7 +2491,10 @@ __webpack_require__.r(__webpack_exports__);
       doctors: [],
       ricerca: '',
       specialtiesList: [],
-      checkedReview: []
+      checkedReview: [],
+      checkedNumberReview: [],
+      // rangeMax: null,
+      notFound: false
     };
   },
   methods: {
@@ -2498,12 +2502,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/docs/" + this.$route.params.slug).then(function (response) {
-        console.log(response);
         _this.doctors = response.data.results;
-        console.log(_this.doctors);
-      })["catch"](function (error) {
-        // handle error
-        console.log(error);
+      })["catch"](function (error) {// handle error
       }).then(function () {// always executed
       });
     },
@@ -2513,47 +2513,174 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api").then(function (response) {
         _this2.specialtiesList = response.data.results;
-      })["catch"](function (error) {
-        // handle error
-        console.log(error);
+      })["catch"](function (error) {// handle error
       }).then(function () {// always executed
       });
     },
-    // dottori per media voti
-    doctorsByVote: function doctorsByVote() {
+    // filtro dottori
+    doctorsFilter: function doctorsFilter() {
       var _this3 = this;
 
       this.doctors = [];
-
-      if (this.checkedReview.length > 0) {
-        this.checkedReview.forEach(function (check) {
-          axios.get("/api/doctors/filter/" + check).then(function (res) {
-            console.log(_this3.doctors);
-            res.data.results.forEach(function (doctor) {
+      this.checkedReview.forEach(function (check) {
+        var params = {
+          average: check,
+          rangeMin: _this3.rangeMin
+        };
+        axios.get('/api/filter', {
+          params: params
+        }).then(function (res) {
+          /*this.doctors = res.data.results;
+          console.log(this.doctors);*/
+          res.data.results.forEach(function (doctor) {
+            if (!_this3.doctors.some(function (doc) {
+              return doc.id === doctor.id;
+            })) {
               _this3.doctors.push(doctor);
-            });
-            console.log(res.data);
+            }
           });
         });
+      });
+    },
+    doctorsNumberFilter: function doctorsNumberFilter() {
+      var _this4 = this;
+
+      this.doctors = [];
+      this.notFound = false;
+      this.checkedNumberReview.forEach(function (numb) {
+        var params = {
+          average: _this4.average,
+          rangeMin: parseInt(numb)
+        };
+        axios.get('/api/filter', {
+          params: params
+        }).then(function (res) {
+          if (res.data.success == false) {
+            _this4.notFound = true;
+          } else {
+            console.log(res.data.results);
+            res.data.results.forEach(function (doctor) {
+              if (!_this4.doctors.some(function (doc) {
+                return doc.id == doctor.id;
+              })) {
+                _this4.doctors.push(doctor);
+              }
+            });
+          }
+        });
+      });
+    },
+    filterDoctors: function filterDoctors() {
+      var _this5 = this;
+
+      this.doctors = []; // selezionati entrambi
+
+      if (this.checkedReview.length > 0 && this.checkedNumberReview.length > 0) {
+        var paramsArrObj = [];
+
+        if (this.checkedReview.length > this.checkedNumberReview.length) {
+          this.checkedReview.forEach(function (check, index) {
+            var averageSet = check;
+            var rangeMinSet = _this5.checkedNumberReview[index];
+
+            if (rangeMinSet == undefined) {
+              rangeMinSet = _this5.checkedNumberReview[index - index];
+            }
+
+            var paramsObj = {
+              average: averageSet,
+              rangeMin: rangeMinSet
+            };
+            paramsArrObj.push(paramsObj);
+            console.log(paramsArrObj);
+            paramsArrObj.forEach(function (objParams) {
+              var params = {
+                average: objParams.average,
+                rangeMin: objParams.rangeMin
+              };
+              axios.get('/api/filter', {
+                params: params
+              }).then(function (res) {
+                if (res.data.success == true) {
+                  // console.log(res.data.results);
+                  res.data.results.forEach(function (doctor) {
+                    if (!_this5.doctors.some(function (doc) {
+                      return doc.id == doctor.id;
+                    })) {
+                      _this5.doctors.push(doctor);
+                    }
+                  });
+                }
+              });
+            });
+          });
+        } else {
+          this.checkedNumberReview.forEach(function (check, index) {
+            var rangeMinSet = check;
+            var averageSet = _this5.checkedReview[index];
+
+            if (averageSet == undefined) {
+              averageSet = _this5.checkedReview[index - index];
+            }
+
+            var paramsObj = {
+              average: averageSet,
+              rangeMin: rangeMinSet
+            };
+            paramsArrObj.push(paramsObj);
+            console.log(paramsArrObj);
+            paramsArrObj.forEach(function (objParams) {
+              var params = {
+                average: objParams.average,
+                rangeMin: objParams.rangeMin
+              };
+              axios.get('/api/filter', {
+                params: params
+              }).then(function (res) {
+                if (res.data.success == true) {
+                  res.data.results.forEach(function (doctor) {
+                    // console.log(res.data.results);
+                    if (!_this5.doctors.some(function (doc) {
+                      return doc.id == doctor.id;
+                    })) {
+                      _this5.doctors.push(doctor);
+                    }
+                  });
+                }
+              });
+            });
+          });
+        }
+      } else if (this.checkedReview.length > 0 && this.checkedNumberReview.length == 0) {
+        // selezionato solo media voto
+        this.doctors = []; //funcione per solo media
+
+        this.doctorsFilter();
+      } else if (this.checkedReview.length == 0 && this.checkedNumberReview.length > 0) {
+        //selezionato solo numero recensioni
+        this.doctors = []; // funzione per solo numer rec
+
+        this.doctorsNumberFilter();
       } else {
+        this.doctor = [];
         this.getDoctors();
       }
     }
   },
   mounted: function mounted() {
-    // this.getDoctors();
+    this.getDoctors();
     this.getSpecialties();
   },
   computed: {
     filteredDoctors: function filteredDoctors() {
-      var _this4 = this;
+      var _this6 = this;
 
       return this.doctors.filter(function (doc) {
-        var query = _this4.ricerca.toLowerCase().replaceAll(' ', "");
+        var query = _this6.ricerca.toLowerCase().replaceAll(' ', "");
 
-        if (_this4.$route.params.slug != '') {
+        if (_this6.$route.params.slug != '') {
           return !!doc.specialties.some(function (specialty) {
-            return specialty.slug === _this4.$route.params.slug && doc.slug.replaceAll("-", '').includes(query);
+            return specialty.slug == _this6.$route.params.slug && doc.slug.replaceAll("-", '').includes(query);
           });
         } else {
           return doc.slug.replaceAll("-", '').includes(query);
@@ -2564,7 +2691,11 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     checkedReview: {
       immediate: true,
-      handler: 'doctorsByVote'
+      handler: 'filterDoctors'
+    },
+    checkedNumberReview: {
+      immediate: true,
+      handler: 'filterDoctors'
     }
   }
 });
@@ -5647,7 +5778,173 @@ var render = function () {
                         _vm._v(
                           "\n                                  Numero di recensioni:\n                                  "
                         ),
-                        _vm._m(6),
+                        _c(
+                          "ul",
+                          { staticClass: "d-flex flex-wrap filters-list" },
+                          [
+                            _c("li", { staticClass: "ms-2" }, [
+                              _c("div", { staticClass: "form-check" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.checkedNumberReview,
+                                      expression: "checkedNumberReview",
+                                    },
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "checkbox",
+                                    value: "10",
+                                    id: "flexCheckDefault",
+                                  },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.checkedNumberReview
+                                    )
+                                      ? _vm._i(_vm.checkedNumberReview, "10") >
+                                        -1
+                                      : _vm.checkedNumberReview,
+                                  },
+                                  on: {
+                                    change: function ($event) {
+                                      var $$a = _vm.checkedNumberReview,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = "10",
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.checkedNumberReview =
+                                              $$a.concat([$$v]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.checkedNumberReview = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.checkedNumberReview = $$c
+                                      }
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(6),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "ms-2" }, [
+                              _c("div", { staticClass: "form-check" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.checkedNumberReview,
+                                      expression: "checkedNumberReview",
+                                    },
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "checkbox",
+                                    value: "5",
+                                    id: "flexCheckDefault",
+                                  },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.checkedNumberReview
+                                    )
+                                      ? _vm._i(_vm.checkedNumberReview, "5") >
+                                        -1
+                                      : _vm.checkedNumberReview,
+                                  },
+                                  on: {
+                                    change: function ($event) {
+                                      var $$a = _vm.checkedNumberReview,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = "5",
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.checkedNumberReview =
+                                              $$a.concat([$$v]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.checkedNumberReview = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.checkedNumberReview = $$c
+                                      }
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(7),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "ms-2" }, [
+                              _c("div", { staticClass: "form-check" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.checkedNumberReview,
+                                      expression: "checkedNumberReview",
+                                    },
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "checkbox",
+                                    value: "0",
+                                    id: "flexCheckDefault",
+                                  },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.checkedNumberReview
+                                    )
+                                      ? _vm._i(_vm.checkedNumberReview, "0") >
+                                        -1
+                                      : _vm.checkedNumberReview,
+                                  },
+                                  on: {
+                                    change: function ($event) {
+                                      var $$a = _vm.checkedNumberReview,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = "0",
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.checkedNumberReview =
+                                              $$a.concat([$$v]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.checkedNumberReview = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.checkedNumberReview = $$c
+                                      }
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(8),
+                              ]),
+                            ]),
+                          ]
+                        ),
                       ]),
                     ]
                   ),
@@ -5685,6 +5982,12 @@ var render = function () {
                   _vm._v(_vm._s(_vm.$route.params.slug)),
                 ]),
               ]),
+              _vm._v(" "),
+              _vm.notFound
+                ? _c("p", { staticClass: "text-danger" }, [
+                    _vm._v("Nessun dottore trovato"),
+                  ])
+                : _vm._e(),
             ]),
           ]),
           _vm._v(" "),
@@ -5861,61 +6164,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "d-flex flex-wrap filters-list" }, [
-      _c("li", { staticClass: "ms-2" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckDefault" },
-            },
-            [_c("span", { staticClass: "rating-stars" }, [_vm._v("> 10")])]
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "ms-2" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckDefault" },
-            },
-            [_c("span", { staticClass: "rating-stars" }, [_vm._v("5 - 10")])]
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "ms-2" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", value: "", id: "flexCheckDefault" },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckDefault" },
-            },
-            [_c("span", { staticClass: "rating-stars" }, [_vm._v("< 5")])]
-          ),
-        ]),
-      ]),
-    ])
+    return _c(
+      "label",
+      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("> 10")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("5 - 10")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("< 5")])]
+    )
   },
 ]
 render._withStripped = true
