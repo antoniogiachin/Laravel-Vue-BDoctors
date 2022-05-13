@@ -2592,6 +2592,18 @@ __webpack_require__.r(__webpack_exports__);
               rangeMin: rangeMinSet
             };
             paramsArrObj.push(paramsObj);
+
+            if (paramsArrObj.length > 1) {
+              var reversed = [].concat(paramsArrObj).reverse();
+              paramsArrObj.forEach(function (res, index) {
+                var crossedParams = {
+                  average: res.average,
+                  rangeMin: reversed[index].average
+                };
+                paramsArrObj.push(crossedParams);
+              });
+            }
+
             console.log(paramsArrObj);
             paramsArrObj.forEach(function (objParams) {
               var params = {
@@ -2627,7 +2639,19 @@ __webpack_require__.r(__webpack_exports__);
               average: averageSet,
               rangeMin: rangeMinSet
             };
-            paramsArrObj.push(paramsObj);
+            paramsArrObj.push(paramsObj); // se maggiore di 1
+
+            if (paramsArrObj.length > 1) {
+              var reversed = [].concat(paramsArrObj).reverse();
+              paramsArrObj.forEach(function (res, index) {
+                var crossedParams = {
+                  average: reversed[index].average,
+                  rangeMin: res.rangeMin
+                };
+                paramsArrObj.push(crossedParams);
+              });
+            }
+
             console.log(paramsArrObj);
             paramsArrObj.forEach(function (objParams) {
               var params = {
