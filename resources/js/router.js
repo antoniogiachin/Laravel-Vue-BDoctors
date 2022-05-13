@@ -26,6 +26,7 @@ const router = new VueRouter({
             name: "search",
             component: Search,
         },
+        { path: "/:pathMatch(.*)*", name: "NotFound", component: Home },
     ],
 });
 

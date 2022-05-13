@@ -23611,6 +23611,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/:slug?/search/",
     name: "search",
     component: _pages_Search__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: _views_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
