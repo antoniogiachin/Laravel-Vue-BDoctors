@@ -23,6 +23,7 @@ class ReviewTableSeeder extends Seeder
                 $newReview->vote = $faker->numberBetween(0,5);
                 $newReview->review = $faker->paragraph;
                 $newReview->doctor_id = $doctor->id;
+                $newReview->email = $faker->email;
                 $newReview->save();
             }
         }

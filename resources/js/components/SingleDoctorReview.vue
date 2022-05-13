@@ -1,10 +1,10 @@
 <template>
   <div>
-      
+
       <div class="review">
 
           <div id="click-collapse" class="ms_row-info" data-bs-toggle="collapse" data-bs-target="#review-wrap" aria-expanded="false" aria-controls="review-wrap">
-            <h3 @click="changeArrow()">Scrivi una recensione <i class="fa-solid" :class="(arrow === true)? 'fa-angle-down' : 'fa-angle-up' "></i></h3> 
+            <h3 @click="changeArrow()">Scrivi una recensione <i class="fa-solid" :class="(arrow === true)? 'fa-angle-down' : 'fa-angle-up' "></i></h3>
           </div>
 
           <!-- FORM RECENSIONE -->
@@ -36,23 +36,29 @@
                 <input type="text" class="form-control" id="name" name="author" required placeholder="Scrivi il tuo nome" v-model="name">
               </div>
 
+               <!-- EMAIL -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">La tua email</label>
+                    <input type="email" class="form-control" id="email" name="email" required placeholder="Scrivi la tua email" v-model="email">
+                </div>
+
               <!-- TESTO RECENSIONE -->
               <div class="mb-3">
                 <label for="text-review" class="form-label">Scrivi la recensione</label>
                 <textarea class="form-control" id="text-review" name="review" required rows="3" v-model="reviewText"></textarea>
               </div>
-              
+
               <!-- BUTTON SUBMIT -->
               <button type="submit" class="btn btn-success text-white">Pubblica</button>
 
 
               <div v-if="success" class="alert alert-success mx-auto w-75 mt-4 p-2 text-center">
-                  <i class="fa-solid fa-circle-check"></i> Recensione pubblicata!      
+                  <i class="fa-solid fa-circle-check"></i> Recensione pubblicata!
               </div>
 
             </form>
 
-          </div>   
+          </div>
 
       </div>
   </div>
@@ -72,6 +78,7 @@
           voteValue: '',
           title: '',
           name: '',
+          email: '',
           reviewText: '',
           goldStarValue: '',
           goldStarArray: [],
@@ -86,14 +93,14 @@
         this.arrow = !this.arrow;
       },
 
-      
+
       goldStar(index) {
-        
+
         this.goldStarValue = index + 1;
 
         //se goldStarArray non include il valore di goldStarValue
         if(!this.goldStarArray.includes(this.goldStarValue)) {
-            
+
             // ciclo for di i uguale o minore al value di goldStarValue
             for (let i = 1; i <= this.goldStarValue; i++) {
 
@@ -109,15 +116,16 @@
             this.goldStarArray.splice(this.goldStarValue);
         }
       },
-      
+
 
       sendReview() {
-      
+
         axios.post('/api/review', {
 
           'doctor_id': this.currentDoctor.id,
           'vote': this.voteValue,
           'title': this.title,
+           'email' : this.email,
           'author': this.name,
           'review': this.reviewText,
 
@@ -135,15 +143,16 @@
               this.voteValue = '',
               this.title = '',
               this.name = '',
+              this.email = '',
               this.reviewText = '',
               this.goldStarValue = '',
               console.log(this.success);
             }
-        
+
         });
-      
+
       }
-      
+
     }
   }
 

@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->string('title');
             $table->string('author');
+            $table->string('email');
             $table->unsignedTinyInteger('vote');
             $table->text('review');
             $table->timestamps();

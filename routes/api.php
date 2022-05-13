@@ -29,6 +29,7 @@ Route::post("/review", [ReviewController::class, "store"]);
 // api reviews per dottore ordinate per data
 Route::get("/reviews/{doctorId}", [ReviewController::class, "index"]);
 
+
 //api per fascia voto
 /*Route::get("/doctors/filter/{average}", [
     DoctorController::class,
