@@ -3398,6 +3398,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       singleDoc: [],
+      reviewsList: [],
       authUser: window.authUser,
       userChecked: false
     };
@@ -3410,22 +3411,38 @@ __webpack_require__.r(__webpack_exports__);
         this.userChecked = false;
       }
     },
+    getReviews: function getReviews() {
+      var _this = this;
+
+      axios.get('/api/reviews/' + this.$route.params.slug).then(function (response) {
+        if (response.data.success) {
+          console.log(response.data.results);
+          console.log('ciao');
+          _this.reviewsList = response.data.results;
+          console.log(_this.reviewsList);
+        } else {
+          console.log('chiamata fallita');
+        }
+      });
+      console.log(this.reviewsList);
+    },
     //ottengo il singolo dottore
     getDoctors: function getDoctors() {
-      var _this = this;
+      var _this2 = this;
 
       var slug = this.$route.params.slug;
       axios.get('/api/doctors/' + slug).then(function (response) {
         if (response.data.success == false) {
           abort(404, 'not found');
         } else {
-          _this.singleDoc = response.data.results;
-          console.log(_this.singleDoc);
+          _this2.singleDoc = response.data.results;
         }
       });
+      this.getReviews();
     }
   },
   mounted: function mounted() {
+    console.log(this.$route);
     this.checkAuth();
     this.getDoctors();
   }
@@ -6914,7 +6931,7 @@ var render = function () {
                     _c(
                       "ul",
                       { staticClass: "prova" },
-                      _vm._l(_vm.singledoc.reviews, function (review, index) {
+                      _vm._l(_vm.reviews, function (review, index) {
                         return _c("li", { key: index }, [
                           _c("h4", [_vm._v(_vm._s(review.author))]),
                           _vm._v(" "),
@@ -7315,7 +7332,9 @@ var render = function () {
         attrs: { userChecked: _vm.userChecked, authUser: _vm.authUser },
       }),
       _vm._v(" "),
-      _c("SingleDoctorMain", { attrs: { singledoc: _vm.singleDoc } }),
+      _c("SingleDoctorMain", {
+        attrs: { singledoc: _vm.singleDoc, reviews: _vm.reviewsList },
+      }),
       _vm._v(" "),
       _c("HomeFooter"),
     ],
@@ -24011,7 +24030,6 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
 
 module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
 
