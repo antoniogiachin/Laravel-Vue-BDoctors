@@ -21,25 +21,26 @@
             <div class="row justify-content-center px-2">
 
               <!-- WRAPPER SELECT e BUTTON -->
-              <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4">
+<!--              <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4">-->
 
-                <div class="row justify-content-center">
-                  <!-- SELECT SPECIALIZZAZIONI -->
-                  <div class="col-12 col-lg-8 mb-2 mb-lg-0">
-                    <select class="form-select p-2" v-model="selectedSpecialty" >
-                      <option selected disabled value="">Scegli una specializzazione</option>
-                      <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.slug" > {{specialty.name}} </option>
-                    </select>
-                  </div>
+<!--                <div class="row justify-content-center">-->
+<!--                  &lt;!&ndash; SELECT SPECIALIZZAZIONI &ndash;&gt;-->
+<!--                  <div class="col-12 col-lg-8 mb-2 mb-lg-0">-->
+<!--                    <select class="form-select p-2" v-model="selectedSpecialty" >-->
+<!--                      <option selected disabled value="">Scegli una specializzazione</option>-->
+<!--                      <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.slug" > {{specialty.name}} </option>-->
+<!--                    </select>-->
+<!--                  </div>-->
 
-                  <!-- BUTTON CERCA -->
-                  <div class="col-12 col-lg-4">
-                      <router-link id="advanced-search" class="btn btn-specialty p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Cerca</router-link>
-                  </div>
+<!--                  &lt;!&ndash; BUTTON CERCA &ndash;&gt;-->
+<!--                  <div class="col-12 col-lg-4">-->
+<!--                      <router-link id="advanced-search" class="btn btn-specialty p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Cerca</router-link>-->
+<!--                  </div>-->
 
-                </div>
+<!--                </div>-->
 
-              </div>
+<!--              </div>-->
+                <SelectSpecialty :specialtiesList="specialtiesList"/>
 
             </div>
 
@@ -70,15 +71,15 @@
 <script>
 
   import HomeSponsorizzati from '../components/HomeSponsorizzati';
+  import SelectSpecialty from '../components/SelectSpecialty';
 
   export default {
 
       name: 'MainHomepage',
 
       components: {
-
-      HomeSponsorizzati,
-
+        SelectSpecialty,
+        HomeSponsorizzati,
     },
 
     data() {
