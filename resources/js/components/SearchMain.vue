@@ -275,6 +275,16 @@ export default {
                             rangeMin : rangeMinSet,
                         }
                         paramsArrObj.push(paramsObj);
+                        if(paramsArrObj.length > 1){
+                            const reversed = [...paramsArrObj].reverse();
+                            paramsArrObj.forEach( (res, index) =>{
+                                let crossedParams = {
+                                    average : res.average,
+                                    rangeMin: reversed[index].average,
+                                }
+                                paramsArrObj.push(crossedParams);
+                            })
+                        }
                         console.log(paramsArrObj);
                         paramsArrObj.forEach( objParams => {
                             const params = {
@@ -305,6 +315,17 @@ export default {
                             rangeMin : rangeMinSet,
                         }
                         paramsArrObj.push(paramsObj);
+                        // se maggiore di 1
+                        if(paramsArrObj.length > 1){
+                            const reversed = [...paramsArrObj].reverse();
+                            paramsArrObj.forEach( (res, index) =>{
+                                let crossedParams = {
+                                    average : reversed[index].average,
+                                    rangeMin: res.rangeMin,
+                                }
+                                paramsArrObj.push(crossedParams);
+                            })
+                        }
                         console.log(paramsArrObj);
                         paramsArrObj.forEach( objParams => {
                             const params = {

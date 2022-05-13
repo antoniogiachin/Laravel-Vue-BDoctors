@@ -166,6 +166,20 @@ class DoctorController extends Controller
     //per media voti
     public function doctorByAvg($average){
         $doctors = Doctor::with(["reviews","specialties","leads","user"])->get();
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filtered = $doctors->filter(function ($doctor) use($average){
             $sum = 0;
             $reviewCounter = 0;
@@ -204,6 +218,20 @@ class DoctorController extends Controller
     public function doctorByReviewsNumber($rangeMin)
     {
         $doctors = Doctor::with(["reviews", "specialties", "leads", "user"])->get();
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filtered = $doctors->filter(function ($doctor) use ($rangeMin) {
             $reviewCounter = 0;
             foreach ($doctor->reviews as $review) {
@@ -248,6 +276,20 @@ class DoctorController extends Controller
     // dottori media e n recensioni
     public function doctorByAll($average, $rangeMin){
         $doctors = Doctor::with(["reviews","specialties","leads","user"])->get();
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filtered = $doctors->filter(function($doctor) use($average, $rangeMin){
             $reviewCounter = 0;
             $sum = 0;
