@@ -6,11 +6,13 @@
       <div id="jumbotron">
         <!-- TESTO JUMBOTRON -->
         <div class="container text-center text-white">
-          <h2>Trova lo specialista che fa per te</h2>
+          
+          <p>Trova lo specialista che fa per te</p>
 
-          <p>Prenota la tua visita</p>
+          <h2>Prenota online la tua visita medica</h2>
 
           <p>Cerca uno specialista adesso</p>
+
         </div>
 
 
@@ -57,6 +59,75 @@
 
       </div>
 
+      <div id="user-guide">
+
+        <div class="container">
+
+          <div class="row row-cols-1 row-cols-lg-3">
+
+            <!-- COLONNA GUIDA 1 -->
+            <div class="col d-flex flex-column">
+
+                <!-- IMG GUIDA -->
+                <div class="img-guide text-center">
+                  <img src="../../images/search-frontend.png">
+                </div>
+
+                <!-- TESTO GUIDA -->
+                <div class="text-guide text-center">
+                  <h3>Cerca</h3>
+                  <p>
+                    Seleziona una specializzazione e cerca tra i nostri medici 
+                    che corrispondono alla tua richiesta.
+                  </p>
+                </div>
+                
+            </div>
+
+            <!-- COLONNA GUIDA 2 -->
+            <div class="col d-flex flex-column">
+
+                <!-- IMG GUIDA -->
+                <div class="img-guide text-center">
+                  <img src="../../images/medical-team.png">
+                </div>
+
+                <!-- TESTO GUIDA -->
+                <div class="text-guide text-center">
+                  <h3>Scegli il medico</h3>
+                  <p>
+                    Fai la scelta migliore per le tue esigenze. 
+                    Valuta il curriculum e le recensioni dei pazienti
+                  </p>
+                </div>
+                
+            </div>
+
+            <!-- COLONNA GUIDA 3 -->
+            <div class="col d-flex flex-column">
+
+                <!-- IMG GUIDA -->
+                <div class="img-guide text-center">
+                  <img src="../../images/doctor_book.png">
+                </div>
+
+                <!-- TESTO GUIDA -->
+                <div class="text-guide text-center">
+                  <h3>Prenota un appuntamento</h3>
+                  <p>
+                    Contatta il medico che hai scelto via telefono o scrivi un messaggio veloce.
+                    Bastano pochi secondi.
+                  </p>
+                </div>
+                
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
 
       <!-- SEZIONE DOTTORI SPONSORIZZATI -->
       <HomeSponsorizzati :doctors="docsList"></HomeSponsorizzati>
@@ -69,6 +140,7 @@
 
 <script>
 
+  import 'animate.css';
   import HomeSponsorizzati from '../components/HomeSponsorizzati';
 
   export default {
