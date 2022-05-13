@@ -22,11 +22,15 @@ const router = new VueRouter({
             component: SingleDoctor,
         },
         {
-            path: "/:slug?/search/",
+            path: "/search/:slug?",
             name: "search",
             component: Search,
         },
-        { path: "/:pathMatch(.*)*", name: "NotFound", component: Home },
+        {
+            path: "/:pathMatch(.*)*",
+            name: "NotFound",
+            component: Home,
+        },
     ],
 });
 

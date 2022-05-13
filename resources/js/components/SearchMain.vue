@@ -191,7 +191,7 @@ export default {
 
         getDoctors() {
 
-            axios.get("/api/docs/" + this.$route.params.slug)
+            axios.get("/api/docs" )
                 .then((response) => {
                     this.loading = false;
                     if(response.data.success == false ){
@@ -416,7 +416,7 @@ export default {
         filteredDoctors: function(){
             return this.doctors.filter(doc =>{
                 let query = this.ricerca.toLowerCase().replaceAll(' ', "");
-                if(this.$route.params.slug != ''){
+                if(this.$route.params.slug != 'tutte le specializzazioni'){
                     return !!doc.specialties.some(specialty => specialty.slug == this.$route.params.slug && doc.slug.replaceAll("-", '').includes(query));
                 } else{
                     return doc.slug.replaceAll("-", '').includes(query);

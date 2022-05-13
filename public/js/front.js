@@ -2118,10 +2118,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(animate_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/HomeSponsorizzati */ "./resources/js/components/HomeSponsorizzati.vue");
+/* harmony import */ var _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SelectSpecialty */ "./resources/js/components/SelectSpecialty.vue");
 //
 //
 //
@@ -2193,7 +2193,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 //
 //
 //
@@ -2270,10 +2269,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'MainHomepage',
   components: {
-
-    SelectSpecialty: _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_1__["default"],
-    HomeSponsorizzati: _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_0__["default"]
-
+    SelectSpecialty: _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_2__["default"],
+    HomeSponsorizzati: _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2616,7 +2613,7 @@ __webpack_require__.r(__webpack_exports__);
     getDoctors: function getDoctors() {
       var _this = this;
 
-      axios.get("/api/docs/" + this.$route.params.slug).then(function (response) {
+      axios.get("/api/docs").then(function (response) {
         _this.loading = false;
 
         if (response.data.success == false) {// this.notFound = true;
@@ -2861,7 +2858,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.doctors.filter(function (doc) {
         var query = _this7.ricerca.toLowerCase().replaceAll(' ', "");
 
-        if (_this7.$route.params.slug != '') {
+        if (_this7.$route.params.slug != 'tutte le specializzazioni') {
           return !!doc.specialties.some(function (specialty) {
             return specialty.slug == _this7.$route.params.slug && doc.slug.replaceAll("-", '').includes(query);
           });
@@ -2921,13 +2918,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "SelectSpecialty.vue",
+  name: "SelectSpecialty",
   props: {
     specialtiesList: Array
   },
   data: function data() {
     return {
-      selectedSpecialty: ''
+      selectedSpecialty: 'tutte le specializzazioni'
     };
   }
 });
@@ -3630,7 +3627,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 50px 0;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-1b8f5272] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .col[data-v-1b8f5272] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-1b8f5272] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-1b8f5272] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-1b8f5272] {\n  font-size: 0.9em;\n}", ""]);
 
 // exports
 
@@ -6555,8 +6552,10 @@ var render = function () {
               },
             },
             [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Scegli una specializzazione"),
+              _c("option", { attrs: { value: "tutte le specializzazioni" } }, [
+                _vm._v(
+                  "Tutti i Dottori - (oppure seleziona una specializzazione dal menu a tendina)"
+                ),
               ]),
               _vm._v(" "),
               _vm._l(_vm.specialtiesList, function (specialty) {
@@ -23836,7 +23835,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: "single-doctor",
     component: _pages_SingleDoctor__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: "/:slug?/search/",
+    path: "/search/:slug?",
     name: "search",
     component: _pages_Search__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
@@ -24012,9 +24011,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
-
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
