@@ -2480,6 +2480,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchMain',
@@ -2493,8 +2498,8 @@ __webpack_require__.r(__webpack_exports__);
       specialtiesList: [],
       checkedReview: [],
       checkedNumberReview: [],
-      // rangeMax: null,
-      notFound: false
+      notFound: false,
+      loading: false
     };
   },
   methods: {
@@ -2502,7 +2507,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/docs/" + this.$route.params.slug).then(function (response) {
-        _this.doctors = response.data.results;
+        _this.loading = false;
+
+        if (response.data.success == false) {// this.notFound = true;
+        } else {
+          // this.notFound = false;
+          _this.doctors = response.data.results;
+        }
       })["catch"](function (error) {// handle error
       }).then(function () {// always executed
       });
@@ -2522,6 +2533,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.doctors = [];
+      this.loading = true;
       this.checkedReview.forEach(function (check) {
         var params = {
           average: check,
@@ -2532,21 +2544,33 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           /*this.doctors = res.data.results;
           console.log(this.doctors);*/
-          res.data.results.forEach(function (doctor) {
-            if (!_this3.doctors.some(function (doc) {
-              return doc.id === doctor.id;
-            })) {
-              _this3.doctors.push(doctor);
-            }
-          });
+          _this3.loading = false;
+          console.log(res.data.success);
+
+          if (res.data.success == false) {// this.notFound = true;
+          } else {
+            // this.notFound = false;
+            res.data.results.forEach(function (doctor) {
+              if (!_this3.doctors.some(function (doc) {
+                return doc.id === doctor.id;
+              })) {
+                _this3.doctors.push(doctor);
+              }
+            });
+          }
         });
       });
+      /*if(this.filteredDoctors.length == 0){
+          this.notFound = true;
+      } else {
+          this.notFound = false;
+      }*/
     },
     doctorsNumberFilter: function doctorsNumberFilter() {
       var _this4 = this;
 
       this.doctors = [];
-      this.notFound = false;
+      this.loading = true;
       this.checkedNumberReview.forEach(function (numb) {
         var params = {
           average: _this4.average,
@@ -2555,9 +2579,11 @@ __webpack_require__.r(__webpack_exports__);
         axios.get('/api/filter', {
           params: params
         }).then(function (res) {
-          if (res.data.success == false) {
-            _this4.notFound = true;
+          _this4.loading = false;
+
+          if (res.data.success == false) {// this.notFound = true;
           } else {
+            // this.notFound = false;
             console.log(res.data.results);
             res.data.results.forEach(function (doctor) {
               if (!_this4.doctors.some(function (doc) {
@@ -2574,6 +2600,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       this.doctors = []; // selezionati entrambi
+
+      this.loading = true;
 
       if (this.checkedReview.length > 0 && this.checkedNumberReview.length > 0) {
         var paramsArrObj = [];
@@ -2598,7 +2626,7 @@ __webpack_require__.r(__webpack_exports__);
               paramsArrObj.forEach(function (res, index) {
                 var crossedParams = {
                   average: res.average,
-                  rangeMin: reversed[index].average
+                  rangeMin: reversed[index].rangeMin
                 };
                 paramsArrObj.push(crossedParams);
               });
@@ -2613,8 +2641,11 @@ __webpack_require__.r(__webpack_exports__);
               axios.get('/api/filter', {
                 params: params
               }).then(function (res) {
+                _this5.loading = false;
+
                 if (res.data.success == true) {
                   // console.log(res.data.results);
+                  // this.notFound = false;
                   res.data.results.forEach(function (doctor) {
                     if (!_this5.doctors.some(function (doc) {
                       return doc.id == doctor.id;
@@ -2622,6 +2653,7 @@ __webpack_require__.r(__webpack_exports__);
                       _this5.doctors.push(doctor);
                     }
                   });
+                } else {// this.notFound = true;
                 }
               });
             });
@@ -2661,7 +2693,10 @@ __webpack_require__.r(__webpack_exports__);
               axios.get('/api/filter', {
                 params: params
               }).then(function (res) {
+                _this5.loading = false;
+
                 if (res.data.success == true) {
+                  // this.notFound = false;
                   res.data.results.forEach(function (doctor) {
                     // console.log(res.data.results);
                     if (!_this5.doctors.some(function (doc) {
@@ -2670,6 +2705,7 @@ __webpack_require__.r(__webpack_exports__);
                       _this5.doctors.push(doctor);
                     }
                   });
+                } else {// this.notFound = true;
                 }
               });
             });
@@ -2689,6 +2725,19 @@ __webpack_require__.r(__webpack_exports__);
         this.doctor = [];
         this.getDoctors();
       }
+    },
+    setEmpty: function setEmpty() {
+      var _this6 = this;
+
+      // console.log('vuoto');
+      setTimeout(function () {
+        if (_this6.filteredDoctors.length == 0) {
+          console.log('vuoto');
+          _this6.notFound = true;
+        } else {
+          _this6.notFound = false;
+        }
+      }, 500);
     }
   },
   mounted: function mounted() {
@@ -2697,14 +2746,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredDoctors: function filteredDoctors() {
-      var _this6 = this;
+      var _this7 = this;
 
       return this.doctors.filter(function (doc) {
-        var query = _this6.ricerca.toLowerCase().replaceAll(' ', "");
+        var query = _this7.ricerca.toLowerCase().replaceAll(' ', "");
 
-        if (_this6.$route.params.slug != '') {
+        if (_this7.$route.params.slug != '') {
           return !!doc.specialties.some(function (specialty) {
-            return specialty.slug == _this6.$route.params.slug && doc.slug.replaceAll("-", '').includes(query);
+            return specialty.slug == _this7.$route.params.slug && doc.slug.replaceAll("-", '').includes(query);
           });
         } else {
           return doc.slug.replaceAll("-", '').includes(query);
@@ -2720,6 +2769,10 @@ __webpack_require__.r(__webpack_exports__);
     checkedNumberReview: {
       immediate: true,
       handler: 'filterDoctors'
+    },
+    filteredDoctors: {
+      immediate: true,
+      handler: 'setEmpty'
     }
   }
 });
@@ -6014,17 +6067,36 @@ var render = function () {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col my-3" }, [
-              _c("h2", [
-                _vm._v("Ecco tutti i dottori specializzati in "),
-                _c("span", { staticClass: "text-capitalize text-danger" }, [
-                  _vm._v(_vm._s(_vm.$route.params.slug)),
-                ]),
-              ]),
+              _vm.$route.params.slug
+                ? _c("h2", [
+                    _vm._v("Ecco tutti i dottori specializzati in "),
+                    _c("span", { staticClass: "text-capitalize text-danger" }, [
+                      _vm._v(_vm._s(_vm.$route.params.slug)),
+                    ]),
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _vm.notFound
                 ? _c("p", { staticClass: "text-danger" }, [
                     _vm._v("Nessun dottore trovato"),
                   ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.loading
+                ? _c(
+                    "div",
+                    { staticClass: "d-flex justify-content-center gap-3" },
+                    [
+                      _c("h2", { staticClass: "text-center" }, [
+                        _vm._v(" Caricamento in corso"),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "spinner-border",
+                        attrs: { role: "status" },
+                      }),
+                    ]
+                  )
                 : _vm._e(),
             ]),
           ]),
@@ -23526,18 +23598,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
+  mode: "history",
   routes: [{
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: _views_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/doctors/:slug',
-    name: 'single-doctor',
+    path: "/doctors/:slug",
+    name: "single-doctor",
     component: _pages_SingleDoctor__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/search/:slug',
-    name: 'search',
+    path: "/:slug?/search/",
+    name: "search",
     component: _pages_Search__WEBPACK_IMPORTED_MODULE_4__["default"]
   }]
 });
@@ -23707,8 +23779,6 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
-
 
 module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 

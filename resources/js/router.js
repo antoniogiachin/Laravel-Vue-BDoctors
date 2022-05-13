@@ -1,4 +1,3 @@
-
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -6,32 +5,28 @@ Vue.use(VueRouter);
 
 import Home from "./views/Home";
 import SingleDoctor from "./pages/SingleDoctor";
-import Search from "./pages/Search"
+import Search from "./pages/Search";
 
+const router = new VueRouter({
+    mode: "history",
 
-const router = new VueRouter(
-    {
-        mode:'history',
+    routes: [
+        {
+            path: "/",
+            name: "home",
+            component: Home,
+        },
+        {
+            path: "/doctors/:slug",
+            name: "single-doctor",
+            component: SingleDoctor,
+        },
+        {
+            path: "/:slug?/search/",
+            name: "search",
+            component: Search,
+        },
+    ],
+});
 
-        routes: [
-            {
-                path: '/',
-                name: 'home',
-                component: Home
-            },
-            {
-                path: '/doctors/:slug',
-                name: 'single-doctor',
-                component: SingleDoctor
-            },
-            {
-                path: '/search/:slug',
-                name: 'search',
-                component: Search
-            },
-
-        ]
-    }
-);
-
-export default router
+export default router;
