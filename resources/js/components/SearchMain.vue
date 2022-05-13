@@ -1,142 +1,136 @@
 <template>
     <main>
 
-        <div>
-            <div id="jumbotron" class="position-relative">
-                <form>
-                    <div class="row row-no-gutter justify-content-center px-2">
+      <div>
+          <div id="jumbotron" class="position-relative">
+              <form>
+                  <div class="row row-no-gutter justify-content-center px-2">
 
 
-                        <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline">
+                      <div id="spec-wrap" class="col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline">
 
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-lg-9 mb-2 mb-lg-0">
-                                    <input type="text" class="form-control" placeholder="Digita il nome del medico" v-model="ricerca" >
-                                </div>
+                          <div class="row justify-content-center">
+                              <div class="col-12 col-lg-9 mb-2 mb-lg-0">
+                                  <input type="text" class="form-control" placeholder="Digita il nome del medico" v-model="ricerca" >
+                              </div>
 
-                                <div class="col-12 col-lg-3">
+                              <div class="col-12 col-lg-3">
 
-                                    <button class="btn btn-specialty" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                                        Filtri
-                                    </button>
+                                  <button class="btn btn-specialty" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                      Filtri
+                                  </button>
 
-                            </div>
-                            </div>
-                        </div>
-                        <div class="d-inline collapse-container">
-
-
-                            <div class="collapse collapse-horizontal my-collapse" id="collapseWidthExample">
-                                <div class="card card-body">
-                                    Media voto:
-                                    <ul class="d-flex flex-wrap filters-list">
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault" >
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">5 <i class="fa-solid fa-star"></i></span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault" >
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">4+ <i class="fa-solid fa-star"></i></span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault" >
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">3+ <i class="fa-solid fa-star"></i></span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" >
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">2+ <i class="fa-solid fa-star"></i></span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedReview" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" >
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">1+ <i class="fa-solid fa-star"></i></span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    Numero di recensioni:
-                                    <ul class="d-flex flex-wrap filters-list">
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="10" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">> 10</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">5 - 10</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="ms-2">
-                                            <div class="form-check">
-                                                <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="0" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <span class="rating-stars">&lt; 5</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="d-inline collapse-container">
 
 
+                          <div class="collapse collapse-horizontal my-collapse" id="collapseWidthExample">
+                              <div class="card card-body">
+                                  Media voto:
+                                  <ul class="d-flex flex-wrap filters-list">
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault" >
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">5 <i class="fa-solid fa-star"></i></span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedReview" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault" >
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">4+ <i class="fa-solid fa-star"></i></span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedReview" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault" >
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">3+ <i class="fa-solid fa-star"></i></span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedReview" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" >
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">2+ <i class="fa-solid fa-star"></i></span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedReview" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" >
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">1+ <i class="fa-solid fa-star"></i></span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                  </ul>
+                                  Numero di recensioni:
+                                  <ul class="d-flex flex-wrap filters-list">
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="10" id="flexCheckDefault">
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">> 10</span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="5" id="flexCheckDefault">
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">5 - 10</span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                      <li class="ms-2">
+                                          <div class="form-check">
+                                              <input v-model="checkedNumberReview" class="form-check-input" type="checkbox" value="0" id="flexCheckDefault">
+                                              <label class="form-check-label" for="flexCheckDefault">
+                                                  <span class="rating-stars">&lt; 5</span>
+                                              </label>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
 
+                      </div>
 
-                    </div>
-                    <div class="row row-no-gutter justify-content-center px-2">
+                  </div>
+                  <div class="row row-no-gutter justify-content-center px-2">
 
-                        <SelectSpecialty :specialtiesList="specialtiesList" class="mt-4"/>
-                    </div>
-                </form>
-            </div>
+                      <SelectSpecialty :specialtiesList="specialtiesList" class="mt-4"/>
+                  </div>
+              </form>
+          </div>
 
+          <!-- CONTAINER CARD DOTTORI -->
+          <div id="container" class="col-12 p-4 p-lg-4 container">
 
+              <div class="row">
+                  <div class="col my-3">
+                      <h2>Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug
+                          }}</span></h2>
+                      <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
+                  </div>
+              </div>
 
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
+                  <!-- CARD 1 -->
+                  <div class="col" v-for="doctor in filteredDoctors" :key="doctor.id">
+                      <div class="card h-100">
 
+                          <!-- IMMAGINE DOTTORE -->
+                          <img :src="doctor.photo" class="card-img-top">
 
-            <div id="container" class="col-12 p-4 p-lg-4 container">
-
-                <div class="row">
-                    <div class="col my-3">
-                        <h2>Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug
-                            }}</span></h2>
-                        <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
-
-                    <!-- CARD 1 -->
-                    <div class="col" v-for="doctor in filteredDoctors" :key="doctor.id">
-                        <div class="card h-100">
-
-                            <img :src="doctor.photo" class="card-img-top">
-
-                            <div class="card-body">
-
+                          <div class="card-body">
                             <!-- NOME E COGNOME -->
                             <h5 class="card-title">
                                 {{doctor.user.name}} {{doctor.user.surname}}
@@ -152,14 +146,12 @@
 
                             <!-- LINK PROFILO DOTTORE -->
                             <router-link class="btn btn-primary text-white" :to="'/doctors/' + doctor.slug">Vai al profilo</router-link>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
   </main>
 </template>

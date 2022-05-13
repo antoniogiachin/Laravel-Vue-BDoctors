@@ -2118,10 +2118,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(animate_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/HomeSponsorizzati */ "./resources/js/components/HomeSponsorizzati.vue");
+/* harmony import */ var _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SelectSpecialty */ "./resources/js/components/SelectSpecialty.vue");
 //
 //
 //
@@ -2191,9 +2191,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-
 //
 //
 //
@@ -2270,10 +2267,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'MainHomepage',
   components: {
-
-    SelectSpecialty: _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_1__["default"],
-    HomeSponsorizzati: _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_0__["default"]
-
+    SelectSpecialty: _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_2__["default"],
+    HomeSponsorizzati: _components_HomeSponsorizzati__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2385,6 +2380,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HomeSponsorizzati',
@@ -2424,14 +2420,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/SelectSpecialty */ "./resources/js/components/SelectSpecialty.vue");
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3501,7 +3489,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/**** HEADER STYLE ****/\n#header[data-v-abcbf212] {\n  background-color: #4689CF;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n#nav-logo[data-v-abcbf212] {\n  color: #fff;\n}\n.my-btn-color[data-v-abcbf212] {\n  background-color: #5dade2;\n}\n#head-btn[data-v-abcbf212] {\n  max-width: 180px;\n  margin-left: auto;\n}\n.btn-reg[data-v-abcbf212] {\n  background-color: #ff895d;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-reg[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}\n.btn-login[data-v-abcbf212] {\n  background-color: #ecf0f1;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-login[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}", ""]);
+exports.push([module.i, "/**** HEADER STYLE ****/\n#header[data-v-abcbf212] {\n  background-color: #4689CF;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n#nav-logo[data-v-abcbf212] {\n  color: #fff;\n  text-shadow: 0px 0px 1px #212f3d;\n}\n.my-btn-color[data-v-abcbf212] {\n  background-color: #5dade2;\n}\n#head-btn[data-v-abcbf212] {\n  max-width: 180px;\n  margin-left: auto;\n}\n.btn-reg[data-v-abcbf212] {\n  background-color: #ff895d;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-reg[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}\n.btn-login[data-v-abcbf212] {\n  background-color: #ecf0f1;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-login[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}", ""]);
 
 // exports
 
@@ -3520,7 +3508,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-4f22a0a3] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron #spec-wrap[data-v-4f22a0a3] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-4f22a0a3] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-4f22a0a3] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-4f22a0a3] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .col[data-v-4f22a0a3] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-4f22a0a3] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-4f22a0a3] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-4f22a0a3] {\n  font-size: 0.9em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-4f22a0a3] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-4f22a0a3], #jumbotron .ms_title-jumbo h3[data-v-4f22a0a3] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-4f22a0a3] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-4f22a0a3] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-4f22a0a3] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-4f22a0a3] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-4f22a0a3] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-4f22a0a3] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-4f22a0a3] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-4f22a0a3] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-4f22a0a3] {\n  font-size: 0.9em;\n}", ""]);
 
 // exports
 
@@ -3539,7 +3527,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** DOTTORI SPONSORIZZATI STYLE *****/\n#sponsored-section[data-v-66263aad] {\n  background: linear-gradient(-180deg, hsl(206deg, 95%, 94%), #fff);\n  padding-top: 100px;\n  padding-bottom: 80px;\n}\nh2[data-v-66263aad] {\n  font-size: 1.6em;\n  text-align: center;\n  max-width: 180px;\n  background-color: #2e86c1;\n  padding: 6px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  margin-bottom: 0;\n  color: #fff;\n  border: 1px solid #2e86c1;\n  border-bottom: none;\n  box-shadow: 0px 0px 1px #000;\n}\n#sponsor-container[data-v-66263aad] {\n  background-color: #DBEDFD;\n  border-radius: 5px;\n  border-top-left-radius: 0;\n  box-shadow: 0px 0px 1px #000;\n  min-height: 400px;\n}\n#sponsor-container .img-card-wrap[data-v-66263aad] {\n  max-height: 150px;\n}\n#sponsor-container .img-card-wrap img[data-v-66263aad] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#sponsor-container .spec-list[data-v-66263aad] {\n  list-style: none;\n  padding-left: 0;\n}", ""]);
+exports.push([module.i, "/***** DOTTORI SPONSORIZZATI STYLE *****/\n#sponsored-section[data-v-66263aad] {\n  padding-top: 100px;\n  padding-bottom: 120px;\n  background: linear-gradient(0, hsl(206deg, 95%, 94%), #fff);\n}\nh2[data-v-66263aad] {\n  font-size: 1.6em;\n  text-align: center;\n  max-width: 180px;\n  background-color: #2e86c1;\n  padding: 6px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  margin-bottom: 0;\n  color: #fff;\n  border: 1px solid #2e86c1;\n  border-bottom: none;\n  box-shadow: 0px 0px 1px #000;\n}\n#sponsor-container[data-v-66263aad] {\n  background-color: #fff;\n  border-radius: 5px;\n  border-top-left-radius: 0;\n  box-shadow: 0px 0px 1px #bfc9ca;\n  min-height: 400px;\n}\n#sponsor-container .ms_card[data-v-66263aad] {\n  box-shadow: 0px 0px 1px #c3c3c3;\n}\n#sponsor-container .img-card-wrap[data-v-66263aad] {\n  max-height: 150px;\n}\n#sponsor-container .img-card-wrap img[data-v-66263aad] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#sponsor-container .card-title[data-v-66263aad] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #2b4660;\n  font-weight: 800;\n}\n#sponsor-container .spec-list[data-v-66263aad] {\n  margin-bottom: 8px;\n  color: #556;\n  list-style: none;\n  padding-left: 0;\n}\n#sponsor-container .card-text[data-v-66263aad] {\n  color: #556;\n}", ""]);
 
 // exports
 
@@ -3558,7 +3546,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-0ba9cfac] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .col[data-v-0ba9cfac] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-0ba9cfac] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-0ba9cfac] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-0ba9cfac] {\n  font-size: 0.9em;\n}\n.filter-item[data-v-0ba9cfac] {\n  width: 50%;\n}\n.filter-item p[data-v-0ba9cfac] {\n  display: inline-block;\n}\n.show[data-v-0ba9cfac] {\n  display: flex;\n  align-items: center;\n}\n.collapse-horizontal[data-v-0ba9cfac] {\n  max-height: 52px;\n}\n.row-no-gutter[data-v-0ba9cfac] {\n  --bs-gutter-x: 0;\n}\n.collapse-container[data-v-0ba9cfac] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  z-index: 2;\n  height: 101%;\n  margin-top: 17px;\n}\n.collapse-container .my-collapse[data-v-0ba9cfac] {\n  width: 250px;\n}\n.filters-list[data-v-0ba9cfac] {\n  list-style-type: none;\n  font-size: 12px;\n}\n.rating-stars i[data-v-0ba9cfac] {\n  color: gold;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-0ba9cfac], #jumbotron .ms_title-jumbo h3[data-v-0ba9cfac] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-0ba9cfac] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-0ba9cfac] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-0ba9cfac] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-0ba9cfac] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-0ba9cfac] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-0ba9cfac] {\n  font-size: 0.9em;\n}\n.filter-item[data-v-0ba9cfac] {\n  width: 50%;\n}\n.filter-item p[data-v-0ba9cfac] {\n  display: inline-block;\n}\n.show[data-v-0ba9cfac] {\n  display: flex;\n  align-items: center;\n}\n.collapse-horizontal[data-v-0ba9cfac] {\n  max-height: 52px;\n}\n.row-no-gutter[data-v-0ba9cfac] {\n  --bs-gutter-x: 0;\n}\n.collapse-container[data-v-0ba9cfac] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  z-index: 2;\n  height: 101%;\n  margin-top: 17px;\n}\n.collapse-container .my-collapse[data-v-0ba9cfac] {\n  width: 250px;\n}\n.filters-list[data-v-0ba9cfac] {\n  list-style-type: none;\n  font-size: 12px;\n}\n.rating-stars i[data-v-0ba9cfac] {\n  color: gold;\n}", ""]);
 
 // exports
 
@@ -3577,7 +3565,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 50px 0;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-1b8f5272], #jumbotron .ms_title-jumbo h3[data-v-1b8f5272] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-1b8f5272] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-1b8f5272] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-1b8f5272] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-1b8f5272] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-1b8f5272] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-1b8f5272] {\n  font-size: 0.9em;\n}", ""]);
 
 // exports
 
@@ -3669,10 +3657,10 @@ exports.push([module.i, "#header[data-v-7262a471] {\n  z-index: 3;\n}", ""]);
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);", ""]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Heebo&display=swap);", ""]);
 
 // module
-exports.push([module.i, "*[data-v-63cd6604] {\n  font-family: \"Open Sans\", sans-serif;\n}\nh1[data-v-63cd6604] {\n  color: red;\n}", ""]);
+exports.push([module.i, "*[data-v-63cd6604] {\n  font-family: \"Heebo\", sans-serif;\n}\nh1[data-v-63cd6604] {\n  color: red;\n}", ""]);
 
 // exports
 
@@ -5449,13 +5437,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container text-center text-white" }, [
-      _c("p", [_vm._v("Trova lo specialista che fa per te")]),
-      _vm._v(" "),
-      _c("h2", [_vm._v("Prenota online la tua visita medica")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Cerca uno specialista adesso")]),
-    ])
+    return _c(
+      "div",
+      { staticClass: "ms_title-jumbo container text-center text-white" },
+      [
+        _c("h2", { staticClass: "title-jumbo-home" }, [
+          _vm._v("Prenota online la tua visita medica"),
+        ]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Trova lo specialista che fa per te")]),
+      ]
+    )
   },
   function () {
     var _vm = this
@@ -5563,7 +5555,7 @@ var render = function () {
               },
               _vm._l(_vm.doctors, function (singledoc) {
                 return _c("div", { key: singledoc.id, staticClass: "col" }, [
-                  _c("div", { staticClass: "card h-100" }, [
+                  _c("div", { staticClass: "card h-100 ms_card" }, [
                     _c("div", { staticClass: "img-card-wrap" }, [
                       _c("img", {
                         staticClass: "card-img-top img-thumbnail",
@@ -5741,7 +5733,7 @@ var render = function () {
                     [
                       _c("div", { staticClass: "card card-body" }, [
                         _vm._v(
-                          "\n                                  Media voto:\n                                  "
+                          "\n                                Media voto:\n                                "
                         ),
                         _c(
                           "ul",
@@ -6009,7 +6001,7 @@ var render = function () {
                           ]
                         ),
                         _vm._v(
-                          "\n                                  Numero di recensioni:\n                                  "
+                          "\n                                Numero di recensioni:\n                                "
                         ),
                         _c(
                           "ul",
@@ -6312,7 +6304,7 @@ var staticRenderFns = [
         },
         [
           _vm._v(
-            "\n                                      Filtri\n                                  "
+            "\n                                    Filtri\n                                "
           ),
         ]
       ),
