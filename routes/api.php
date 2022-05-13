@@ -27,9 +27,9 @@ Route::post("/leads", [LeadController::class, "store"]);
 Route::post("/review", [ReviewController::class, "store"]);
 
 //api per fascia voto
-Route::get("/doctors/filter/{average}", [
+/*Route::get("/doctors/filter/{average}", [
     DoctorController::class,
     "doctorByVote",
-]);
+]);*/
 // api per numero di recensioni
-Route::get('/doctors/filter/{rangeMin}/{rangeMax}', [DoctorController::class, 'doctorByReviews']);
+Route::get('/filter', [DoctorController::class, 'filter'] );
