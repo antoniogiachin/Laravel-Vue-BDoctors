@@ -39,6 +39,8 @@ Route::middleware('auth')
             Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
             // rotta index review
             Route::get('/doctors/{slug}/reviews', [\App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews');
+            // api reviews per risposta del dottore
+            Route::post('/reviews/response/{review}', [\App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviewDoctorRes');
         }
     );
 

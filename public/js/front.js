@@ -3245,6 +3245,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SingleDoctorReview',
   props: ['currentDoctor'],
@@ -3254,6 +3260,7 @@ __webpack_require__.r(__webpack_exports__);
       voteValue: '',
       title: '',
       name: '',
+      email: '',
       reviewText: '',
       goldStarValue: '',
       goldStarArray: [],
@@ -3287,6 +3294,7 @@ __webpack_require__.r(__webpack_exports__);
         'doctor_id': this.currentDoctor.id,
         'vote': this.voteValue,
         'title': this.title,
+        'email': this.email,
         'author': this.name,
         'review': this.reviewText
       }).then(function (response) {
@@ -3297,7 +3305,7 @@ __webpack_require__.r(__webpack_exports__);
           console.log(_this.success);
         } else {
           _this.success = true;
-          _this.voteValue = '', _this.title = '', _this.name = '', _this.reviewText = '', _this.goldStarValue = '', console.log(_this.success);
+          _this.voteValue = '', _this.title = '', _this.name = '', _this.email = '', _this.reviewText = '', _this.goldStarValue = '', console.log(_this.success);
         }
       });
     }
@@ -7202,6 +7210,42 @@ var render = function () {
             _c("div", { staticClass: "mb-3" }, [
               _c(
                 "label",
+                { staticClass: "form-label", attrs: { for: "email" } },
+                [_vm._v("La tua email")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  id: "email",
+                  name: "email",
+                  required: "",
+                  placeholder: "Scrivi la tua email",
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  },
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
                 { staticClass: "form-label", attrs: { for: "text-review" } },
                 [_vm._v("Scrivi la recensione")]
               ),
@@ -7252,7 +7296,7 @@ var render = function () {
                   },
                   [
                     _c("i", { staticClass: "fa-solid fa-circle-check" }),
-                    _vm._v(" Recensione pubblicata!      \n            "),
+                    _vm._v(" Recensione pubblicata!\n            "),
                   ]
                 )
               : _vm._e(),
@@ -24031,7 +24075,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
-
 
 
 /***/ })

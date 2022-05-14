@@ -9,14 +9,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Review extends Model
 {
-    protected $fillable = 
+    protected $fillable =
     [
         'title',
         'author',
         'performance',
         'vote',
         'review',
-        'doctor_id'
+        'doctor_id',
+        'email',
     ];
 
     public function doctor() {

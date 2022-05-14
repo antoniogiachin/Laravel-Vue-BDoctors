@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+            <p>Oggi {{\Illuminate\Support\Carbon::now()}}</p>
+        </div>
+    @endif
+    @if (session('fail'))
+        <div class="alert alert-danger">
+            {{ session('fail') }}
+            <p>Oggi {{\Illuminate\Support\Carbon::now()}}</p>
+            @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <span class="badge rounded-pill bg-black text-white p-1">{{ $error }}</span>
+                        @endforeach
+            @endif
+        </div>
+    @endif
     <div class="container border p-4 bg-light">
         @foreach ($reviews as $review)
             <div class="d-flex justify-content-between">
@@ -27,7 +43,8 @@
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <p class="h4 text-center my-3">Rispondi al signor {{$review->author}}</p>
-                    <form action="" class="my-4">
+                    <form action="{{route('admin.reviewDoctorRes', $review->id)}}" class="my-4" method="POST">
+                        @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col-6 offset-3">
@@ -37,7 +54,7 @@
                                         <label for="title" class="fw-bold">Titolo</label>
                                     </div>
                                     <div class="mb-3">
-                                        <textarea rows="10" cols="50" class="form-control" placeholder="Lascia la tua risposta" id="content"></textarea>
+                                        <textarea rows="10" cols="50" class="form-control" placeholder="Lascia la tua risposta" id="content" name="content"></textarea>
                                     </div>
                                 </div>
                             </div>
