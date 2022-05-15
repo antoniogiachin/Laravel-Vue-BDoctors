@@ -5,7 +5,7 @@
 
       <div id="jumbotron">
         <!-- TESTO JUMBOTRON -->
-        <div class="ms_title-jumbo container text-center text-white">
+        <div class="ms_title-jumbo container text-center text-white animate__animated animate__fadeIn">
           
           <h2 class="title-jumbo-home">Prenota online la tua visita medica</h2>
 

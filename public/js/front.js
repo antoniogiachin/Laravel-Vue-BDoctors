@@ -2419,7 +2419,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/SelectSpecialty */ "./resources/js/components/SelectSpecialty.vue");
+/* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
+/* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(animate_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_SearchSelectSpecialty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SearchSelectSpecialty */ "./resources/js/components/SearchSelectSpecialty.vue");
 //
 //
 //
@@ -2578,11 +2580,94 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ // import SelectSpecialty from "../components/SelectSpecialty";
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchMain',
+  // components: { SelectSpecialty },
   components: {
-    SelectSpecialty: _components_SelectSpecialty__WEBPACK_IMPORTED_MODULE_0__["default"]
+    SearchSelectSpecialty: _components_SearchSelectSpecialty__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2819,6 +2904,58 @@ __webpack_require__.r(__webpack_exports__);
       immediate: true,
       handler: 'filterDoctors'
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SearchSelectSpecialty.vue",
+
+  /*
+  props:{
+      specialtiesList: Array,
+  },
+  */
+  props: {
+    specialtiesList: Array
+  },
+  data: function data() {
+    return {
+      selectedSpecialty: ''
+    };
   }
 });
 
@@ -3508,7 +3645,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-4f22a0a3] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-4f22a0a3], #jumbotron .ms_title-jumbo h3[data-v-4f22a0a3] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-4f22a0a3] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-4f22a0a3] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-4f22a0a3] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-4f22a0a3] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-4f22a0a3] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-4f22a0a3] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-4f22a0a3] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-4f22a0a3] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-4f22a0a3] {\n  font-size: 0.9em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-4f22a0a3] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 85px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-4f22a0a3], #jumbotron .ms_title-jumbo h3[data-v-4f22a0a3] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-4f22a0a3] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-4f22a0a3] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-4f22a0a3] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-4f22a0a3] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-4f22a0a3] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-4f22a0a3] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-4f22a0a3] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-4f22a0a3] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-4f22a0a3] {\n  font-size: 0.9em;\n}", ""]);
 
 // exports
 
@@ -3527,7 +3664,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** DOTTORI SPONSORIZZATI STYLE *****/\n#sponsored-section[data-v-66263aad] {\n  padding-top: 100px;\n  padding-bottom: 120px;\n  background: linear-gradient(0, hsl(206deg, 95%, 94%), #fff);\n}\nh2[data-v-66263aad] {\n  font-size: 1.6em;\n  text-align: center;\n  max-width: 180px;\n  background-color: #2e86c1;\n  padding: 6px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  margin-bottom: 0;\n  color: #fff;\n  border: 1px solid #2e86c1;\n  border-bottom: none;\n  box-shadow: 0px 0px 1px #000;\n}\n#sponsor-container[data-v-66263aad] {\n  background-color: #fff;\n  border-radius: 5px;\n  border-top-left-radius: 0;\n  box-shadow: 0px 0px 1px #bfc9ca;\n  min-height: 400px;\n}\n#sponsor-container .ms_card[data-v-66263aad] {\n  box-shadow: 0px 0px 1px #c3c3c3;\n}\n#sponsor-container .img-card-wrap[data-v-66263aad] {\n  max-height: 150px;\n}\n#sponsor-container .img-card-wrap img[data-v-66263aad] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#sponsor-container .card-title[data-v-66263aad] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #2b4660;\n  font-weight: 800;\n}\n#sponsor-container .spec-list[data-v-66263aad] {\n  margin-bottom: 8px;\n  color: #556;\n  list-style: none;\n  padding-left: 0;\n}\n#sponsor-container .card-text[data-v-66263aad] {\n  color: #556;\n}", ""]);
+exports.push([module.i, "/***** DOTTORI SPONSORIZZATI STYLE *****/\n#sponsored-section[data-v-66263aad] {\n  padding-top: 100px;\n  padding-bottom: 120px;\n  background: linear-gradient(0, hsl(206deg, 95%, 94%), #fff);\n}\nh2[data-v-66263aad] {\n  font-size: 1.6em;\n  text-align: center;\n  max-width: 180px;\n  background-color: #2e86c1;\n  padding: 6px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  margin-bottom: 0;\n  color: #fff;\n  border: 1px solid #2e86c1;\n  border-bottom: none;\n  box-shadow: 0px 0px 1px #000;\n}\n#sponsor-container[data-v-66263aad] {\n  background-color: #fff;\n  border-radius: 5px;\n  border-top-left-radius: 0;\n  box-shadow: 0px 0px 1px #bfc9ca;\n  min-height: 400px;\n}\n#sponsor-container .ms_card[data-v-66263aad] {\n  box-shadow: 0px 0px 5px #c3c3c3;\n  border-radius: 10px;\n}\n#sponsor-container .img-card-wrap[data-v-66263aad] {\n  max-height: 150px;\n}\n#sponsor-container .img-card-wrap img[data-v-66263aad] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#sponsor-container .card-title[data-v-66263aad] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #2b4660;\n  font-weight: 800;\n}\n#sponsor-container .spec-list[data-v-66263aad] {\n  margin-bottom: 8px;\n  color: #556;\n  list-style: none;\n  padding-left: 0;\n}\n#sponsor-container .card-text[data-v-66263aad] {\n  color: #556;\n}", ""]);
 
 // exports
 
@@ -3546,7 +3683,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-0ba9cfac], #jumbotron .ms_title-jumbo h3[data-v-0ba9cfac] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-0ba9cfac] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-0ba9cfac] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-0ba9cfac] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-0ba9cfac] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-0ba9cfac] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-0ba9cfac] {\n  font-size: 0.9em;\n}\n.filter-item[data-v-0ba9cfac] {\n  width: 50%;\n}\n.filter-item p[data-v-0ba9cfac] {\n  display: inline-block;\n}\n.show[data-v-0ba9cfac] {\n  display: flex;\n  align-items: center;\n}\n.collapse-horizontal[data-v-0ba9cfac] {\n  max-height: 52px;\n}\n.row-no-gutter[data-v-0ba9cfac] {\n  --bs-gutter-x: 0;\n}\n.collapse-container[data-v-0ba9cfac] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  z-index: 2;\n  height: 101%;\n  margin-top: 17px;\n}\n.collapse-container .my-collapse[data-v-0ba9cfac] {\n  width: 250px;\n}\n.filters-list[data-v-0ba9cfac] {\n  list-style-type: none;\n  font-size: 12px;\n}\n.rating-stars i[data-v-0ba9cfac] {\n  color: gold;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-0ba9cfac] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 85px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-0ba9cfac], #jumbotron .ms_title-jumbo h3[data-v-0ba9cfac] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-0ba9cfac] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-0ba9cfac] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-0ba9cfac] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-0ba9cfac] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-0ba9cfac] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-0ba9cfac] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-0ba9cfac] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-0ba9cfac] {\n  font-size: 0.9em;\n}\n\n/******* SEARCH MAIN STYLE *******/\n#ms_max-width[data-v-0ba9cfac] {\n  max-width: 1600px;\n  padding: 0 30px 0 30px;\n  margin: auto;\n}\n.ms_search-res[data-v-0ba9cfac] {\n  min-height: 800px;\n  margin-top: 50px;\n  margin-bottom: 50px;\n  border: 1px solid #f1f1f1;\n  box-shadow: 0 0 3px #c3c3c3;\n  border-top-left-radius: 12px;\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n  border-bottom-left-radius: 20px;\n}\n.col-filtro[data-v-0ba9cfac] {\n  border: 1px solid #c3c3c3;\n  border-radius: 20px;\n  background-color: #f4f6f7;\n  padding: 0;\n  box-shadow: 2px 0px 15px #c3c3c3;\n}\n.p-rows[data-v-0ba9cfac] {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n#name-search[data-v-0ba9cfac] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 5px #c3c3c3;\n  border-top-left-radius: 12px;\n  border-top-right-radius: 12px;\n  padding: 15px 15px;\n  margin-bottom: 20px;\n}\n#search-select-specialty[data-v-0ba9cfac] {\n  border-bottom: 1px solid #c3c3c3;\n  padding-top: 20px;\n  padding-bottom: 40px;\n}\n#search-select-specialty .ms_new-specialty-search[data-v-0ba9cfac] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#search-select-specialty .ms_select-spec select[data-v-0ba9cfac] {\n  box-shadow: 0px 0px 3px #c3c3c3;\n}\n#search-select-specialty #btn-search[data-v-0ba9cfac] {\n  width: 100%;\n  background-color: #f5b041;\n  box-shadow: 0px 0px 3px #c3c3c3;\n}\n#filtri-select #ms_filter-toggler[data-v-0ba9cfac] {\n  font-size: 1.1em;\n  width: 100%;\n  padding: 10px 20px;\n  cursor: pointer;\n  border: none;\n  border-radius: 0;\n  color: #008080;\n}\n#filtri-select #ms_filter-toggler i[data-v-0ba9cfac] {\n  margin-left: 10px;\n}\n#filtri-select .filter-header[data-v-0ba9cfac] {\n  margin-bottom: 20px;\n}\n#filtri-select .filter-header h3[data-v-0ba9cfac] {\n  color: #2b4660;\n  font-weight: 700;\n}\n#filtri-select #rating-stars-wrap[data-v-0ba9cfac] {\n  width: 100%;\n}\n#filtri-select #rating-stars-wrap .rating-title[data-v-0ba9cfac] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#filtri-select #rating-stars-wrap i[data-v-0ba9cfac] {\n  color: #00C3A5;\n}\n#filtri-select #rating-stars-wrap ul[data-v-0ba9cfac] {\n  list-style: none;\n  padding-left: 0;\n}\n#filtri-select #rating-stars-wrap li[data-v-0ba9cfac] {\n  margin: 10px 15px 10px 0;\n}\n#filtri-select #rating-stars-wrap li label[data-v-0ba9cfac] {\n  cursor: pointer;\n}\n#filtri-select #range-reviews-wrap[data-v-0ba9cfac] {\n  width: 100%;\n}\n#filtri-select #range-reviews-wrap .reviews-range-title[data-v-0ba9cfac] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#filtri-select #range-reviews-wrap ul[data-v-0ba9cfac] {\n  padding-top: 10px;\n  list-style: none;\n  padding-left: 0;\n}\n#filtri-select #range-reviews-wrap ul li[data-v-0ba9cfac] {\n  margin: 0 15px 10px 0;\n}\n#filtri-select #range-reviews-wrap ul li label[data-v-0ba9cfac] {\n  cursor: pointer;\n}\n\n/********* INIZIO STILE CARD **********/\n#card-doc-container[data-v-0ba9cfac] {\n  padding-bottom: 20px;\n}\n#card-doc-container .ms_card[data-v-0ba9cfac] {\n  border-radius: 10px;\n  box-shadow: 0 0 6px #c3c3c3;\n}\n#card-doc-container .img-card-wrap[data-v-0ba9cfac] {\n  max-height: 150px;\n}\n#card-doc-container .img-card-wrap img[data-v-0ba9cfac] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#card-doc-container .card-title[data-v-0ba9cfac] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #2b4660;\n  font-weight: 800;\n}\n#card-doc-container .spec-list[data-v-0ba9cfac] {\n  margin-bottom: 8px;\n  color: #556;\n  list-style: none;\n  padding-left: 0;\n}\n#card-doc-container .card-text[data-v-0ba9cfac] {\n  color: #556;\n}\n\n/********* FINE STILE CARD ***********/\n/*\n.filter-item {\n    width: 50%;\n\n    p {\n        display: inline-block;\n\n    }\n}\n.show {\n    display: flex;\n    align-items: center;\n}\n\n.collapse-horizontal {\n\n    max-height: 52px;\n}\n\n.row-no-gutter {\n    --bs-gutter-x: 0;\n}\n\n.collapse-container {\n\n    width: fit-content;\n    height: fit-content;\n    z-index: 2;\n    height: 101%;\n    margin-top: 17px;\n\n    .my-collapse {\n\n        width: 250px;\n    }\n}\n\n.filters-list {\n    list-style-type: none;\n    font-size: 12px;\n}\n.rating-stars i {\n    color: gold;\n}\n*/", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/******* SEARCH MAIN STYLE *******/\n#ms_max-width[data-v-109e0b82] {\n  max-width: 1600px;\n  padding: 0 30px 0 30px;\n  margin: auto;\n}\n.ms_search-res[data-v-109e0b82] {\n  min-height: 800px;\n  margin-top: 50px;\n  margin-bottom: 50px;\n  border: 1px solid #f1f1f1;\n  box-shadow: 0 0 3px #c3c3c3;\n  border-top-left-radius: 12px;\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n  border-bottom-left-radius: 20px;\n}\n.col-filtro[data-v-109e0b82] {\n  border: 1px solid #c3c3c3;\n  border-radius: 20px;\n  background-color: #f4f6f7;\n  padding: 0;\n  box-shadow: 2px 0px 15px #c3c3c3;\n}\n.p-rows[data-v-109e0b82] {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n#name-search[data-v-109e0b82] {\n  background-color: #4689CF;\n  box-shadow: 0px 1px 5px #c3c3c3;\n  border-top-left-radius: 12px;\n  border-top-right-radius: 12px;\n  padding: 15px 15px;\n  margin-bottom: 20px;\n}\n#search-select-specialty[data-v-109e0b82] {\n  border-bottom: 1px solid #c3c3c3;\n  padding-top: 20px;\n  padding-bottom: 40px;\n}\n#search-select-specialty .ms_new-specialty-search[data-v-109e0b82] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#search-select-specialty .ms_select-spec select[data-v-109e0b82] {\n  box-shadow: 0px 0px 3px #c3c3c3;\n}\n#search-select-specialty #btn-search[data-v-109e0b82] {\n  width: 100%;\n  background-color: #f5b041;\n  box-shadow: 0px 0px 3px #c3c3c3;\n}\n#filtri-select #ms_filter-toggler[data-v-109e0b82] {\n  font-size: 1.1em;\n  width: 100%;\n  padding: 10px 20px;\n  cursor: pointer;\n  border: none;\n  border-radius: 0;\n  color: #008080;\n}\n#filtri-select #ms_filter-toggler i[data-v-109e0b82] {\n  margin-left: 10px;\n}\n#filtri-select .filter-header[data-v-109e0b82] {\n  margin-bottom: 20px;\n}\n#filtri-select .filter-header h3[data-v-109e0b82] {\n  color: #2b4660;\n  font-weight: 700;\n}\n#filtri-select #rating-stars-wrap[data-v-109e0b82] {\n  width: 100%;\n}\n#filtri-select #rating-stars-wrap .rating-title[data-v-109e0b82] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#filtri-select #rating-stars-wrap i[data-v-109e0b82] {\n  color: #00C3A5;\n}\n#filtri-select #rating-stars-wrap ul[data-v-109e0b82] {\n  list-style: none;\n  padding-left: 0;\n}\n#filtri-select #rating-stars-wrap li[data-v-109e0b82] {\n  margin: 10px 15px 10px 0;\n}\n#filtri-select #rating-stars-wrap li label[data-v-109e0b82] {\n  cursor: pointer;\n}\n#filtri-select #range-reviews-wrap[data-v-109e0b82] {\n  width: 100%;\n}\n#filtri-select #range-reviews-wrap .reviews-range-title[data-v-109e0b82] {\n  color: #2b4660;\n  font-weight: 600;\n}\n#filtri-select #range-reviews-wrap ul[data-v-109e0b82] {\n  padding-top: 10px;\n  list-style: none;\n  padding-left: 0;\n}\n#filtri-select #range-reviews-wrap ul li[data-v-109e0b82] {\n  margin: 0 15px 10px 0;\n}\n#filtri-select #range-reviews-wrap ul li label[data-v-109e0b82] {\n  cursor: pointer;\n}\n\n/********* INIZIO STILE CARD **********/\n#card-doc-container[data-v-109e0b82] {\n  padding-bottom: 20px;\n}\n#card-doc-container .ms_card[data-v-109e0b82] {\n  border-radius: 10px;\n  box-shadow: 0 0 6px #c3c3c3;\n}\n#card-doc-container .img-card-wrap[data-v-109e0b82] {\n  max-height: 150px;\n}\n#card-doc-container .img-card-wrap img[data-v-109e0b82] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#card-doc-container .card-title[data-v-109e0b82] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #2b4660;\n  font-weight: 800;\n}\n#card-doc-container .spec-list[data-v-109e0b82] {\n  margin-bottom: 8px;\n  color: #556;\n  list-style: none;\n  padding-left: 0;\n}\n#card-doc-container .card-text[data-v-109e0b82] {\n  color: #556;\n}\n\n/********* FINE STILE CARD ***********/", ""]);
 
 // exports
 
@@ -3565,7 +3721,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 80px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-1b8f5272], #jumbotron .ms_title-jumbo h3[data-v-1b8f5272] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-1b8f5272] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-1b8f5272] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-1b8f5272] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-1b8f5272] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-1b8f5272] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-1b8f5272] {\n  font-size: 0.9em;\n}", ""]);
+exports.push([module.i, "/***** MAIN STYLE *****/\n#jumbotron[data-v-1b8f5272] {\n  background: linear-gradient(180deg, #4689cf, #21b2d6);\n  box-shadow: 0px 1px 1px #2471a3 inset;\n  padding: 85px 0;\n}\n#jumbotron .ms_title-jumbo h2[data-v-1b8f5272], #jumbotron .ms_title-jumbo h3[data-v-1b8f5272] {\n  text-shadow: 0px 0px 1px #d0d3d4;\n}\n#jumbotron .title-jumbo-home[data-v-1b8f5272] {\n  font-size: 3em;\n}\n#jumbotron #spec-wrap[data-v-1b8f5272] {\n  background-color: #aed6f1;\n  border-radius: 13px;\n}\n#jumbotron .btn-specialty[data-v-1b8f5272] {\n  width: 100%;\n  background-color: #f5b041;\n  color: #fff;\n  font-weight: 600;\n}\n#jumbotron #advanced-search[data-v-1b8f5272] {\n  width: 100%;\n  font-size: 1.1em;\n}\n#user-guide[data-v-1b8f5272] {\n  padding-top: 35px;\n  padding-bottom: 35px;\n}\n#user-guide .col[data-v-1b8f5272] {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#user-guide .img-guide img[data-v-1b8f5272] {\n  width: 70px;\n}\n#user-guide .text-guide h3[data-v-1b8f5272] {\n  color: #444;\n  font-size: 1.2em;\n  font-weight: 600;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#user-guide .text-guide p[data-v-1b8f5272] {\n  font-size: 0.9em;\n}", ""]);
 
 // exports
 
@@ -4295,6 +4451,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchMain.vue?vue&type=style&index=0&id=0ba9cfac&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchMain.vue?vue&type=style&index=0&id=0ba9cfac&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5439,7 +5625,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "ms_title-jumbo container text-center text-white" },
+      {
+        staticClass:
+          "ms_title-jumbo container text-center text-white animate__animated animate__fadeIn",
+      },
       [
         _c("h2", { staticClass: "title-jumbo-home" }, [
           _vm._v("Prenota online la tua visita medica"),
@@ -5668,619 +5857,472 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", [
-      _c(
-        "div",
-        { staticClass: "position-relative", attrs: { id: "jumbotron" } },
-        [
-          _c("form", [
-            _c(
-              "div",
-              { staticClass: "row row-no-gutter justify-content-center px-2" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-12 col-lg-9 px-3 py-4 px-lg-4 py-lg-4 d-inline",
-                    attrs: { id: "spec-wrap" },
-                  },
-                  [
-                    _c("div", { staticClass: "row justify-content-center" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-12 col-lg-9 mb-2 mb-lg-0" },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.ricerca,
-                                expression: "ricerca",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Digita il nome del medico",
-                            },
-                            domProps: { value: _vm.ricerca },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.ricerca = $event.target.value
-                              },
-                            },
-                          }),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(0),
-                    ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-inline collapse-container" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "collapse collapse-horizontal my-collapse",
-                      attrs: { id: "collapseWidthExample" },
+    _c("div", { attrs: { id: "ms_max-width" } }, [
+      _c("div", { staticClass: "p-1 row d-flex ms_search-res" }, [
+        _c("div", { staticClass: "col-filtro col-12 col-md-3 col-xl-2" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 p-rows", attrs: { id: "name-search" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "name-field" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ricerca,
+                        expression: "ricerca",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Scrivi un medico da cercare",
                     },
-                    [
-                      _c("div", { staticClass: "card card-body" }, [
-                        _vm._v(
-                          "\n                                Media voto:\n                                "
-                        ),
-                        _c(
-                          "ul",
-                          { staticClass: "d-flex flex-wrap filters-list" },
-                          [
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedReview,
-                                      expression: "checkedReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "5",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.checkedReview)
-                                      ? _vm._i(_vm.checkedReview, "5") > -1
-                                      : _vm.checkedReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "5",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedReview = $$a.concat([
-                                              $$v,
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(1),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedReview,
-                                      expression: "checkedReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "4",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.checkedReview)
-                                      ? _vm._i(_vm.checkedReview, "4") > -1
-                                      : _vm.checkedReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "4",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedReview = $$a.concat([
-                                              $$v,
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(2),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedReview,
-                                      expression: "checkedReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "3",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.checkedReview)
-                                      ? _vm._i(_vm.checkedReview, "3") > -1
-                                      : _vm.checkedReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "3",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedReview = $$a.concat([
-                                              $$v,
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(3),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedReview,
-                                      expression: "checkedReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "2",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.checkedReview)
-                                      ? _vm._i(_vm.checkedReview, "2") > -1
-                                      : _vm.checkedReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "2",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedReview = $$a.concat([
-                                              $$v,
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(4),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedReview,
-                                      expression: "checkedReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "1",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.checkedReview)
-                                      ? _vm._i(_vm.checkedReview, "1") > -1
-                                      : _vm.checkedReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "1",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedReview = $$a.concat([
-                                              $$v,
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(5),
-                              ]),
-                            ]),
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                                Numero di recensioni:\n                                "
-                        ),
-                        _c(
-                          "ul",
-                          { staticClass: "d-flex flex-wrap filters-list" },
-                          [
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedNumberReview,
-                                      expression: "checkedNumberReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "10",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(
-                                      _vm.checkedNumberReview
-                                    )
-                                      ? _vm._i(_vm.checkedNumberReview, "10") >
-                                        -1
-                                      : _vm.checkedNumberReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedNumberReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "10",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedNumberReview =
-                                              $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedNumberReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedNumberReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(6),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedNumberReview,
-                                      expression: "checkedNumberReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "5",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(
-                                      _vm.checkedNumberReview
-                                    )
-                                      ? _vm._i(_vm.checkedNumberReview, "5") >
-                                        -1
-                                      : _vm.checkedNumberReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedNumberReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "5",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedNumberReview =
-                                              $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedNumberReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedNumberReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(7),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "ms-2" }, [
-                              _c("div", { staticClass: "form-check" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.checkedNumberReview,
-                                      expression: "checkedNumberReview",
-                                    },
-                                  ],
-                                  staticClass: "form-check-input",
-                                  attrs: {
-                                    type: "checkbox",
-                                    value: "0",
-                                    id: "flexCheckDefault",
-                                  },
-                                  domProps: {
-                                    checked: Array.isArray(
-                                      _vm.checkedNumberReview
-                                    )
-                                      ? _vm._i(_vm.checkedNumberReview, "0") >
-                                        -1
-                                      : _vm.checkedNumberReview,
-                                  },
-                                  on: {
-                                    change: function ($event) {
-                                      var $$a = _vm.checkedNumberReview,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = "0",
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.checkedNumberReview =
-                                              $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.checkedNumberReview = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.checkedNumberReview = $$c
-                                      }
-                                    },
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _vm._m(8),
-                              ]),
-                            ]),
-                          ]
-                        ),
-                      ]),
-                    ]
-                  ),
-                ]),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "row row-no-gutter justify-content-center px-2" },
-              [
-                _c("SelectSpecialty", {
-                  staticClass: "mt-4",
-                  attrs: { specialtiesList: _vm.specialtiesList },
-                }),
-              ],
-              1
-            ),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "col-12 p-4 p-lg-4 container",
-          attrs: { id: "container" },
-        },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col my-3" }, [
-              _c("h2", [
-                _vm._v("Ecco tutti i dottori specializzati in "),
-                _c("span", { staticClass: "text-capitalize text-danger" }, [
-                  _vm._v(_vm._s(_vm.$route.params.slug)),
+                    domProps: { value: _vm.ricerca },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.ricerca = $event.target.value
+                      },
+                    },
+                  }),
                 ]),
               ]),
-              _vm._v(" "),
-              _vm.notFound
-                ? _c("p", { staticClass: "text-danger" }, [
-                    _vm._v("Nessun dottore trovato"),
-                  ])
-                : _vm._e(),
-            ]),
-          ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
-            {
-              staticClass:
-                "row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card",
-            },
-            _vm._l(_vm.filteredDoctors, function (doctor) {
-              return _c("div", { key: doctor.id, staticClass: "col" }, [
-                _c("div", { staticClass: "card h-100" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: { src: doctor.photo },
-                  }),
+            { staticClass: "p-rows", attrs: { id: "specialty-select" } },
+            [
+              _c("SearchSelectSpecialty", {
+                attrs: { specialtiesList: _vm.specialtiesList },
+              }),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-rows", attrs: { id: "filtri-select" } }, [
+            _c("div", { staticClass: "navbar navbar-expand-md navbar-light" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse flex-column pt-3",
+                  attrs: { id: "filter-menu-collapse" },
+                },
+                [
+                  _vm._m(1),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body" },
-                    [
-                      _c("h5", { staticClass: "card-title" }, [
-                        _vm._v(
-                          "\n                              " +
-                            _vm._s(doctor.user.name) +
-                            " " +
-                            _vm._s(doctor.user.surname) +
-                            "\n                          "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        { staticClass: "spec-list" },
-                        _vm._l(doctor.specialties, function (specName, index) {
-                          return _c("li", { key: index }, [
-                            _vm._v(
-                              "\n                                  " +
-                                _vm._s(specName.name) +
-                                "\n                              "
-                            ),
+                  _c("div", { attrs: { id: "rating-stars-wrap" } }, [
+                    _c("div", { staticClass: "rating-title" }, [
+                      _vm._v("Media voto"),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "d-flex flex-wrap" },
+                      [
+                        _vm._l(4, function (i) {
+                          return _c("li", { key: i }, [
+                            _c("div", { staticClass: "form-check" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.checkedReview,
+                                    expression: "checkedReview",
+                                  },
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox", id: "star-" + i },
+                                domProps: {
+                                  value: i,
+                                  checked: Array.isArray(_vm.checkedReview)
+                                    ? _vm._i(_vm.checkedReview, i) > -1
+                                    : _vm.checkedReview,
+                                },
+                                on: {
+                                  change: function ($event) {
+                                    var $$a = _vm.checkedReview,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = i,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.checkedReview = $$a.concat([
+                                            $$v,
+                                          ]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.checkedReview = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.checkedReview = $$c
+                                    }
+                                  },
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-check-label",
+                                  attrs: { for: "star-" + i },
+                                },
+                                [
+                                  _c("span", { staticClass: "rating-stars" }, [
+                                    _vm._v(" " + _vm._s(i) + "+ "),
+                                    _c("i", {
+                                      staticClass: "fa-solid fa-star",
+                                    }),
+                                  ]),
+                                ]
+                              ),
+                            ]),
                           ])
                         }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(doctor.medical_address)),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.checkedReview,
+                                  expression: "checkedReview",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                value: "5",
+                                id: "star-5",
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.checkedReview)
+                                  ? _vm._i(_vm.checkedReview, "5") > -1
+                                  : _vm.checkedReview,
+                              },
+                              on: {
+                                change: function ($event) {
+                                  var $$a = _vm.checkedReview,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "5",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.checkedReview = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.checkedReview = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.checkedReview = $$c
+                                  }
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _vm._m(2),
+                          ]),
+                        ]),
+                      ],
+                      2
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { attrs: { id: "range-reviews-wrap" } }, [
+                    _c("div", { staticClass: "reviews-range-title" }, [
+                      _vm._v("Numero recensioni"),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "d-flex flex-row flex-md-column" },
+                      [
+                        _c("li", [
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.checkedNumberReview,
+                                  expression: "checkedNumberReview",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                value: "0",
+                                id: "review-5",
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.checkedNumberReview)
+                                  ? _vm._i(_vm.checkedNumberReview, "0") > -1
+                                  : _vm.checkedNumberReview,
+                              },
+                              on: {
+                                change: function ($event) {
+                                  var $$a = _vm.checkedNumberReview,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "0",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.checkedNumberReview = $$a.concat([
+                                          $$v,
+                                        ]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.checkedNumberReview = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.checkedNumberReview = $$c
+                                  }
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _vm._m(3),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.checkedNumberReview,
+                                  expression: "checkedNumberReview",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                value: "5",
+                                id: "review-5_10",
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.checkedNumberReview)
+                                  ? _vm._i(_vm.checkedNumberReview, "5") > -1
+                                  : _vm.checkedNumberReview,
+                              },
+                              on: {
+                                change: function ($event) {
+                                  var $$a = _vm.checkedNumberReview,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "5",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.checkedNumberReview = $$a.concat([
+                                          $$v,
+                                        ]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.checkedNumberReview = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.checkedNumberReview = $$c
+                                  }
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _vm._m(4),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("div", { staticClass: "form-check" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.checkedNumberReview,
+                                  expression: "checkedNumberReview",
+                                },
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                value: "10",
+                                id: "review-10",
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.checkedNumberReview)
+                                  ? _vm._i(_vm.checkedNumberReview, "10") > -1
+                                  : _vm.checkedNumberReview,
+                              },
+                              on: {
+                                change: function ($event) {
+                                  var $$a = _vm.checkedNumberReview,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "10",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.checkedNumberReview = $$a.concat([
+                                          $$v,
+                                        ]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.checkedNumberReview = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.checkedNumberReview = $$c
+                                  }
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _vm._m(5),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                  ]),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "mt-5 mt-md-0 px-sm-2 px-md-3 px-xl-5 col-dottori col-12 col-md-9 col-xl-10",
+          },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col my-3" }, [
+                _c("p", [
+                  _vm._v("Risultati per "),
+                  _c("span", { staticClass: "text-capitalize text-success" }, [
+                    _vm._v(_vm._s(_vm.$route.params.slug)),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.notFound
+                  ? _c("p", { staticClass: "text-danger" }, [
+                      _vm._v("Nessun dottore trovato"),
+                    ])
+                  : _vm._e(),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-5",
+                attrs: { id: "card-doc-container" },
+              },
+              _vm._l(_vm.filteredDoctors, function (doctor) {
+                return _c(
+                  "div",
+                  {
+                    key: doctor.id,
+                    staticClass: "col animate__animated animate__fadeInUp",
+                  },
+                  [
+                    _c("div", { staticClass: "ms_card card h-100" }, [
+                      _c("div", { staticClass: "img-card-wrap" }, [
+                        _c("img", {
+                          staticClass: "card-img-top img-thumbnail",
+                          attrs: { src: doctor.photo },
+                        }),
                       ]),
                       _vm._v(" "),
                       _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-primary text-white",
-                          attrs: { to: "/doctors/" + doctor.slug },
-                        },
-                        [_vm._v("Vai al profilo")]
+                        "div",
+                        { staticClass: "card-body" },
+                        [
+                          _c("h5", { staticClass: "card-title" }, [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(doctor.user.name) +
+                                " " +
+                                _vm._s(doctor.user.surname) +
+                                "\n                        "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            { staticClass: "spec-list" },
+                            _vm._l(
+                              doctor.specialties,
+                              function (specName, index) {
+                                return _c("li", { key: index }, [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(specName.name) +
+                                      "\n                            "
+                                  ),
+                                ])
+                              }
+                            ),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(doctor.medical_address)),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary text-white",
+                              attrs: { to: "/doctors/" + doctor.slug },
+                            },
+                            [_vm._v("Vai al profilo")]
+                          ),
+                        ],
+                        1
                       ),
-                    ],
-                    1
-                  ),
-                ]),
-              ])
-            }),
-            0
-          ),
-        ]
-      ),
+                    ]),
+                  ]
+                )
+              }),
+              0
+            ),
+          ]
+        ),
+      ]),
     ]),
   ])
 }
@@ -6289,25 +6331,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-3" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-specialty",
-          attrs: {
-            type: "button",
-            "data-bs-toggle": "collapse",
-            "data-bs-target": "#collapseWidthExample",
-            "aria-expanded": "false",
-            "aria-controls": "collapseWidthExample",
-          },
+    return _c(
+      "div",
+      {
+        staticClass: "pt-3 pb-3 navbar-toggler",
+        attrs: {
+          id: "ms_filter-toggler",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#filter-menu-collapse",
+          "aria-controls": "filter-menu-collapse",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
         },
-        [
-          _vm._v(
-            "\n                                    Filtri\n                                "
-          ),
-        ]
-      ),
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "d-flex align-items-center justify-content-end" },
+          [
+            _vm._v("Filtra la ricerca "),
+            _c("i", { staticClass: "fa-solid fa-angle-down" }),
+          ]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "filter-header w-100" }, [
+      _c("h3", [_vm._v("Filtra per:")]),
     ])
   },
   function () {
@@ -6316,7 +6370,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
+      { staticClass: "form-check-label", attrs: { for: "star-5" } },
       [
         _c("span", { staticClass: "rating-stars" }, [
           _vm._v("5 "),
@@ -6331,13 +6385,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [
-        _c("span", { staticClass: "rating-stars" }, [
-          _vm._v("4+ "),
-          _c("i", { staticClass: "fa-solid fa-star" }),
-        ]),
-      ]
+      { staticClass: "form-check-label", attrs: { for: "review-5" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("meno di 5")])]
     )
   },
   function () {
@@ -6346,13 +6395,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [
-        _c("span", { staticClass: "rating-stars" }, [
-          _vm._v("3+ "),
-          _c("i", { staticClass: "fa-solid fa-star" }),
-        ]),
-      ]
+      { staticClass: "form-check-label", attrs: { for: "review-5_10" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("tra 5 e 10")])]
     )
   },
   function () {
@@ -6361,61 +6405,119 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [
-        _c("span", { staticClass: "rating-stars" }, [
-          _vm._v("2+ "),
-          _c("i", { staticClass: "fa-solid fa-star" }),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [
-        _c("span", { staticClass: "rating-stars" }, [
-          _vm._v("1+ "),
-          _c("i", { staticClass: "fa-solid fa-star" }),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [_c("span", { staticClass: "rating-stars" }, [_vm._v("> 10")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [_c("span", { staticClass: "rating-stars" }, [_vm._v("5 - 10")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "form-check-label", attrs: { for: "flexCheckDefault" } },
-      [_c("span", { staticClass: "rating-stars" }, [_vm._v("< 5")])]
+      { staticClass: "form-check-label", attrs: { for: "review-10" } },
+      [_c("span", { staticClass: "rating-stars" }, [_vm._v("più di 10")])]
     )
   },
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "search-select-specialty" } }, [
+    _c("div", { staticClass: "ms_new-specialty-search mb-2" }, [
+      _vm._v("Nuova ricerca per specializzazione"),
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "d-flex flex-lg-row flex-column align-items-center" },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "ms_select-spec col-12 col-lg-8 pe-lg-2 mb-2 mb-lg-0",
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selectedSpecialty,
+                    expression: "selectedSpecialty",
+                  },
+                ],
+                staticClass: "form-select",
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedSpecialty = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { selected: "", value: "" } }, [
+                  _vm._v("Seleziona una specializzazione"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.specialtiesList, function (specialty) {
+                  return _c(
+                    "option",
+                    { key: specialty.id, domProps: { value: specialty.slug } },
+                    [_vm._v(" " + _vm._s(specialty.name) + " ")]
+                  )
+                }),
+              ],
+              2
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12 col-lg-4", attrs: { id: "btn-cerca" } },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "text-white btn btn-primary",
+                attrs: {
+                  id: "btn-search",
+                  to: {
+                    name: "search",
+                    params: { slug: _vm.selectedSpecialty },
+                  },
+                },
+              },
+              [_vm._v("Cerca")]
+            ),
+          ],
+          1
+        ),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -6493,7 +6595,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-12 col-lg-4" },
+          { staticClass: "col-12 col-lg-4", attrs: { id: "btn-cerca" } },
           [
             _c(
               "router-link",
@@ -23184,6 +23286,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchMain_vue_vue_type_template_id_0ba9cfac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchMain_vue_vue_type_template_id_0ba9cfac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchSelectSpecialty.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/SearchSelectSpecialty.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true& */ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true&");
+/* harmony import */ var _SearchSelectSpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchSelectSpecialty.vue?vue&type=script&lang=js& */ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& */ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _SearchSelectSpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "109e0b82",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SearchSelectSpecialty.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchSelectSpecialty.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=style&index=0&id=109e0b82&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_style_index_0_id_109e0b82_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchSelectSpecialty.vue?vue&type=template&id=109e0b82&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchSelectSpecialty_vue_vue_type_template_id_109e0b82_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

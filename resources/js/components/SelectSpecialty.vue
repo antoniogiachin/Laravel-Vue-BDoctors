@@ -11,7 +11,7 @@
             </div>
 
             <!-- BUTTON CERCA -->
-            <div class="col-12 col-lg-4">
+            <div id="btn-cerca" class="col-12 col-lg-4">
                 <router-link id="advanced-search" class="btn btn-specialty p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Cerca</router-link>
             </div>
 
