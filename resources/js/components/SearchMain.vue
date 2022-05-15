@@ -135,21 +135,22 @@
                     <p>Risultati per <span class="text-capitalize text-success">{{ $route.params.slug }}</span></p>
                     <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
 
-                <div class="row">
-                    <div class="col my-3">
-                        <h2 v-if="$route.params.slug">Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug }}</span></h2>
-                        <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
-                        <div class="d-flex justify-content-center gap-3" v-if="loading">
-                            <h2 class="text-center"> Caricamento in corso</h2>
-                            <div class="spinner-border" role="status">
-
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-center gap-3" v-if="loading">
+                      <h2 class="text-center"> Caricamento in corso</h2>
+                      <div class="spinner-border" role="status"></div>
                     </div>
-
                 </div>
 
               </div>
+
+              <!--
+              <div class="row">
+                  <div class="col my-3">
+                        <h2 v-if="$route.params.slug">Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug }}</span></h2>
+                      
+                  </div>
+              </div>
+              -->
 
               <!-- CARD CONTAINER -->
               <div id="card-doc-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-5">
@@ -245,7 +246,6 @@
           </div>
       </div>
       -->
-
     </main>
 </template>
 
