@@ -5,13 +5,11 @@
 
       <div id="jumbotron">
         <!-- TESTO JUMBOTRON -->
-        <div class="container text-center text-white">
+        <div class="ms_title-jumbo container text-center text-white animate__animated animate__fadeIn">
           
-          <p>Trova lo specialista che fa per te</p>
+          <h2 class="title-jumbo-home">Prenota online la tua visita medica</h2>
 
-          <h2>Prenota online la tua visita medica</h2>
-
-          <p>Cerca uno specialista adesso</p>
+          <h3>Trova lo specialista che fa per te</h3>
 
         </div>
 

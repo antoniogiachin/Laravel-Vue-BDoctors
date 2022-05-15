@@ -14,7 +14,7 @@
 
             <!-- CARD 1 -->
             <div class="col" v-for="singledoc in doctors" :key="singledoc.id">
-              <div class="card h-100">
+              <div class="card h-100 ms_card">
 
                 <div class="img-card-wrap">
                   <img :src="singledoc.photo" class="card-img-top img-thumbnail">
@@ -26,6 +26,7 @@
                   <h5 class="card-title">
                     {{singledoc.user.name}} {{singledoc.user.surname}}
                   </h5>
+
                   <ul class="spec-list">
                       <!-- SPECIALTIES -->
                       <li v-for="(specName, index) in singledoc.specialties" :key="index">
@@ -62,6 +63,7 @@
   export default {
     name: 'HomeSponsorizzati',
     props: ['doctors'],
+
   }
 </script>
 
