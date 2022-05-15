@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
-{   
+{
     //
     public function store(Request $request)
     {
@@ -21,6 +21,7 @@ class ReviewController extends Controller
             "doctor_id" => "required|exists:doctors,id",
             "title" => "required|min:2,max:20",
             "author" => "required|min:2",
+            "email" => "required|email",
             "vote" => "required|digits_between:0,5|integer",
             "review" => "required|min:10",
         ]);
@@ -50,6 +51,18 @@ class ReviewController extends Controller
                 "success" => true,
             ]);
         }
+    }
+
+    public function index($docSlug) {
+
+        $doctor = Doctor::all()->where('slug', '=', $docSlug)->first();
+
+        $reviews = Review::all()->where('doctor_id', '=' , $doctor->id)->sortByDesc('created_at')->values()->all();
+
+        return response()->json([
+            'results' => $reviews,
+            'success' => true,
+        ]);
     }
 
 }

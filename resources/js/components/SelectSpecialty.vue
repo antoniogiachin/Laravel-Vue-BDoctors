@@ -5,14 +5,16 @@
             <!-- SELECT SPECIALIZZAZIONI -->
             <div class="col-12 col-lg-8 mb-2 mb-lg-0">
                 <select class="form-select p-2" v-model="selectedSpecialty" >
-                    <option selected value="">Scegli una specializzazione</option>
+                    <option  value="tutte le specializzazioni" >Tutti i Dottori - (oppure seleziona una specializzazione dal menu a tendina)</option>
                     <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.slug" > {{specialty.name}} </option>
                 </select>
             </div>
 
             <!-- BUTTON CERCA -->
+
             <div id="btn-cerca" class="col-12 col-lg-4">
                 <router-link id="advanced-search" class="btn btn-specialty p-2" :to="{name: 'search', params : {slug : selectedSpecialty}}">Cerca</router-link>
+
             </div>
 
         </div>
@@ -22,13 +24,13 @@
 
 <script>
 export default {
-    name: "SelectSpecialty.vue",
+    name: "SelectSpecialty",
     props:{
         specialtiesList: Array,
     },
     data() {
         return {
-            selectedSpecialty: '',
+            selectedSpecialty: 'tutte le specializzazioni',
         };
     }
 

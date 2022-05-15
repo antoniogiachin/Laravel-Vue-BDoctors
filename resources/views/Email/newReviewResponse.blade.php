@@ -349,11 +349,10 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Salve, Dottor {{ $doctorName }} - {{ $doctorSurname }}</p>
-                        <p>Lei ha ricevuto una nuova richiesta di appuntamento da: </p>
-                        <p> <strong>{{ $lead->author }}</strong> email : <strong>{{ $lead->email }}</strong> </p>
+                        <p>Gentile Signor <strong>{{$name}}</strong> , sono il dottor <strong>{{$docName}}</strong>  - <strong>{{$docSurname}}</strong> </p>
+                        <p>Riguardo la sua recensione del <strong>{{$date}}</strong> </p>
                         <p>
-                            Contenuto: {{ $lead->message }}
+                             {{ $content }}
                         </p>
                       </td>
                     </tr>

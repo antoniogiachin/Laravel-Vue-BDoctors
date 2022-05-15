@@ -134,6 +134,19 @@
                 <div class="col my-3">
                     <p>Risultati per <span class="text-capitalize text-success">{{ $route.params.slug }}</span></p>
                     <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
+
+                <div class="row">
+                    <div class="col my-3">
+                        <h2 v-if="$route.params.slug">Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug }}</span></h2>
+                        <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
+                        <div class="d-flex justify-content-center gap-3" v-if="loading">
+                            <h2 class="text-center"> Caricamento in corso</h2>
+                            <div class="spinner-border" role="status">
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
               </div>
@@ -254,8 +267,8 @@ export default {
             specialtiesList: [],
             checkedReview : [],
             checkedNumberReview:[],
-            // rangeMax: null,
             notFound: false,
+            loading: false,
         }
     },
 
@@ -263,9 +276,15 @@ export default {
 
         getDoctors() {
 
-            axios.get("/api/docs/" + this.$route.params.slug)
+            axios.get("/api/docs" )
                 .then((response) => {
-                    this.doctors = response.data.results;
+                    this.loading = false;
+                    if(response.data.success == false ){
+                        // this.notFound = true;
+                    } else {
+                        // this.notFound = false;
+                        this.doctors = response.data.results;
+                    }
                 })
                 .catch(function(error) {
                     // handle error
@@ -296,6 +315,7 @@ export default {
         // filtro dottori
         doctorsFilter(){
            this.doctors = [];
+            this.loading = true;
            this.checkedReview.forEach( check =>{
                const params = {
                    average : check,
@@ -304,26 +324,40 @@ export default {
                axios.get('/api/filter', {params}).then( res => {
                    /*this.doctors = res.data.results;
                    console.log(this.doctors);*/
-                   res.data.results.forEach( doctor => {
-                       if(!this.doctors.some( doc => doc.id === doctor.id)){
-                           this.doctors.push(doctor);
-                       }
-                   })
+                   this.loading = false;
+                   console.log(res.data.success)
+                   if(res.data.success == false){
+                       // this.notFound = true;
+                   } else{
+                       // this.notFound = false;
+                       res.data.results.forEach( doctor => {
+                           if(!this.doctors.some( doc => doc.id === doctor.id)){
+                               this.doctors.push(doctor);
+                           }
+                       })
+                   }
                })
            })
+            /*if(this.filteredDoctors.length == 0){
+                this.notFound = true;
+            } else {
+                this.notFound = false;
+            }*/
         },
         doctorsNumberFilter(){
             this.doctors = [];
-            this.notFound = false;
+            this.loading = true;
             this.checkedNumberReview.forEach( numb => {
                 const params = {
                     average : this.average,
                     rangeMin: parseInt(numb),
                 }
                 axios.get('/api/filter', {params}).then( res => {
+                    this.loading = false;
                     if(res.data.success == false){
-                        this.notFound = true;
+                        // this.notFound = true;
                     } else {
+                        // this.notFound = false;
                         console.log(res.data.results);
                         res.data.results.forEach( doctor => {
                             if(!this.doctors.some( doc => doc.id == doctor.id)){
@@ -333,11 +367,11 @@ export default {
                     }
                 })
             })
-
         },
         filterDoctors() {
             this.doctors = [];
             // selezionati entrambi
+            this.loading = true;
             if(this.checkedReview.length > 0 && this.checkedNumberReview.length > 0 ){
                 const paramsArrObj = [];
                 if(this.checkedReview.length > this.checkedNumberReview.length){
@@ -357,7 +391,7 @@ export default {
                             paramsArrObj.forEach( (res, index) =>{
                                 let crossedParams = {
                                     average : res.average,
-                                    rangeMin: reversed[index].average,
+                                    rangeMin: reversed[index].rangeMin,
                                 }
                                 paramsArrObj.push(crossedParams);
                             })
@@ -369,13 +403,17 @@ export default {
                                 rangeMin : objParams.rangeMin,
                             }
                             axios.get('/api/filter', {params}).then( res =>{
+                                this.loading = false;
                                 if(res.data.success == true){
                                     // console.log(res.data.results);
+                                    // this.notFound = false;
                                     res.data.results.forEach( doctor =>{
                                         if(!this.doctors.some( doc => doc.id == doctor.id)){
                                             this.doctors.push(doctor);
                                         }
                                     })
+                                } else {
+                                    // this.notFound = true;
                                 }
                             })
                         })
@@ -410,13 +448,17 @@ export default {
                                 rangeMin : objParams.rangeMin,
                             }
                             axios.get('/api/filter', {params}).then( res =>{
+                                this.loading = false;
                                 if(res.data.success == true){
+                                    // this.notFound = false;
                                     res.data.results.forEach( doctor =>{
                                         // console.log(res.data.results);
                                         if(!this.doctors.some( doc => doc.id == doctor.id)){
                                             this.doctors.push(doctor);
                                         }
                                     })
+                                } else {
+                                    // this.notFound = true;
                                 }
                             })
                         })
@@ -432,14 +474,23 @@ export default {
                 this.doctors = [];
                 // funzione per solo numer rec
                 this.doctorsNumberFilter();
+
             } else {
                 this.doctor =[];
                 this.getDoctors();
             }
-
+        },
+        setEmpty(){
+            // console.log('vuoto');
+            setTimeout(()=>{
+                if(this.filteredDoctors.length == 0){
+                    console.log('vuoto');
+                    this.notFound = true;
+                } else{
+                    this.notFound = false;
+                }
+            }, 500)
         }
-
-
     },
 
     mounted() {
@@ -450,7 +501,7 @@ export default {
         filteredDoctors: function(){
             return this.doctors.filter(doc =>{
                 let query = this.ricerca.toLowerCase().replaceAll(' ', "");
-                if(this.$route.params.slug != ''){
+                if(this.$route.params.slug != 'tutte le specializzazioni'){
                     return !!doc.specialties.some(specialty => specialty.slug == this.$route.params.slug && doc.slug.replaceAll("-", '').includes(query));
                 } else{
                     return doc.slug.replaceAll("-", '').includes(query);
@@ -467,6 +518,10 @@ export default {
             immediate: true,
             handler: 'filterDoctors',
         },
+        filteredDoctors: {
+            immediate: true,
+            handler : 'setEmpty'
+        }
     }
 }
 </script>

@@ -37,6 +37,14 @@ Route::middleware('auth')
             Route::get('cvDelete/{doctor}', 'CvController@cvDelete')->name('deleteCv');
             //rotta delete photo
             Route::get('/photoDelete/{doctor}', "PhotoController@photoDelete")->name('deletePhoto');
+            // rotta index review
+            Route::get('/doctors/{slug}/reviews', [\App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews');
+            // api reviews per risposta del dottore
+            Route::post('/reviews/response/{review}', [\App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviewDoctorRes');
+            // rotta index Leads
+            Route::get('/doctors/{slug}/leads', [\App\Http\Controllers\Admin\LeadController::class, 'index'])->name('leads');
+            // api leads per risposta del dottore
+            Route::post('/leads/response/{lead}', [\App\Http\Controllers\Admin\LeadController::class, 'store'])->name('leadDoctorRes');
         }
     );
 
