@@ -19,6 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bo-sponsor.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
