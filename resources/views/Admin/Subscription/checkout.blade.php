@@ -1,3 +1,7 @@
+<?php
+    header("refresh:5;url=http://127.0.0.1:8000");
+?>
+
 @extends('layouts.app')
 
 @section('content')
