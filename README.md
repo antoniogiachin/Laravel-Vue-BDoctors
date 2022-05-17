@@ -27,3 +27,4 @@ prova
 - composer require braintree/braintree_php
 - creo le rotte
 - creo rotta di POST per checkout
+asd
