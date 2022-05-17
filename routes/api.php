@@ -37,3 +37,6 @@ Route::get("/reviews/{doctorId}", [ReviewController::class, "index"]);
 ]);*/
 // api per numero di recensioni
 Route::get('/filter', [DoctorController::class, 'filter'] );
+
+//api per sponsorizzati
+Route::get('/sponsored',[DoctorController::class, 'doctorsSponsored']);

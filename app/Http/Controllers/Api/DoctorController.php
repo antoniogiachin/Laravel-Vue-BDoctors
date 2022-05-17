@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Doctor;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -349,53 +350,40 @@ class DoctorController extends Controller
 
     }
 //$average = null, $rangeMin = null, $rangeMax = null
-    public function doctorsByAll(Request $request){
-        // ho solo media
-        $average = $request->query('average');
-        dd($average);
-        /*$rangeMin = $request->rangeMin;
-        $rangeMax = $request->rangeMax;
-        if($average && !$rangeMin  && !$rangeMax){
-            return $this->doctorByAvg($average);
-        } elseif (!$average && $rangeMin && $rangeMax) {
-            $doctors = Doctor::with(["reviews","specialties","leads","user"])->get();
-            $filtered = $doctors->filter(function($doctor) use($rangeMin, $rangeMax){
-                $reviewCounter = 0;
-                foreach ($doctor->reviews as $review){
-                    $reviewCounter++;
-                }
+    public function doctorsSponsored(){
+        $doctors = Doctor::with(['user', 'subscriptions', 'specialties', 'reviews'])->get();
+        $filtered = $doctors->filter(function($doctor){
+           $sponsorFilter = $doctor->subscriptions->filter(function($sub){
+               $dateOne = new Carbon($sub->pivot->expires_at);
+//               dd($dateOne->format('M d Y'));
+               $dateTwo = Carbon::now()->format('M d Y');
+//               dd($dateOne);
+               $date1 = Carbon::createFromFormat('Y-m-d H:i:s', '2021-02-02 11:10:00');
+               $date2 = Carbon::createFromFormat('Y-m-d H:i:s', '2021-01-02 11:10:00');
+               if($dateOne->gt($dateTwo)){
+                   return true;
+               } else{
+                   return false;
+               }
+           })->values()->all();
+//           dd($sponsorFilter);
+           if(count($sponsorFilter) > 0){
+               return true;
+           } else{
+               return false;
+           }
+        })->values()->all();
 
-                if($rangeMin == 10){
-                    if($reviewCounter >= $rangeMin){
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    if($reviewCounter >= $rangeMin && $reviewCounter < $rangeMax){
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            })->values()->all();
-            if(count($filtered) > 0){
-                return response()->json([
-                    'success' => true,
-                    'results' => $filtered,
-                    'message' => 'Ecco tutti i dottori numero di recensioni compreso tra ' . $rangeMin . ' e ' . $rangeMax,
-                ]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'results' => 'Nessun medico con questo numero di recensioni',
-                ]);
-            }
-        }*/
-        // ho solo media e range minimo
-
-        // ho solo i range
-
-        //ho tutti e tre
+        if($filtered){
+            return response()->json([
+                'success' => true,
+                'results' => $filtered,
+            ]);
+        } else{
+            return response()->json([
+                'success'=> false,
+                'results' => 'Nessun dottore sponsorizzato!'
+            ]);
+        }
     }
 }
