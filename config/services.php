@@ -29,5 +29,12 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    // qui i dati di braintree
+    'braintree' => [
+        'environment' => getenv('BT_ENVIRONMENT'),
+        'merchantId' => getenv('BT_MERCHANT_ID'),
+        'publicKey' => getenv('BT_PUBLIC_KEY'),
+        'privateKey' => getenv('BT_PRIVATE_KEY')
+    ],
 
 ];

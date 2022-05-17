@@ -21,3 +21,9 @@ Prova
 
 prova
 
+# Braintree
+- File config/services/php -> credenziali per braintree con riferimento a file ENV 
+- creo blade per form iscrizione
+- composer require braintree/braintree_php
+- creo le rotte
+- creo rotta di POST per checkout
