@@ -75,7 +75,7 @@
                             <a class="nav-link text-white d-inline" href="{{route('admin.reviews', $doctor->slug)}}">Recensioni ricevute</a>
                         </li>
                         <li class="nav-item m-2 dropdown">
-                            <a class="nav-link text-white d-inline" href="#">Statistiche</a>
+                            <a class="nav-link text-white d-inline" href="{{route('admin.charts', $doctor->slug)}}">Statistiche</a>
                         </li>
                         <li class="nav-item m-2 dropdown">
                             <a class="nav-link text-white d-inline" href="{{route('admin.subscription.index', $doctor->slug)}}">Aggiungi Sponsor</a>
