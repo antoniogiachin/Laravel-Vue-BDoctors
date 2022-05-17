@@ -355,11 +355,7 @@ class DoctorController extends Controller
         $filtered = $doctors->filter(function($doctor){
            $sponsorFilter = $doctor->subscriptions->filter(function($sub){
                $dateOne = new Carbon($sub->pivot->expires_at);
-//               dd($dateOne->format('M d Y'));
                $dateTwo = Carbon::now()->format('M d Y');
-//               dd($dateOne);
-               $date1 = Carbon::createFromFormat('Y-m-d H:i:s', '2021-02-02 11:10:00');
-               $date2 = Carbon::createFromFormat('Y-m-d H:i:s', '2021-01-02 11:10:00');
                if($dateOne->gt($dateTwo)){
                    return true;
                } else{
