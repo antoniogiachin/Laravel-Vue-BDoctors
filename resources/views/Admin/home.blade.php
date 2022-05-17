@@ -55,87 +55,114 @@
 
         {{-- Se utente ha registrsto un profilo --}}
     @else
-    <div class="container position-relative mt-4 bg-light d-flex justify-content-around border rounded-3 p-0">
+    <div class="container mt-4 bg-light border rounded-3 p-0">
 
-        {{-- sidebar info dottore --}}
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-info border-end me-3 rounded-start" style="width: 280px;">
-            @if (!$doctor->photo)
-                <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" class="img-fluid py-2">
-            @else
-                <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" class="img-fluid py-2">
-            @endif
-            <h5>{{$doctor->user->name}} {{$doctor->user->surname}}</h5>
-            <div class="div d-flex flex-wrap mt-2">
-                @foreach ($doctor->specialties as $specialty)
-                    <span class="badge bg-light text-dark m-1">{{ $specialty->name }}</span>
-                @endforeach
+        {{-- Navbar link --}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-info bg-gradient ms-auto">
+            <div class="container-fluid">
+                <button class="navbar-toggler m-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto m-2 mb-lg-0">
+                        <li class="nav-item m-2" id="nav-hov">
+                            <a class="nav-link text-white d-inline" href="{{route('admin.doctors.edit', $doctor->slug)}}">Modifica Profilo</a>
+                        </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link text-white d-inline" href="{{route('admin.leads', $doctor->slug)}}">Messaggi ricevuti</a>
+                        </li>
+                        <li class="nav-item m-2 dropdown">
+                            <a class="nav-link text-white d-inline" href="{{route('admin.reviews', $doctor->slug)}}">Recensioni ricevute</a>
+                        </li>
+                        <li class="nav-item m-2 dropdown">
+                            <a class="nav-link text-white d-inline" href="#">Statistiche</a>
+                        </li>
+                        <li class="nav-item m-2 dropdown">
+                            <a class="nav-link text-white d-inline" href="{{route('admin.subscription.index', $doctor->id)}}">Aggiungi Sponsor</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <p><i class="fa-solid fa-location-pin"></i>
-                        @if(!$doctor->medical_address)
-                            <span>Studio non presente</span>
-                        @else
-                            <span> {{$doctor->medical_address}}</span>
-                        @endif
-                    </p>
-                </li>
-                <li>
-                    <p><i class="fa-solid fa-envelope"></i> {{$doctor->user->email}}</p>
-                </li>
-                <li>
-                    <p><i class="fa-solid fa-phone"></i>
-                        @if(!$doctor->phone)
-                            <span>Telefono non presente</span>
-                        @else
-                           <span>{{$doctor->phone}}</span>
-                        @endif
-                    </p>
-                </li>
-                <li>
-                    <p><i class="fa-solid fa-file"></i>
-                        @if(!$doctor->cv)
-                            <span>Nessun cv</span>
-                        @else
-                            <a class="nav-link text-dark text-decoration-underline d-inline" href="{{url('storage/'. Auth::user()->doctor->cv)}}">Guarda Cv</a>
-                        @endif
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <div class="row text-center justify-content-center mt-3">
-            <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-                <h4><i class="fa-solid fa-gears"></i><a class="nav-link text-dark d-inline" href="{{route('admin.doctors.edit', $doctor->slug)}}">Modifica Profilo</a></h4>
-            </div>
-            <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-               <h4><i class="fa-solid fa-message"></i><a class="nav-link text-dark d-inline" href="{{route('admin.leads', $doctor->slug)}}">Messaggi ricevuti</a></h4>
-            </div>
-            <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-               <h4><i class="fa-solid fa-comments"></i><a class="nav-link text-dark d-inline" href="{{route('admin.reviews', $doctor->slug)}}">Recensioni ricevute</a></h4>
-            </div>
-            <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-               <h4><i class="fa-solid fa-chart-line"></i><a class="nav-link text-dark d-inline" href="#">Statistiche</a></h4>
-            </div>
-            <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-               <h4><i class="fa-solid fa-circle-plus"></i><a class="nav-link text-dark d-inline" href="{{route('admin.subscription.index', $doctor->slug)}}">Aggiungi Sponsor</a></h4>
-            </div>
-            <div class="col-md-6 col-sm-2 d-flex justify-content-center align-items-center ms_hov_active">
-                {{-- Da aggiungere condizione: se il dott. ha sponsor attivi mostra "sponsor attivi", altrimenti mostra "nessuno sponsor attivo" --}}
-               <h4><i class="fa-solid fa-stamp"></i><a class="nav-link text-dark d-inline" href="#">Nessuno sponsor attivo</a></h4>
-            </div>
-        </div>
-        <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile position-absolute top-0 end-0" data-name="{{$doctor->user->surname}}">
-            @csrf
-            @method('DELETE')
-
-            <button class="btn btn-danger text-white">Elimina profilo</button>
-        </form>
-        @endif
+        </nav>
     </div>
 
+        {{-- Info dottore --}}
+        <div class="container text-center mt-5 border p-3" id="info">
+            <div class="row gy-3">
+                <div class="col-12 col-sm-6">
+                    @if (!$doctor->photo)
+                        <h4 class="fs-3 text-capitalize fw-bold">{{$doctor->user->name}} {{$doctor->user->surname}}</h4>
+                        <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" class="img-fluid py-2 rounded-pill">
+                    @else
+                        <h4 class="fs-3 text-capitalize fw-bold">{{$doctor->user->name}} {{$doctor->user->surname}}</h4>
+                        <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" class="img-fluid py-2 rounded-pill" height="200px" width="200px">
+                    @endif
+                    <div class="div d-flex flex-wrap mt-2 justify-content-center">
+                        @foreach ($doctor->specialties as $specialty)
+                            <span class="badge bg-primary m-1">{{ $specialty->name }}</span>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
 
-    {{-- OLD --}}
-
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li>
+                            <p><i class="fa-solid fa-location-pin"></i>
+                                @if(!$doctor->medical_address)
+                                    <span title="studio non inserito/presente">Studio non presente</span>
+                                @else
+                                    <span title="indirizzo studio medico"> {{$doctor->medical_address}}</span>
+                                @endif
+                            </p>
+                        </li>
+                        <li>
+                            <p title="email"><i class="fa-solid fa-envelope"></i> {{$doctor->user->email}}</p>
+                        </li>
+                        <li>
+                            <p><i class="fa-solid fa-phone"></i>
+                                @if(!$doctor->phone)
+                                    <span title="numero non presente">Telefono non presente</span>
+                                @else
+                                   <span title="numero telefono">{{$doctor->phone}}</span>
+                                @endif
+                            </p>
+                        </li>
+                        <li>
+                            <p><i class="fa-solid fa-file"></i>
+                                @if(!$doctor->cv)
+                                    <span title="nessun cv caricato">Nessun cv</span>
+                                @else
+                                    <a class="nav-link text-dark text-decoration-underline d-inline" title="guarda il tuo cv" href="{{url('storage/'. Auth::user()->doctor->cv)}}">Guarda Cv</a>
+                                @endif
+                            </p>
+                        </li>
+                        <hr>
+                        <li>
+                            <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile" data-name="{{$doctor->user->surname}}">
+                                @csrf
+                                @method('DELETE')
+                    
+                                <a class="nav-link text-danger" style="cursor:pointer;" title="elimina il tuo profilo"><i class="fa-solid fa-trash-can"></i> Elimina profilo</a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    @endif
+    
 @endsection
+
+
+<style scoped>
+
+    #info{
+        box-shadow: 0px 0px 10px 0px rgb(241, 179, 143);
+    }
+    .nav-link:hover{
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+</style>
