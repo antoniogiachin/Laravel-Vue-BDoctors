@@ -75,9 +75,8 @@
             </div>
         </nav> --}}
         {{-- navbar --}}
-        <nav class="navbar navbar-expand-md bg-info">
+        <nav class="navbar navbar-expand-md navbar-light bg-info">
             <div class="container-fluid px-2">
-                <img src="{{asset('img/logo_bdoctors.png')}}" alt="Logo Bdoctors" style="width: 70px; height:70px">
                 <a class="navbar-brand text-white ms-3 fs-4" href="{{ url('/') }}">BDoctors Pannello Admin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
