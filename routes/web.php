@@ -29,14 +29,10 @@ Route::middleware('auth')
             Route::delete('/{user}', 'HomeController@destroy')->name('home.destroy');
             Route::get('/{user}', 'HomeController@show')->name('home.show');
 
-            //rotta subscription
-            Route::get('/subscription', [\App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('subscription');
-            //Route::get('/subscription', 'SubscriptionController@index')->name('subscription');
-
             // rotte CRUD dottore
             Route::resource('doctors', 'DoctorController');
 
-            
+
             //rotta get e delete cv
             Route::get('/cvDownload', 'CvController@getCv')->name('downloadCv');
             Route::get('cvDelete/{doctor}', 'CvController@cvDelete')->name('deleteCv');
@@ -50,7 +46,6 @@ Route::middleware('auth')
             Route::get('/doctors/{slug}/leads', [\App\Http\Controllers\Admin\LeadController::class, 'index'])->name('leads');
             // api leads per risposta del dottore
             Route::post('/leads/response/{lead}', [\App\Http\Controllers\Admin\LeadController::class, 'store'])->name('leadDoctorRes');
-
 
 
         }
