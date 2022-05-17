@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Doctor extends Model
 {
-    protected $fillable = 
+    protected $fillable =
     [
         'photo',
         'phone',
@@ -33,7 +33,7 @@ class Doctor extends Model
     }
 
     public function subscriptions() {
-        return $this->belongsToMany(Subscription::class);
+        return $this->belongsToMany(Subscription::class)->withTimestamps()->withPivot('expires_at');
     }
 
     public function specialties() {

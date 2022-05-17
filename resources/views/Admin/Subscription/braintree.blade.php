@@ -26,7 +26,7 @@
 
         <input id="nonce" name="payment_method_nonce" type="hidden" />
         <div class="flex justify-center">
-            <button class="button border-2 px-1 py-2 rounded-lg hover:bg-black hover:text-white hover:border-white" type="submit"><span>Paga Ora</span></button>
+            <button class="disabled:opacity-75 button border-2 px-1 py-2 rounded-lg hover:bg-black hover:text-white hover:border-white" type="submit"><span>Paga Ora</span></button>
         </div>
 
     </form>
@@ -50,7 +50,8 @@
         }
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-
+            let button = document.querySelector('button');
+            button.disabled=true;
             instance.requestPaymentMethod(function (err, payload) {
                 if (err) {
                     console.log('Request Payment Method Error', err);

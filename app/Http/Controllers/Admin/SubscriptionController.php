@@ -40,8 +40,8 @@ class SubscriptionController extends Controller
     public function checkout(Request $request, $price){
         $doctor = Auth::user()->doctor;
 //        $doctor->subscriptions()->sync([1]);
-
-        $subId = Subscription::wherePrice($price)->first()->id;
+        $subscription = Subscription::wherePrice($price)->first();
+        $subId = $subscription->id;
         if($price == 2.99){
             $expires = Carbon::tomorrow();
         } elseif($price == 5.99){
@@ -60,9 +60,9 @@ class SubscriptionController extends Controller
         ]);
 
         // questi dati li ricevo da request
-        $amount = 2.99;
+        $amount = $price;
         $nonce = $request->payment_method_nonce;
-
+//        dd($nonce);
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
@@ -73,17 +73,17 @@ class SubscriptionController extends Controller
 
         if ($result->success) {
             $doctor->subscriptions()->attach($subId, ['expires_at' => $expires]);
-            return redirect('admin.home');
+            return view('Admin.Subscription.checkout', compact('subscription', 'expires'));
         } else {
             $errorString = "";
 
             foreach($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
-
             $_SESSION["errors"] = $errorString;
 //            header("Location: " . $baseUrl . "index.php");
-            return redirect('admin.home');
+            return view('Admin.Subscription.errorCheckout', compact('subscription', 'errorString'));
         }
     }
+
 }
