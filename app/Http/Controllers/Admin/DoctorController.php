@@ -293,7 +293,15 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
+        $specialties = Specialty::all();
         $doctor->specialties->each(function($specialty){
+//            dd($specialty);
+            if($specialty->id > 11 && count($specialty->doctors) == 1){
+                $specialty->delete();
+            }
+        });
+
+        $specialties->each(function($specialty){
 //            dd($specialty);
             if($specialty->id > 11 && count($specialty->doctors) == 1){
                 $specialty->delete();
@@ -344,7 +352,9 @@ class DoctorController extends Controller
                     $averageFive[] = $review->vote;
                 }
             }
-            $totalAverage = $sum / $count;
+            if($count > 0){
+                $totalAverage = $sum / $count;
+            }
             $chartReviews = [
                 count($averageZero),
                 count($averageOne),
