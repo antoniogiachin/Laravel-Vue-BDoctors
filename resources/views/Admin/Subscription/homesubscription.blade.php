@@ -3,13 +3,13 @@
 @section('content')
 
   <div id="sponsor-container">
-    
+
     <div class="container ms_container">
       <div class="row row-cols-1 row-cols-md-3 gx-5 gy-5">
 
           {{-- COLONNA BRONZE --}}
           <div class="col ms_col-sponsor">
-              
+
               <div class="top-wrap">
                 <h2 class="h2-bronze">Piano base</h2>
                 <h3 class="h3-bronze">Bronze</h3>
@@ -18,8 +18,8 @@
 
 
               <p class="sub-title">Il piano più economico fatto su misura per iniziare a farti notare fin da subito.</p>
-              
-              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="#">Prova il piano Bronze</a>
+
+              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="{{route('admin.subscription.pay', $bronze->name)}}"">Prova il piano Bronze</a>
 
               <div class="spons-description">
 
@@ -38,7 +38,7 @@
 
           {{-- COLONNA SILVER --}}
           <div class="col ms_col-sponsor">
-              
+
               <div class="top-wrap">
                 <h2 class="h2-silver">Piano Professional</h2>
                 <h3 class="h3-silver">Silver</h3>
@@ -47,8 +47,8 @@
 
 
               <p class="sub-title">Il piano intermedio per avere facilmente e più a lungo una maggiore visibilità per il tuo profilo. </p>
-              
-              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="#">Prova il piano Silver</a>
+
+              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="{{route('admin.subscription.pay', $silver->name)}}"">Prova il piano Silver</a>
 
               <div class="spons-description">
 
@@ -67,7 +67,7 @@
 
           {{-- COLONNA GOLD --}}
           <div class="col ms_col-sponsor">
-              
+
               <div class="top-wrap">
                 <h2 class="h2-gold">Piano Advanced</h2>
                 <h3 class="h3-gold">Gold</h3>
@@ -76,8 +76,8 @@
 
 
               <p class="sub-title">Il piano perfetto se vuoi il massimo ottenendo estrema visibilità per il tuo profilo.</p>
-              
-              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="#">Prova il piano Gold</a>
+
+              <a class="ms_btn-spons text-white d-block btn btn-primary btn-lg" href="{{route('admin.subscription.pay', $gold->name)}}">Prova il piano Gold</a>
 
               <div class="spons-description">
 

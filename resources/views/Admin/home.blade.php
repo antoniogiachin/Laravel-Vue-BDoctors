@@ -119,7 +119,7 @@
                <h4><i class="fa-solid fa-chart-line"></i><a class="nav-link text-dark d-inline" href="#">Statistiche</a></h4>
             </div>
             <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center ms_hov_active">
-               <h4><i class="fa-solid fa-circle-plus"></i><a class="nav-link text-dark d-inline" href="{{route('admin.subscription')}}">Aggiungi Sponsor</a></h4>
+               <h4><i class="fa-solid fa-circle-plus"></i><a class="nav-link text-dark d-inline" href="{{route('admin.subscription.index', $doctor->slug)}}">Aggiungi Sponsor</a></h4>
             </div>
             <div class="col-md-6 col-sm-2 d-flex justify-content-center align-items-center ms_hov_active">
                 {{-- Da aggiungere condizione: se il dott. ha sponsor attivi mostra "sponsor attivi", altrimenti mostra "nessuno sponsor attivo" --}}

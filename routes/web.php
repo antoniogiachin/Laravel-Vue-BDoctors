@@ -47,6 +47,10 @@ Route::middleware('auth')
             // api leads per risposta del dottore
             Route::post('/leads/response/{lead}', [\App\Http\Controllers\Admin\LeadController::class, 'store'])->name('leadDoctorRes');
 
+            //rotte per subs
+            Route::get('/subscriptions/{doctor}', [SubscriptionController::class, 'index'])->name('subscription.index');
+            Route::get('/checkout/{type}', [SubscriptionController::class, 'token'])->name('subscription.pay');
+            Route::post('/checkout/{price}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
 
         }
     );

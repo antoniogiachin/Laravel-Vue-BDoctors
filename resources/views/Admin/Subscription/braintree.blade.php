@@ -10,13 +10,13 @@
 <body class="h-full grid place-items-center">
 {{--form pagamento bronze--}}
 <div class="w-50 mx-auto">
-    <form method="POST" id="payment-form" action="{{route('admin.checkout.bronze')}}">
+    <form method="POST" id="payment-form" action="{{route('admin.subscription.checkout', $type->price)}}">
         @csrf
-        <h1 class="text-center text-2xl text-gray-800">Il tuo abbonamento <span class="uppercase block">bronze</span></h1>
+        <h1 class="text-center text-2xl text-gray-800">Il tuo abbonamento <span class="uppercase block">{{$type->name}}</span></h1>
         <section class="mt-6 mb-3">
             <label for="amount" class="flex justify-center space-x-2">
                 <span class="input-label text-gray-800 text-lg">Prezzo:</span>
-                <span class="text-lg text-gray-800">2,99 &euro; </span>
+                <span class="text-lg text-gray-800">{{$type->price}} &euro; </span>
             </label>
 
             <div class="bt-drop-in-wrapper">
