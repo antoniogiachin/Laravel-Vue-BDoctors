@@ -78,7 +78,7 @@
                             <a class="nav-link text-white d-inline" href="#">Statistiche</a>
                         </li>
                         <li class="nav-item m-2 dropdown">
-                            <a class="nav-link text-white d-inline" href="{{route('admin.subscription.index', $doctor->id)}}">Aggiungi Sponsor</a>
+                            <a class="nav-link text-white d-inline" href="{{route('admin.subscription.index', $doctor->slug)}}">Aggiungi Sponsor</a>
                         </li>
                     </ul>
                 </div>
@@ -141,7 +141,7 @@
                             <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile" data-name="{{$doctor->user->surname}}">
                                 @csrf
                                 @method('DELETE')
-                    
+
                                 <a class="nav-link text-danger" style="cursor:pointer;" title="elimina il tuo profilo"><i class="fa-solid fa-trash-can"></i> Elimina profilo</a>
                             </form>
                         </li>
@@ -149,9 +149,9 @@
                 </div>
             </div>
         </div>
-    
+
     @endif
-    
+
 @endsection
 
 
