@@ -45,6 +45,10 @@ Route::middleware('auth')
             Route::get('/doctors/{slug}/leads', [\App\Http\Controllers\Admin\LeadController::class, 'index'])->name('leads');
             // api leads per risposta del dottore
             Route::post('/leads/response/{lead}', [\App\Http\Controllers\Admin\LeadController::class, 'store'])->name('leadDoctorRes');
+
+//            rotte per subscriptions
+            Route::get('/subscriptions/bronze', [\App\Http\Controllers\Admin\SubscriptionController::class, 'bronze'])->name('subBronze');
+            Route::post('/checkout/bronze', [\App\Http\Controllers\Admin\SubscriptionController::class, 'checkoutBronze'])->name('checkout.bronze');
         }
     );
 
