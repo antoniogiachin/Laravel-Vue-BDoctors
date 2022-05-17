@@ -92,7 +92,7 @@
                 <div class="col-12 col-sm-6">
                     @if (!$doctor->photo)
                         <h4 class="fs-3 text-capitalize fw-bold">{{$doctor->user->name}} {{$doctor->user->surname}}</h4>
-                        <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" class="img-fluid py-2 rounded-pill">
+                        <img src=" {{ asset('img/not_found.jpg') }} " alt="not_found_photo" class="img-fluid py-2 rounded-pill" height="200px" width="200px">
                     @else
                         <h4 class="fs-3 text-capitalize fw-bold">{{$doctor->user->name}} {{$doctor->user->surname}}</h4>
                         <img src=" {{ asset('storage/' . $doctor->photo) }} " alt="{{ $doctor->id }}_photo" class="img-fluid py-2 rounded-pill" height="200px" width="200px">
@@ -138,22 +138,20 @@
                         </li>
                         <hr>
                         <li>
-                            <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile" data-name="{{$doctor->user->surname}}">
+                            <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST" class="delete-profile d-flex justify-content-center" data-name="{{$doctor->user->surname}}">
                                 @csrf
                                 @method('DELETE')
 
-                                <a class="nav-link text-danger" style="cursor:pointer;" title="elimina il tuo profilo"><i class="fa-solid fa-trash-can"></i> Elimina profilo</a>
+                                <button class="nav-link text-danger" style="cursor:pointer;" title="elimina il tuo profilo"><i class="fa-solid fa-trash-can"></i> Elimina profilo</button>
                             </form>
                         </li>
                     </ul>
+                    @endif
                 </div>
             </div>
         </div>
 
-    @endif
-
 @endsection
-
 
 <style scoped>
 
@@ -161,7 +159,7 @@
         box-shadow: 0px 0px 10px 0px rgb(241, 179, 143);
     }
     .nav-link:hover{
-        font-weight: bold;
+        font-weight: bold
         transition: 0.2s;
     }
 
