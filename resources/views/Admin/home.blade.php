@@ -35,7 +35,7 @@
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Entra a far parte di BDoctors.it è Gratis! </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <a href="{{route('admin.doctors.create')}}" type="button" class="btn btn-primary text-white btn-lg px-4 me-sm-3">Registrati subito</a>
+            <a href="{{route('admin.doctors.create')}}" type="button" class="btn btn-primary text-white btn-lg px-4 me-sm-3">Completa il tuo profilo</a>
             <form action="{{ route('admin.home.destroy', $user->id) }}" id="deleteUser" method="POST">
                 @csrf
                 @method('DELETE')
