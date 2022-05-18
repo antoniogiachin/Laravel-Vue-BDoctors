@@ -82,6 +82,7 @@ class DoctorController extends Controller
 
         if(!isset($data['specialtiesId'])){
             $data['specialtiesId'] = "Nessuna specializzazione selezionata!";
+            return redirect()->route('admin.doctors.create');
         }
 
         if(isset($data['photo'])){

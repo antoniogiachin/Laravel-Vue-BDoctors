@@ -85,14 +85,14 @@
                               <div class="col-6">
                                     <div class="mb-3">
                                         <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
-                                        <p class="text-danger mt-2" id="mustBeSelected">Porco dio</p>
-                                        <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
-                                          <option value="select" class="text-muted">Seleziona una specializzazione</option>
+                                        <p class="text-danger mt-2" id="mustBeSelected"></p>
+                                        <select onchange="checkSpec()" required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
+                                          <option value="select" class="text-muted">Seleziona una specializzazione/ Altro</option>
                                           @foreach ($specialties as $specialty)
                                             <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
                                           @endforeach
                                         </select>
-                                        {{--<input  onclick="checkInput()" onkeyup="checkInput()" placeholder="Inserisci una specializzazione" id="otherSpec" class="mt-3 form-control disabled" type="text" v-if=" spec == 12 " name="otherSpec">--}}
+                                        <input  onclick="checkSpec()" onkeyup="checkSpec()" placeholder="Inserisci una specializzazione" id="otherSpec" class="mt-3 form-control disabled" type="text" v-if=" spec == 12 " name="otherSpec">
 
                                         @error('specialties')
                                             <span class="invalid-feedback" role="alert">
@@ -178,18 +178,38 @@
             }
         }*/
 
-        function checkIfEmpty(){
-            const checkedList = document.querySelectorAll('input');
-            console.log(checkedList);
-            if(checkedList.length <= 0){
+
+        const checkedList = document.getElementById('specialty');
+        const otherSpec = document.getElementById('otherSpec');
+        console.log(checkedList.value);
+        if(checkedList.value == 'select'  && otherSpec.value == ''){
+            document.getElementById("submit").classList.add('disabled');
+            otherSpec.classList.add('d-block');
+            document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
+        }
+        function checkSpec(){
+            if(checkedList.value == 'select'  && otherSpec.value == ''){
                 document.getElementById("submit").classList.add('disabled')
+                otherSpec.classList.add('d-block');
+                otherSpec.classList.remove('d-none');
+                checkedList.classList.add('d-block');
+                checkedList.classList.remove('d-none');
                 document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
-            } else if (checkedList.length > 0){
-                document.getElementById("submit").classList.remove('disabled')
+            } else if (checkedList.value != 'select'){
+                document.getElementById("submit").classList.remove('disabled');
+                otherSpec.value = ''
+                otherSpec.classList.remove('d-block');
+                otherSpec.classList.add('d-none');
+                document.getElementById("mustBeSelected").innerHTML = "";
+            } else if (otherSpec.value != ''){
+                document.getElementById("submit").classList.remove('disabled');
+                checkedList.classList.add('d-none');
+                checkedList.classList.remove('d-block');
                 document.getElementById("mustBeSelected").innerHTML = "";
             }
-
         }
+
+
 
     </script>
 @endsection
