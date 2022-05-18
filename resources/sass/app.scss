@@ -2,7 +2,8 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
 // Variables
 @import 'variables';
@@ -14,4 +15,5 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Heebo', sans-serif;
 }

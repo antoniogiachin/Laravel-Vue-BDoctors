@@ -3695,7 +3695,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-ee30b9f6] {\n  background: linear-gradient(-180deg, #4689CF 34%, #0092cc 100%);\n  padding-top: 80px;\n  padding-bottom: 80px;\n}\n#footer .social-row[data-v-ee30b9f6] {\n  margin-bottom: 50px;\n  display: flex;\n  align-items: center;\n}\n#footer .social-row span[data-v-ee30b9f6] {\n  font-size: 1.5em;\n  margin-right: 15px;\n  color: #fff;\n  font-weight: 800;\n}\n#footer .social-row i[data-v-ee30b9f6] {\n  font-size: 2em;\n  color: #fff;\n  margin-right: 10px;\n}\n#footer .col h5[data-v-ee30b9f6] {\n  color: #fff;\n  font-size: 1.3em;\n  font-weight: 700;\n}\n#footer .col a[data-v-ee30b9f6] {\n  text-decoration: none;\n  color: #fff;\n  margin-bottom: 2px;\n  font-size: 0.9em;\n}\n#footer .col a[data-v-ee30b9f6]:hover {\n  text-decoration: underline;\n}", ""]);
+exports.push([module.i, "#footer[data-v-ee30b9f6] {\n  background: linear-gradient(-180deg, #4689CF 34%, #0092cc 100%);\n  padding-top: 80px;\n  padding-bottom: 80px;\n}\n#footer .social-row[data-v-ee30b9f6] {\n  margin-bottom: 50px;\n  display: flex;\n  align-items: center;\n}\n#footer .social-row span[data-v-ee30b9f6] {\n  font-size: 1.5em;\n  margin-right: 15px;\n  color: #fff;\n  font-weight: 800;\n}\n#footer .social-row i[data-v-ee30b9f6] {\n  font-size: 2em;\n  color: #fff;\n  margin-right: 10px;\n  cursor: pointer;\n}\n#footer .col h5[data-v-ee30b9f6] {\n  color: #fff;\n  font-size: 1.3em;\n  font-weight: 700;\n}\n#footer .col a[data-v-ee30b9f6] {\n  text-decoration: none;\n  color: #fff;\n  margin-bottom: 2px;\n  font-size: 0.9em;\n}\n#footer .col a[data-v-ee30b9f6]:hover {\n  text-decoration: underline;\n}", ""]);
 
 // exports
 
@@ -3714,7 +3714,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/**** HEADER STYLE ****/\n#header[data-v-abcbf212] {\n  background-color: #4689CF;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n#nav-logo[data-v-abcbf212] {\n  color: #fff;\n  text-shadow: 0px 0px 1px #212f3d;\n}\n.my-btn-color[data-v-abcbf212] {\n  background-color: #5dade2;\n}\n#head-btn[data-v-abcbf212] {\n  max-width: 180px;\n  margin-left: auto;\n}\n.btn-reg[data-v-abcbf212] {\n  background-color: #ff895d;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-reg[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}\n.btn-login[data-v-abcbf212] {\n  background-color: #ecf0f1;\n  font-weight: 700;\n  font-size: 1.1em;\n}\n.btn-login[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}", ""]);
+exports.push([module.i, "/**** HEADER STYLE ****/\n#header[data-v-abcbf212] {\n  background-color: #4689CF;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n#nav-logo[data-v-abcbf212] {\n  color: #fff;\n  text-shadow: 0px 0px 1px #212f3d;\n}\n.my-btn-color[data-v-abcbf212] {\n  background-color: #5dade2;\n}\n#head-btn[data-v-abcbf212] {\n  max-width: 180px;\n  margin-left: auto;\n}\n.btn-reg[data-v-abcbf212] {\n  background-color: #e67e22;\n  font-size: 1.1em;\n}\n.btn-reg[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}\n.btn-login[data-v-abcbf212] {\n  background-color: #ecf0f1;\n  font-weight: 600;\n  font-size: 1.1em;\n}\n.btn-login[data-v-abcbf212]:hover {\n  box-shadow: 0px 0px 1.5px #000;\n}", ""]);
 
 // exports
 
@@ -24266,7 +24266,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\serbo\Desktop\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
