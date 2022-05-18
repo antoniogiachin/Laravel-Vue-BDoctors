@@ -6,10 +6,12 @@
       <div class="row p-2">
 
         <h2>In evidenza</h2>
-        
+
         <!-- CARD DOTTORI SPONSORIZZATI -->
         <div id="sponsor-container" class="col-12 p-4 p-lg-4">
-
+          <div v-if="doctors.length <= 0">
+              <span class="h1">Nessun dottore sponsorizzato</span>
+          </div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
 
             <!-- CARD 1 -->
@@ -21,7 +23,7 @@
                 </div>
 
                 <div class="card-body">
-                  
+
                   <!-- NOME E COGNOME -->
                   <h5 class="card-title">
                     {{singledoc.user.name}} {{singledoc.user.surname}}
@@ -45,7 +47,7 @@
             <!-- FINE CARD 1 -->
 
           </div>
-          
+
         <!-- LAST -->
         </div>
 

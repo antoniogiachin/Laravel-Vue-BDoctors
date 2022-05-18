@@ -6,7 +6,7 @@
       <div id="jumbotron">
         <!-- TESTO JUMBOTRON -->
         <div class="ms_title-jumbo container text-center text-white animate__animated animate__fadeIn">
-          
+
           <h2 class="title-jumbo-home">Prenota online la tua visita medica</h2>
 
           <h3>Trova lo specialista che fa per te</h3>
@@ -76,11 +76,11 @@
                 <div class="text-guide text-center">
                   <h3>Cerca</h3>
                   <p>
-                    Seleziona una specializzazione e cerca tra i nostri medici 
+                    Seleziona una specializzazione e cerca tra i nostri medici
                     che corrispondono alla tua richiesta.
                   </p>
                 </div>
-                
+
             </div>
 
             <!-- COLONNA GUIDA 2 -->
@@ -95,11 +95,11 @@
                 <div class="text-guide text-center">
                   <h3>Scegli il medico</h3>
                   <p>
-                    Fai la scelta migliore per le tue esigenze. 
+                    Fai la scelta migliore per le tue esigenze.
                     Valuta il curriculum e le recensioni dei pazienti
                   </p>
                 </div>
-                
+
             </div>
 
             <!-- COLONNA GUIDA 3 -->
@@ -118,7 +118,7 @@
                     Bastano pochi secondi.
                   </p>
                 </div>
-                
+
             </div>
 
           </div>
@@ -188,7 +188,7 @@
         //ottengo tutti i dottori (PROVVISORIO)
         getDoctors() {
 
-            axios.get('/api/docs')
+            axios.get('/api/sponsored')
             .then((response) => {
 
               this.docsList = response.data.results;

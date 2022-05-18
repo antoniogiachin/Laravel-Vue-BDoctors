@@ -2294,7 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
     getDoctors: function getDoctors() {
       var _this2 = this;
 
-      axios.get('/api/docs').then(function (response) {
+      axios.get('/api/sponsored').then(function (response) {
         _this2.docsList = response.data.results;
         console.log(_this2.docsList);
       })["catch"](function (error) {
@@ -2323,6 +2323,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(animate_css__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
 //
 //
 //
@@ -5690,7 +5692,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Seleziona una specializzazione e cerca tra i nostri medici \n                    che corrispondono alla tua richiesta.\n                  "
+                  "\n                    Seleziona una specializzazione e cerca tra i nostri medici\n                    che corrispondono alla tua richiesta.\n                  "
                 ),
               ]),
             ]),
@@ -5708,7 +5710,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Fai la scelta migliore per le tue esigenze. \n                    Valuta il curriculum e le recensioni dei pazienti\n                  "
+                  "\n                    Fai la scelta migliore per le tue esigenze.\n                    Valuta il curriculum e le recensioni dei pazienti\n                  "
                 ),
               ]),
             ]),
@@ -5769,6 +5771,14 @@ var render = function () {
             attrs: { id: "sponsor-container" },
           },
           [
+            _vm.doctors.length <= 0
+              ? _c("div", [
+                  _c("span", { staticClass: "h1" }, [
+                    _vm._v("Nessun dottore sponsorizzato"),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "div",
               {
