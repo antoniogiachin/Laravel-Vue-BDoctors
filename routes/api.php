@@ -40,3 +40,4 @@ Route::get('/filter', [DoctorController::class, 'filter'] );
 
 //api per sponsorizzati
 Route::get('/sponsored',[DoctorController::class, 'doctorsSponsored']);
+Route::get('/sponsored',[DoctorController::class, 'doctorsSponsored']);
