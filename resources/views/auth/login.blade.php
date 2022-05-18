@@ -12,7 +12,7 @@
             <form method="POST" action="{{route('login')}}" class="p-4 p-md-5 border rounded-3 bg-light shadow">
                 @csrf
                 <div class="form-floating mb-3">
-                    <label for="email" class="form-label">{{ __('E-mail') }}</label>
+                    <label for="email" class="form-label text-muted">{{ __('E-mail') }}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                     @error('email')
@@ -22,7 +22,7 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                    <label for="password" class="form-label text-muted">{{ __('Password') }}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                     @error('password')
