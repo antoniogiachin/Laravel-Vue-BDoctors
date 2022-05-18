@@ -75,7 +75,12 @@ class DoctorController extends Controller
         $doctors = Doctor::with(["user", "specialties", "leads", "reviews"])->get();
 
         //immagini in home
-        $doctors->each(function ($doctor) {
+        $doctors->each(function ($doctor) use ($doctors) {
+            $counter = 0;
+            if(count($doctor->subscriptions) > 0){
+//                dd($counter);
+                $doctors->splice($counter, 0, [$doctor]);
+            };
             //se ho photo
             if ($doctor->photo) {
                 $doctor->photo = url("storage/" . $doctor->photo);
@@ -89,7 +94,9 @@ class DoctorController extends Controller
                 $doctor->cv = "Nessun Curriculum presente!";
             }
         });
-//        dd($specialtySlug);
+//        $doctorsFirst = $doctors;
+
+//        dd($doctors);
         if(!isset($specialtySlug)){
             return response()->json([
                 "results" => $doctors,
