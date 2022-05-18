@@ -193,71 +193,16 @@
       </div>
       <!-- FINE NUOVA STRUTTURA -->
 
-
-          <!--
-          <div id="jumbotron" class="position-relative">
-          
-              <form>
-                <div class="row row-no-gutter justify-content-center px-2">
-
-                  
-
-                  </div>
-
-              </form>
-          </div>
-
-          <div id="container" class="col-12 p-4 p-lg-4 container">
-
-              <div class="row">
-                  <div class="col my-3">
-                      <h2>Ecco tutti i dottori specializzati in <span class="text-capitalize text-danger">{{ $route.params.slug
-                          }}</span></h2>
-                      <p v-if="notFound" class="text-danger">Nessun dottore trovato</p>
-                  </div>
-              </div>
-
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 gx-4 gy-4 gx-lg-5 gy-lg-5 m_col-card">
-                  
-                  <div class="col" v-for="doctor in filteredDoctors" :key="doctor.id">
-                      <div class="card h-100">
-
-                          <img :src="doctor.photo" class="card-img-top">
-
-                          <div class="card-body">
-
-                            <h5 class="card-title">
-                                {{doctor.user.name}} {{doctor.user.surname}}
-                            </h5>
-
-                            <ul class="spec-list">
-                                <li v-for="(specName, index) in doctor.specialties" :key="index">
-                                    {{specName.name}}
-                                </li>
-                            </ul>
-
-                            <p class="card-text">{{doctor.medical_address}}</p>
-
-                            <router-link class="btn btn-primary text-white" :to="'/doctors/' + doctor.slug">Vai al profilo</router-link>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      -->
     </main>
 </template>
 
 <script>
 
 import 'animate.css';
-// import SelectSpecialty from "../components/SelectSpecialty";
 import SearchSelectSpecialty from "../components/SearchSelectSpecialty";
 
 export default {
     name: 'SearchMain',
-    // components: { SelectSpecialty },
     components: { SearchSelectSpecialty },
 
     data() {

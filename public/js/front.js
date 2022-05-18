@@ -2620,65 +2620,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
- // import SelectSpecialty from "../components/SelectSpecialty";
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchMain',
-  // components: { SelectSpecialty },
   components: {
     SearchSelectSpecialty: _components_SearchSelectSpecialty__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
