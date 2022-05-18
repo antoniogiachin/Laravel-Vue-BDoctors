@@ -13,11 +13,11 @@
                 @endif
                 <div class="card">
                     <div class="card-header bg-white text-center text-uppercase">{{ __('Registra il tuo profilo') }}</div>
-    
+
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-    
+
                             <div class="row">
                                 <div class="col-6">
                                     {{-- nome --}}
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="row">
                                 <div class="col-6">
                                     {{-- indirizzo --}}
@@ -79,32 +79,31 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="row">
                               {{-- specializzazione --}}
                               <div class="col-6">
                                     <div class="mb-3">
-                                        <div id="vue-root">
-                                            <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
-                                            <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
-                                              <option value="select" class="text-muted">Seleziona una specializzazione</option>
-                                              @foreach ($specialties as $specialty)
-                                                <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
-                                              @endforeach
-                                            </select>
-                                            <input  onclick="checkInput()" onkeyup="checkInput()" placeholder="Inserisci una specializzazione" id="otherSpec" class="mt-3 form-control disabled" type="text" v-if=" spec == 12 " name="otherSpec">
-    
-                                            @error('specialties')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                        <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
+                                        <p class="text-danger mt-2" id="mustBeSelected">Porco dio</p>
+                                        <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
+                                          <option value="select" class="text-muted">Seleziona una specializzazione</option>
+                                          @foreach ($specialties as $specialty)
+                                            <option value=" {{$specialty->id}} "> {{$specialty->name}} </option>
+                                          @endforeach
+                                        </select>
+                                        {{--<input  onclick="checkInput()" onkeyup="checkInput()" placeholder="Inserisci una specializzazione" id="otherSpec" class="mt-3 form-control disabled" type="text" v-if=" spec == 12 " name="otherSpec">--}}
+
+                                        @error('specialties')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
-    
+
                             </div>
-    
+
                             <div class="row">
                                 {{-- password --}}
                                 <div class="mb-3">
@@ -121,20 +120,20 @@
                                 {{-- password --}}
                                 <div class="mb-3">
                                     <div>
-    
+
                                         <label for="password-confirm" class="form-label">{{ __('Conferma Password*') }}</label>
                                         <input  required id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" onkeyup="checkPass()">
                                         <span id="message"></span>
-    
+
                                     </div>
                                 </div>
                             </div>
-    
+
                             <p class="text-muted fs-6">* campo richiesto</p>
-    
+
                             <div class="form-group row mb-0">
                                 <div class="mt-3 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary text-white">
+                                    <button type="submit" class="btn btn-primary text-white" id="submit">
                                         {{ __('Registrati') }}
                                     </button>
                                 </div>
@@ -165,7 +164,7 @@
             }
         }
 
-        function checkInput(){
+       /* function checkInput(){
             const otherSpec = document.getElementById('otherSpec');
             const selectSpec = document.getElementById('specialty');
             if(otherSpec.value.length > 0){
@@ -177,6 +176,19 @@
                 selectSpec.required = true ;
                 otherSpec.required = false;
             }
+        }*/
+
+        function checkIfEmpty(){
+            const checkedList = document.querySelectorAll('input');
+            console.log(checkedList);
+            if(checkedList.length <= 0){
+                document.getElementById("submit").classList.add('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "Seleziona almeno una specializzazione!";
+            } else if (checkedList.length > 0){
+                document.getElementById("submit").classList.remove('disabled')
+                document.getElementById("mustBeSelected").innerHTML = "";
+            }
+
         }
 
     </script>
