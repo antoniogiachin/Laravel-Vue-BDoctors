@@ -74,9 +74,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        if($data['specialty_id'] == 'select' && !$data['otherSpec']){
-//            return redirect()->route('register', $user);
-//        }
+        if($data['specialty_id'] == 'select' && !$data['otherSpec']){
+//            dd('qui');
+            $data['specialty_id'] = 1;
+        }
 
         $user = User::create([
             'name' => $data['name'],
@@ -85,6 +86,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
 
         // dd($data['specialty_id']);
         $slug  = Str::slug($data['name'] .'-'. $data['surname']);
@@ -108,9 +111,9 @@ class RegisterController extends Controller
 
         if($data['specialty_id'] == 'select'){
 
-            /*if(!$data['otherSpec']){
-                return redirect()->route('register', $user);
-            } else {*/
+            if(!$data['otherSpec']){
+                return redirect()->route('guests.home');
+            } else {
 
                 $slug = Str::slug($data['otherSpec']);
                 $checkSpec = Specialty::where('slug', $slug)->first();
@@ -127,7 +130,7 @@ class RegisterController extends Controller
                     );
                     $doctor->specialties()->sync($specialty->id);
                 }
-//            }
+            }
 
 
         } else {
