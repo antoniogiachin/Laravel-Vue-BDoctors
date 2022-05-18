@@ -27,4 +27,6 @@ prova
 - composer require braintree/braintree_php
 - creo le rotte
 - creo rotta di POST per checkout
-asd
+asdasd
+- Mostra prima nella ricerca i sponsorizzati - fatto
+- 

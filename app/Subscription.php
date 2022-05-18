@@ -13,6 +13,6 @@ class Subscription extends Model
 
     public function doctors()
     {
-        return $this->belongsToMany(Doctor::class)->withTimestamps()->withPivot('expires_at');;
+        return $this->belongsToMany(Doctor::class)->withTimestamps()->withPivot('expires_at');
     }
 }

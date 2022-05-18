@@ -75,7 +75,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if($data['specialty_id'] == 'select' && !$data['otherSpec']){
-//            dd('qui');
             $data['specialty_id'] = 1;
         }
 

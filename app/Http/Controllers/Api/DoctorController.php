@@ -75,7 +75,12 @@ class DoctorController extends Controller
         $doctors = Doctor::with(["user", "specialties", "leads", "reviews"])->get();
 
         //immagini in home
-        $doctors->each(function ($doctor) {
+        $doctors->each(function ($doctor) use ($doctors) {
+            $counter = 0;
+            if(count($doctor->subscriptions) > 0){
+//                dd($counter);
+                $doctors->splice($counter, 0, [$doctor]);
+            };
             //se ho photo
             if ($doctor->photo) {
                 $doctor->photo = url("storage/" . $doctor->photo);
@@ -89,10 +94,12 @@ class DoctorController extends Controller
                 $doctor->cv = "Nessun Curriculum presente!";
             }
         });
-//        dd($specialtySlug);
+//        $doctorsFirst = $doctors;
+
+//        dd($doctors);
         if(!isset($specialtySlug)){
             return response()->json([
-                "results" => $doctors,
+                "results" => $doctors->unique(),
                 "success" => true,
             ]);
         } else {
@@ -352,6 +359,20 @@ class DoctorController extends Controller
 //$average = null, $rangeMin = null, $rangeMax = null
     public function doctorsSponsored(){
         $doctors = Doctor::with(['user', 'subscriptions', 'specialties', 'reviews'])->get();
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filtered = $doctors->filter(function($doctor){
            $sponsorFilter = $doctor->subscriptions->filter(function($sub){
                $dateOne = new Carbon($sub->pivot->expires_at);
