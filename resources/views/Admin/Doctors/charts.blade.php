@@ -13,14 +13,14 @@
 <body>
 <div class="container mx-auto py-10">
     <h1 class=" text-4xl text-center text-gray-700 mb-10">Le tue Statistiche</h1>
-    <div class="grid grid-cols-2 gap-4">
-        <div class="py-5 px-6 border-gray-200 border-r-2 h-full grid place-items-center">
-            <p class="text-lg text-gray-700 text-center mb-5">Numero recensioni per voto</p>
-            <canvas id="myChart" class=" "></canvas>
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-4 place-items-center md:place-items-stretch">
+        <div class="py-5 px-6 md:border-gray-200 md:border-r-2 h-full grid place-items-center">
+            <p class="text-xl text-gray-700 text-center mb-5">Numero recensioni per voto</p>
+            <canvas id="myChart" class=""></canvas>
             <p class="text-lg text-gray-700 text-center mb-5">Voto Medio : {{$totalAverage}} </p>
         </div>
         <div class="py-5 px-6 h-full grid place-items-center">
-            <p class="text-lg text-gray-700 text-center mb-5">Contatti ricevuti ogni mese</p>
+            <p class="text-xl text-gray-700 text-center mb-5">Contatti ricevuti ogni mese</p>
             <canvas id="mySecondChart" class=" "></canvas>
             <p class="text-lg text-gray-700 text-center mb-5">Contatti ricevuti in totale : {{$countLeads}} </p>
         </div>
