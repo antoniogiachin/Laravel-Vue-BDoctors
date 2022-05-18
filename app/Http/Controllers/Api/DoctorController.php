@@ -352,6 +352,20 @@ class DoctorController extends Controller
 //$average = null, $rangeMin = null, $rangeMax = null
     public function doctorsSponsored(){
         $doctors = Doctor::with(['user', 'subscriptions', 'specialties', 'reviews'])->get();
+        $doctors->each(function ($doctor) {
+            //se ho photo
+            if ($doctor->photo) {
+                $doctor->photo = url("storage/" . $doctor->photo);
+            } else {
+                $doctor->photo = url("img/not_found.jpg");
+            }
+
+            if ($doctor->cv) {
+                $doctor->cv = url("storage/" . $doctor->cv);
+            } else {
+                $doctor->cv = "Nessun Curriculum presente!";
+            }
+        });
         $filtered = $doctors->filter(function($doctor){
            $sponsorFilter = $doctor->subscriptions->filter(function($sub){
                $dateOne = new Carbon($sub->pivot->expires_at);

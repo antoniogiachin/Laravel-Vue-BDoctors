@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   
+
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5 gy-4">
         <div class="col-lg-7 text-center text-lg-start">
@@ -11,7 +11,7 @@
         <div class="col-md-10 mx-auto col-lg-5">
             <form method="POST" action="{{route('login')}}" class="p-4 p-md-5 border rounded-3 bg-light shadow">
                 @csrf
-                <div class="form-floating mb-3">
+                <div class="form-group mb-3">
                     <label for="email" class="form-label text-muted">{{ __('E-mail') }}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -21,7 +21,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-floating mb-3">
+                <div class="form-group mb-3">
                     <label for="password" class="form-label text-muted">{{ __('Password') }}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 

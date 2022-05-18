@@ -40,14 +40,24 @@ class SubscriptionController extends Controller
     public function checkout(Request $request, $price){
         $doctor = Auth::user()->doctor;
 //        $doctor->subscriptions()->sync([1]);
+        if(count($doctor->subscriptions) > 0){
+            $doctorLastSub = $doctor->subscriptions()->orderByDesc('pivot_expires_at', 'asc')->first();
+    //        dd($doctorLastSub->pivot->expires_at);
+            $lastSubDate = new Carbon($doctorLastSub->pivot->expires_at);
+        } else {
+            dd($doctor->subscriptions);
+            $lastSubDate = Carbon::yesterday()->addDays(1);
+        }
         $subscription = Subscription::wherePrice($price)->first();
         $subId = $subscription->id;
+        // prendi l'ultima sub e aggiungi
         if($price == 2.99){
-            $expires = Carbon::tomorrow();
+            $expires = $lastSubDate->addDays(1);
+//            dd($expires);
         } elseif($price == 5.99){
-            $expires = Carbon::tomorrow()->addDays(2);
+            $expires = $lastSubDate->addDays(3);
         } else {
-            $expires = Carbon::tomorrow()->addDays(5);
+            $expires = $lastSubDate->addDays(6);
         }
 //        $doctor->subscriptions()->attach($subId, ['expires_at' => $expires]);
 //        dd($doctor);
