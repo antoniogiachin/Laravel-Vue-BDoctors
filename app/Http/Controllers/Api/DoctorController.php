@@ -99,7 +99,7 @@ class DoctorController extends Controller
 //        dd($doctors);
         if(!isset($specialtySlug)){
             return response()->json([
-                "results" => $doctors,
+                "results" => $doctors->unique(),
                 "success" => true,
             ]);
         } else {
