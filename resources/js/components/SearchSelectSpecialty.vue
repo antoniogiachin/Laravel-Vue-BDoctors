@@ -7,7 +7,7 @@
           <!-- SELECT SPECIALIZZAZIONI -->
           <div class="ms_select-spec col-12 col-lg-8 pe-lg-2 mb-2 mb-lg-0">
               <select class="form-select" v-model="selectedSpecialty" >
-                  <option selected value="">Seleziona una specializzazione</option>
+                  <option value="tutte le specializzazioni">Tutte le specializzazioni</option>
                   <option v-for="specialty in specialtiesList" :key="specialty.id" :value="specialty.slug" > {{specialty.name}} </option>
               </select>
           </div>
@@ -37,6 +37,10 @@ export default {
         return {
             selectedSpecialty: '',
         };
+    },
+    mounted() {
+
+        this.selectedSpecialty = this.$route.params.slug
     }
 
 };
