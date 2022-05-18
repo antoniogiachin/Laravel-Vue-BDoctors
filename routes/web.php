@@ -51,6 +51,9 @@ Route::middleware('auth')
             Route::get('/subscriptions/{doctor}', [SubscriptionController::class, 'index'])->name('subscription.index');
             Route::get('/checkout/{type}', [SubscriptionController::class, 'token'])->name('subscription.pay');
             Route::post('/checkout/{price}', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
+
+            // rotte per chars
+            Route::get('/charts/{doctor}', [\App\Http\Controllers\Admin\DoctorController::class, 'charts'])->name('charts');
         }
     );
 

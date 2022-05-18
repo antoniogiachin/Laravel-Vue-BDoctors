@@ -293,7 +293,15 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
+        $specialties = Specialty::all();
         $doctor->specialties->each(function($specialty){
+//            dd($specialty);
+            if($specialty->id > 11 && count($specialty->doctors) == 1){
+                $specialty->delete();
+            }
+        });
+
+        $specialties->each(function($specialty){
 //            dd($specialty);
             if($specialty->id > 11 && count($specialty->doctors) == 1){
                 $specialty->delete();
@@ -311,5 +319,102 @@ class DoctorController extends Controller
         $doctor->delete();
 
         return redirect()->route('admin.home')->with('alreadyCreated', 'Profilo eliminato con successo!');
+    }
+
+    public function charts($slug){
+        if(Auth::user()->doctor->slug == $slug){
+            // logiche per numero recensioni per voto
+            $reviews = Auth::user()->doctor->reviews;
+            $leads = Auth::user()->doctor->leads->sortBy('created_at');
+            $count = count($reviews);
+            $sum = 0;
+            $totalAverage = 0;
+            $averageZero = [];
+            $averageOne = [];
+            $averageTwo = [];
+            $averageThree = [];
+            $averageFour = [];
+            $averageFive = [];
+            foreach ($reviews as $review){
+                $sum += intval($review->vote);
+//                $totalAverage = $sum / $count;
+                if($review->vote == 0){
+                    $averageZero[] = $review->vote;
+                } elseif($review->vote == 1){
+                    $averageOne[] = $review->vote;
+                } elseif ($review->vote == 2){
+                    $averageTwo[] = $review->vote;
+                } elseif ($review->vote == 3){
+                    $averageThree[] = $review->vote;
+                } elseif ($review->vote == 4){
+                    $averageFour[] = $review->vote;
+                } else {
+                    $averageFive[] = $review->vote;
+                }
+            }
+            if($count > 0){
+                $totalAverage = $sum / $count;
+            }
+            $chartReviews = [
+                count($averageZero),
+                count($averageOne),
+                count($averageTwo),
+                count($averageThree),
+                count($averageFour),
+                count($averageFive),
+            ];
+            // logiche per recensioni ricevute ogni mese
+            $countLeads = count($leads);
+            $leadsByMonth = [
+
+            ];
+            $genCount = 1;
+            $febCount = 1;
+            $marCount = 1;
+            $aprCount = 1;
+            $mayCount = 1;
+            $junCount = 1;
+            $julCount = 1;
+            $agoCount = 1;
+            $sepCount = 1;
+            $ottCount = 1;
+            $novCount = 1;
+            $decCount = 1;
+
+            $counter = 1;
+            foreach ($leads as $lead){
+                $date = new Carbon($lead->created_at);
+                $month = $date->format('M');
+                if($month == 'Gen'){
+                    $leadsByMonth[$month] = $genCount++;
+                } elseif($month == 'Feb'){
+                    $leadsByMonth[$month] = $febCount++;
+                } elseif($month == 'Mar') {
+                    $leadsByMonth[$month] = $marCount++;
+                }  elseif($month == 'Apr') {
+                    $leadsByMonth[$month] = $aprCount++;
+                }  elseif($month == 'May') {
+                    $leadsByMonth[$month] = $mayCount++;
+                }  elseif($month == 'Jun') {
+                    $leadsByMonth[$month] = $junCount++;
+                }  elseif($month == 'Jul') {
+                    $leadsByMonth[$month] = $julCount++;
+                }  elseif($month == 'Aug') {
+                    $leadsByMonth[$month] = $agoCount++;
+                }  elseif($month == 'Sep') {
+                    $leadsByMonth[$month] = $sepCount++;
+                }  elseif($month == 'Oct') {
+                    $leadsByMonth[$month] = $ottCount++;
+                }  elseif($month == 'Nov') {
+                    $leadsByMonth[$month] = $novCount++;
+                }  else {
+                    $leadsByMonth[$month] = $decCount++;
+                }
+            }
+
+            return view('Admin.Doctors.charts', compact('chartReviews', 'totalAverage', 'leadsByMonth', 'countLeads'));
+        } else {
+            return view('Errors.401');
+        }
     }
 }
