@@ -29,27 +29,25 @@
 
     {{-- Se un utente non ha registrato un profilo da dottore --}}
     @if (!$doctor)
-    <div class="text-center pt-3">
-        <h2>La piattaforma per i medici professionisti.</h2>
-        <p class="fw-bold">Completa subito il tuo profilo!</p>
-    </div>
     {{-- Hero section --}}
-    <div class="container hero-register">
-        <div class="text-right d-flex flex-column align-items-end">
-            {{-- creazione profilo dottore --}}
-            <div class="col-6 d-flex justify-content-center">
-                <a href="{{ route('admin.doctors.create') }}" class="btn mt-3 text-white btn-success">Registra il tuo profilo da dottore</a>
-            </div>
-            {{-- eliminazione user --}}
-            <div class="col-6 d-flex justify-content-center">
-                <form action="{{ route('admin.home.destroy', $user->id) }}" id="deleteUser" method="POST">
-                    @csrf
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+        <h1 class="fw-bold">La piattaforma n°1 per i medici professionisti.</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Entra a far parte di BDoctors.it è Gratis! </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a href="{{route('admin.doctors.create')}}" type="button" class="btn btn-primary text-white btn-lg px-4 me-sm-3">Registrati subito</a>
+            <form action="{{ route('admin.home.destroy', $user->id) }}" id="deleteUser" method="POST">
+                @csrf
+                @method('DELETE')
 
-                    @method('DELETE')
-
-                    <button class=" btn btn-danger text-white mt-3" type="submit">Elimina il tuo profilo</button>
-                </form>
-            </div>
+                <button class=" btn btn-danger text-white btn-lg px-4 me-sm-3" type="submit">Elimina il tuo profilo</button>
+            </form>
+        </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+        <div class="container px-5">
+            <img src="{{asset('img/doctor-reg.jpg')}}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="docotr_register" width="700" height="500" loading="lazy">
+        </div>
         </div>
     </div>
 
