@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container py-3">
-        <h1 class="text-center mb-5">Modifica il tuo profilo da dottore</h1>
+        <h1 class="text-center mb-5">Crea il tuo profilo da dottore</h1>
         <div class="row">
             <div class="col-6 mx-auto">
                 {{-- form creazione --}}
