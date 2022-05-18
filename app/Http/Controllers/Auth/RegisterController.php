@@ -8,6 +8,7 @@ use App\User;
 use App\Doctor;
 use App\Specialty;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -69,10 +70,14 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function create(array $data)
     {
+//        if($data['specialty_id'] == 'select' && !$data['otherSpec']){
+//            return redirect()->route('register', $user);
+//        }
+
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -100,14 +105,12 @@ class RegisterController extends Controller
         ]);
 
 
+
         if($data['specialty_id'] == 'select'){
 
-
-            if(!$data['otherSpec']){
-
-                return redirect()->route('register');
-
-            } else {
+            /*if(!$data['otherSpec']){
+                return redirect()->route('register', $user);
+            } else {*/
 
                 $slug = Str::slug($data['otherSpec']);
                 $checkSpec = Specialty::where('slug', $slug)->first();
@@ -124,7 +127,7 @@ class RegisterController extends Controller
                     );
                     $doctor->specialties()->sync($specialty->id);
                 }
-            }
+//            }
 
 
         } else {
