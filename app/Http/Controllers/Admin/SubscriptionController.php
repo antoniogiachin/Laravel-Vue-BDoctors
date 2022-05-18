@@ -45,8 +45,9 @@ class SubscriptionController extends Controller
     //        dd($doctorLastSub->pivot->expires_at);
             $lastSubDate = new Carbon($doctorLastSub->pivot->expires_at);
         } else {
-            dd($doctor->subscriptions);
+//            dd($doctor->subscriptions);
             $lastSubDate = Carbon::yesterday()->addDays(1);
+//            dd($lastSubDate);
         }
         $subscription = Subscription::wherePrice($price)->first();
         $subId = $subscription->id;
