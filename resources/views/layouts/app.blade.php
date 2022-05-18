@@ -88,10 +88,10 @@
                 @guest
                 <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white fs-5"  aria-current="page" href="{{ route('guests.home') }}">Home</a>
+                            <a class="nav-link text-white fs-5 me-3"  aria-current="page" href="{{ route('guests.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a  class="nav-link text-white fs-5 mx-3" aria-current="page" href="{{ route('login') }}">Login</a>
+                            <a  class="nav-link text-white fs-5 me-3" aria-current="page" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white fs-5" href="{{ route('register') }}">Register</a>
