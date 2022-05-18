@@ -85,7 +85,7 @@
                               <div class="col-6">
                                     <div class="mb-3">
                                         <label for="specialty" class="form-label">{{ __('Specializzazione *') }}</label>
-                                        <p class="text-danger mt-2" id="mustBeSelected">Porco dio</p>
+                                        <p class="text-danger mt-2" id="mustBeSelected"></p>
                                         <select required id="specialty" class="form-select @error('specialties') is-invalid @enderror" name="specialty_id" required v-model="spec">
                                           <option value="select" class="text-muted">Seleziona una specializzazione</option>
                                           @foreach ($specialties as $specialty)
