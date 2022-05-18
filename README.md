@@ -28,5 +28,5 @@ prova
 - creo le rotte
 - creo rotta di POST per checkout
 asdasd
-- Mostra prima nella ricerca i sponsorizzati
+- Mostra prima nella ricerca i sponsorizzati - fatto
 - 
