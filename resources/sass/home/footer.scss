@@ -1,7 +1,6 @@
 @import "../_variables.scss";
 
 #footer {
-  // background-color: $main-bg;
   background: linear-gradient(-180deg, $main-bg 34%,#0092cc 100%);
   padding-top: 80px;
   padding-bottom: 80px;
@@ -23,6 +22,7 @@
       font-size: 2em;
       color: #fff;
       margin-right: 10px;
+      cursor: pointer;
     }
 
   }
