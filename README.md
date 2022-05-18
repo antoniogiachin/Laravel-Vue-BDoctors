@@ -1,4 +1,3 @@
-
 # Piattaforma prenotazione visite Medici Specializzati
 
 ## Meeting 5 Maggio
