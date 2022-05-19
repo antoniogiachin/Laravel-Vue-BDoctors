@@ -45,9 +45,9 @@
                             @else
                                 {{-- <a href="{{ route('admin.downloadCv') }}">-> Il mio cv
                                     <-</a> --}}
-                                <div class="d-flex flex-column gap-2">
-                                    <a href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">-> Il mio Cv <-</a>
-                                    <a href="{{ route('admin.deleteCv', $doctor->slug) }}">Elimina Cv</a>
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-primary w-100 text-white" href="{{  url('storage/'. Auth::user()->doctor->cv)  }}">Il mio Cv</a>
+                                    <a class="btn btn-danger w-100 text-white" href="{{ route('admin.deleteCv', $doctor->slug) }}">Elimina Cv</a>
                                 </div>
                             @endif
 
@@ -83,7 +83,7 @@
 
                                     <button type="submit" id="deletePhoto" class="border-0 px-2 py-1">Elimina la foto</button>
                                 </form> --}}
-                                <a href="{{ route('admin.deletePhoto', $doctor->slug) }}">Elimina foto</a>
+                                <a class="btn btn-danger text-white" href="{{ route('admin.deletePhoto', $doctor->slug) }}">Elimina foto</a>
                             @endif
 
                         </div>
@@ -117,7 +117,7 @@
                         <input onclick="inputCheck()" onkeyup="inputCheck()" type="text" id="otherSpec" class="form-control mt-4" name="otherSpec" placeholder="Inserisci una specializzazione non presente">
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="editSub">Salva</button>
+                    <button type="submit" class="btn btn-success" id="editSub">Salva</button>
 
                 </form>
             </div>

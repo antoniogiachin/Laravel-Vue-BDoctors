@@ -72,14 +72,14 @@
                           <span class="rev-vote">
                             <i v-for="i in 5" :key="i" class="star-color fa-star" :class="(i <= review.vote) ? 'fa-solid' : 'fa-regular' "></i>
                           </span>
-                      
+
                           <span class="rev-title">{{review.title}}</span>
 
                         </div>
 
                         <!-- DATA RECENSIONE -->
                         <div class="date-review">
-                          <span class=""></span>
+                          <span class="">{{formattedDates[review.id]}}</span>
                         </div>
 
                       </div>
@@ -130,13 +130,13 @@
   export default {
 
     name: 'SingleDoctorMain',
-    props: ['singledoc', 'reviews'],
+    props: ['singledoc', 'reviews', 'formattedDates'],
 
     components: {
 
       SingleDoctorReview,
       SingleDoctorForm,
-    
+
     },
 
   }

@@ -34,7 +34,7 @@
             @foreach ($leads as $lead)
                 <div class="d-flex justify-content-between">
                     <h4>Messaggio ricevuto da - {{$lead->author}}</h4>
-                    <span class="text-secondary">{{$lead->created_at}}</span>
+                    <span class="text-secondary">{{$lead->created_at->format('d m Y H:m:s')}}</span>
                 </div>
                 <p>{{$lead->message}}</p>
                 {{-- offcanvas per risposta--}}
