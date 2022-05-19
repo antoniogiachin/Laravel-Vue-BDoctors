@@ -3269,7 +3269,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SingleDoctorMain',
-  props: ['singledoc', 'reviews'],
+  props: ['singledoc', 'reviews', 'formattedDates'],
   components: {
     SingleDoctorReview: _SingleDoctorReview__WEBPACK_IMPORTED_MODULE_0__["default"],
     SingleDoctorForm: _SingleDoctorForm__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -3521,6 +3521,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       singleDoc: [],
       reviewsList: [],
+      formattedDates: [],
       authUser: window.authUser,
       userChecked: false
     };
@@ -3540,6 +3541,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.success) {
           console.log(response.data.results);
           _this.reviewsList = response.data.results;
+          _this.formattedDates = response.data.formatted;
           console.log(_this.reviewsList);
         } else {
           console.log('chiamata fallita');
@@ -7061,7 +7063,11 @@ var render = function () {
                                 ]),
                               ]),
                               _vm._v(" "),
-                              _vm._m(0, true),
+                              _c("div", { staticClass: "date-review" }, [
+                                _c("span", {}, [
+                                  _vm._v(_vm._s(_vm.formattedDates[review.id])),
+                                ]),
+                              ]),
                             ]
                           ),
                           _vm._v(" "),
@@ -7081,7 +7087,7 @@ var render = function () {
                 "div",
                 { staticClass: "col-lg-4", attrs: { id: "col-booking" } },
                 [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "phone" }, [
                     _c("h3", [_vm._v("Telefono")]),
@@ -7114,12 +7120,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "date-review" }, [_c("span", {})])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -7495,7 +7495,11 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("SingleDoctorMain", {
-        attrs: { singledoc: _vm.singleDoc, reviews: _vm.reviewsList },
+        attrs: {
+          formattedDates: _vm.formattedDates,
+          singledoc: _vm.singleDoc,
+          reviews: _vm.reviewsList,
+        },
       }),
       _vm._v(" "),
       _c("HomeFooter"),
@@ -24280,8 +24284,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-module.exports = __webpack_require__(/*! C:\Users\flek8\OneDrive\Desktop\Personal Works\laravel-vue-BDoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Desktop/laravel-vue-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

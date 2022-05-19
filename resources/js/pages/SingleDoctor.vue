@@ -2,10 +2,10 @@
   <div>
 
     <HomeHeader :userChecked="userChecked" :authUser="authUser"></HomeHeader>
-    <SingleDoctorMain :singledoc="singleDoc" :reviews="reviewsList"></SingleDoctorMain>
+    <SingleDoctorMain :formattedDates="formattedDates" :singledoc="singleDoc" :reviews="reviewsList"></SingleDoctorMain>
     <HomeFooter></HomeFooter>
 
-  </div>   
+  </div>
 </template>
 
 <script>
@@ -22,20 +22,21 @@ export default {
         SingleDoctorMain,
         HomeFooter,
     },
-    
+
     data() {
         return {
 
             singleDoc: [],
             reviewsList: [],
+            formattedDates: [],
 
             authUser: window.authUser,
             userChecked: false,
-          
+
         }
-        
+
     },
-    
+
     methods: {
         checkAuth() {
             if(this.authUser){
@@ -47,7 +48,7 @@ export default {
         },
 
         getReviews() {
-            
+
             axios.get('/api/reviews/' + this.$route.params.slug)
             .then(response => {
 
@@ -55,6 +56,7 @@ export default {
 
                     console.log(response.data.results)
                     this.reviewsList = response.data.results
+                    this.formattedDates = response.data.formatted
                     console.log(this.reviewsList)
 
                 } else {
@@ -77,7 +79,7 @@ export default {
                     abort(404, 'not found');
 
                 } else {
-                    
+
                     this.singleDoc = response.data.results
                 }
             })

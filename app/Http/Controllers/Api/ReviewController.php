@@ -59,9 +59,15 @@ class ReviewController extends Controller
 
         $reviews = Review::all()->where('doctor_id', '=' , $doctor->id)->sortByDesc('created_at')->values()->all();
 
+        $formatted =[];
+        foreach ($reviews as $review){
+            $formatted[$review->id] = $review->created_at->format('d m Y H:m:s');
+        }
+
         return response()->json([
             'results' => $reviews,
             'success' => true,
+            'formatted' => $formatted,
         ]);
     }
 
